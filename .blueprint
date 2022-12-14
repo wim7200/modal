@@ -1,0 +1,67 @@
+created:
+    - app/Http/Controllers/KindController.php
+    - app/Http/Controllers/ConditionController.php
+    - app/Http/Controllers/ClientController.php
+    - app/Http/Controllers/ToolController.php
+    - app/Http/Controllers/RentalController.php
+    - database/factories/KindFactory.php
+    - database/factories/ConditionFactory.php
+    - database/factories/ClientFactory.php
+    - database/factories/ToolFactory.php
+    - database/factories/RentalFactory.php
+    - database/migrations/2022_04_21_193649_create_kinds_table.php
+    - database/migrations/2022_04_21_193650_create_conditions_table.php
+    - database/migrations/2022_04_21_193651_create_clients_table.php
+    - database/migrations/2022_04_21_193652_create_tools_table.php
+    - database/migrations/2022_04_21_193653_create_rentals_table.php
+    - database/migrations/2022_04_21_193654_create_client_rental_table.php
+    - database/migrations/2022_04_21_193655_create_rental_tool_table.php
+    - app/Models/Kind.php
+    - app/Models/Condition.php
+    - app/Models/Client.php
+    - app/Models/Tool.php
+    - app/Models/Rental.php
+    - tests/Feature/Http/Controllers/KindControllerTest.php
+    - tests/Feature/Http/Controllers/ConditionControllerTest.php
+    - tests/Feature/Http/Controllers/ClientControllerTest.php
+    - tests/Feature/Http/Controllers/ToolControllerTest.php
+    - tests/Feature/Http/Controllers/RentalControllerTest.php
+    - app/Http/Requests/KindStoreRequest.php
+    - app/Http/Requests/KindUpdateRequest.php
+    - app/Http/Requests/ConditionStoreRequest.php
+    - app/Http/Requests/ConditionUpdateRequest.php
+    - app/Http/Requests/ClientStoreRequest.php
+    - app/Http/Requests/ClientUpdateRequest.php
+    - app/Http/Requests/ToolStoreRequest.php
+    - app/Http/Requests/ToolUpdateRequest.php
+    - app/Http/Requests/RentalStoreRequest.php
+    - app/Http/Requests/RentalUpdateRequest.php
+    - resources/views/kind/index.blade.php
+    - resources/views/kind/create.blade.php
+    - resources/views/kind/show.blade.php
+    - resources/views/kind/edit.blade.php
+    - resources/views/condition/index.blade.php
+    - resources/views/condition/create.blade.php
+    - resources/views/condition/show.blade.php
+    - resources/views/condition/edit.blade.php
+    - resources/views/client/index.blade.php
+    - resources/views/client/create.blade.php
+    - resources/views/client/show.blade.php
+    - resources/views/client/edit.blade.php
+    - resources/views/tool/index.blade.php
+    - resources/views/tool/create.blade.php
+    - resources/views/tool/show.blade.php
+    - resources/views/tool/edit.blade.php
+    - resources/views/rental/index.blade.php
+    - resources/views/rental/create.blade.php
+    - resources/views/rental/show.blade.php
+    - resources/views/rental/edit.blade.php
+updated:
+    - routes/web.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, two_factor_secret: 'text nullable', two_factor_recovery_codes: 'text nullable', two_factor_confirmed_at: 'datetime nullable', remember_token: 'string:100 nullable', current_team_id: 'biginteger unsigned nullable', profile_photo_path: 'string:2048 nullable' }
+    Kind: { name: string, img: string, description: longtext }
+    Condition: { name: string }
+    Client: { name: string, qr_code_borrower: string, company: string }
+    Tool: { name: string, qr_code_tool: string, due-time: timestamp, kind_id: id, condition_id: id, softdeletes: softDeletes, relationships: { hasMany: 'Kind, Condition' } }
+    Rental: { status: bool, client_id: id, tool_id: id, relationships: { belongsToMany: 'Client, Tool' } }

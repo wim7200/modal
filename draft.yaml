@@ -1,0 +1,38 @@
+models:
+  Kind:
+    name: string
+    img: string
+    description: longtext
+  Condition:
+    name: string
+  Client:
+    name: string
+    qr_code_borrower: string
+    company: string
+  Tool:
+    name: string
+    qr_code_tool: string
+    due-time: timestamp
+    kind_id: id
+    condition_id: id
+    softDeletes
+    relationships:
+      hasMany: Kind, Condition
+  Rental:
+    status: bool
+    client_id: id
+    tool_id: id
+    relationships:
+      belongsToMany: Client, Tool
+controllers:
+  Kind:
+    resource
+  Condition:
+    resource
+  Client:
+    resource
+  Tool:
+    resource
+  Rental:
+    resource
+
