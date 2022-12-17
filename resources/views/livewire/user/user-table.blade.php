@@ -77,9 +77,13 @@
                                     <td class="px-6 mt-2 " >
                                         {{$user->roles->pluck('name')->implode(', ')}}
                                     </td>
-                                    <td class="px-6 mt-2 ">
+                                    {{--<td class="px-6 mt-2 ">
                                         <input {{$user->mail==1 ? 'checked':''}} type="checkbox" class="w-4 h-4 rounded text-red-600 ">
-                                    </td>
+                                    </td>--}}
+                                    <livewire:toggle-button :model="$user" :wire:key="$user->id">
+
+
+
 
 
                                     <td class="flex justify-end mx-4 my-2">

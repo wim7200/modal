@@ -10,11 +10,13 @@ class UserTable extends Component
 {
     use WithPagination;
 
+    public User $user;
+   // public $name,$email;
 
-    public $name,$email;
     public $search ='';
     public $sortField='name';
     public $sortAsc=true;
+    //public $isNotify;
 
 
 
