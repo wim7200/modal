@@ -44,7 +44,7 @@ Route::get('/shop', function () {
         // Only verified users may access this route...
 })->middleware(['auth', 'verified']);
 
-/*Route::middleware([
+Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
