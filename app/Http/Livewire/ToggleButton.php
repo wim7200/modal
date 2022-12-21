@@ -16,13 +16,16 @@ class ToggleButton extends Component
     {
        $this->isActive = (bool) $this->model->getAttribute($this->field);
     }
+
     public function render()
     {
         return view('livewire.toggle-button');
     }
-    public function updating($field, $value)
 
+    public function updating($field, $value)
     {
+
         $this->model->setAttribute($this->field, $value)->save();
+        return redirect('/user')->with('message','mailing updated');
     }
 }

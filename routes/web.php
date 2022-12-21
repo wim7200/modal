@@ -22,7 +22,7 @@ Route::get('se',[SendEmailController::class, 'index']);
 Route::get('/', function () {
      return view('auth.login');
  });
-
+/* routes ivm email versturen*/
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
@@ -39,17 +39,17 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
+/* roles routes   */
 Route::get('/shop', function () {
         // Only verified users may access this route...
 })->middleware(['auth', 'verified']);
 
-Route::middleware([
+/*Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
     ])->group(function () {
     Route::get('/dashboard', function () {return view('dashboard'); })->name('dashboard');
-
 });
 
 
@@ -61,17 +61,17 @@ Route::middleware([
     Route::get('/admin', function () {return view('admin.index'); })->name('admin.index');
 
 });
+*/
+
+Route::group(['middelware'=>'auth'],function (){
+    Route::resource('kind', App\Http\Controllers\KindController::class);
+    Route::resource('condition', App\Http\Controllers\ConditionController::class);
+    Route::resource('client', App\Http\Controllers\ClientController::class);
+    Route::resource('tool', App\Http\Controllers\ToolController::class);
+    Route::resource('shop', App\Http\Controllers\ShopController::class);
+    Route::resource('user', App\Http\Controllers\UserController::class);
+});
 
 
 
-Route::resource('kind', App\Http\Controllers\KindController::class);
 
-Route::resource('condition', App\Http\Controllers\ConditionController::class);
-
-Route::resource('client', App\Http\Controllers\ClientController::class);
-
-Route::resource('tool', App\Http\Controllers\ToolController::class);
-
-Route::resource('shop', App\Http\Controllers\ShopController::class);
-
-Route::resource('user', App\Http\Controllers\UserController::class);

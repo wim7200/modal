@@ -5,18 +5,25 @@
         </h2>
     </x-slot>
 
+{{--
     <div class="py-4">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-{{--moet hier onclick zijn want is niet in livewire component--}}
+            --}}
+{{--moet hier onclick zijn want is niet in livewire component--}}{{--
+
             <x-w.bttn color="gray"
                       onclick="Livewire.emit('openModal', 'user.user-create')">
                 Create New User
             </x-w.bttn>
+
         </div>
     </div>
+--}}
 
-   {{--@livewire ('user.user-table')--}}
+
+
+  {{-- @livewire ('user.user-table')--}}
 
     <div class="py-4">
         <div class="max-w-7xl mx-auto"> {{--breedte van tabel, centreren op ruimte--}}
@@ -82,7 +89,8 @@
                                         </a>
                                     </th>
                                     <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Notify Me</th>
-                                    <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-left"></th>
+                                    <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Admin?</th>
+
                                 </tr>
                                 </thead>
 
@@ -95,28 +103,39 @@
                                         <td class="px-6 mt-2 " >{{$user->email}}</td>
                                         <td class="px-6 mt-2 " >{{$user->email_verified_at}}</td>
                                         <td class="px-6 mt-2 " >
-                                            {{$user->roles->pluck('name')->implode(', ')}}
+                                            {{$user->roles->pluck('name')->implode('-')}}
+                                        </td>
+
+                                        <td>
+                                           <div>@livewire('toggle-button', ['model' => $user, 'field' => 'notify'], key($user->id))</div>
+                                        </td>
+
+                                        <td>
+                                            <div>@livewire('admin-button', ['model' => $user, 'field' => 'admin'], key($user->id))</div>
+                                        {{--  <div>
+                                        <button onclick="Livewire.emit('openModal', 'role-set',{{json_encode(["users" => $user->id])}})">Open Modal</button>
+                                        @livewire('role-set',(["users" => $user->id]))
+                                            </div>--}}
                                         </td>
                                         <td>
-                                           <div>
-                                               @livewire('toggle-button', ['model' => $user, 'field' => 'notify'], key($user->id))
-                                           </div>
+
                                         </td>
 
-                                        <td class="flex justify-end mx-4 my-2">
 
-                                            <!-- Inside existing Livewire component -->
+                                        {{--<td class="flex justify-end mx-4 my-2">
+                                            <!-- Inside existing Livewire component-->
                                             <button wire:click='$emit("openModal", "user.user-edit", {{json_encode(["users" => $user->id])}})'
                                                     class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer">
                                                 Edit
                                             </button>
 
-                                            <!-- Inside existing Livewire component -->
+
+                                            <!-- Inside existing Livewire component-->
                                             <button wire:click='$emit("openModal", "user.user-create", {{json_encode(["users" => $user->id])}})'
                                                     class="px-2 rounded-md bg-red-400 hover:bg-red-600 text-gray-900 cursor-pointer">
                                                 Delete
                                             </button>
-                                        </td>
+                                        </td>--}}
                                     </tr>
                                 @empty
                                     <td class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100"

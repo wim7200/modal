@@ -80,7 +80,7 @@
                                     {{--<td class="px-6 mt-2 ">
                                         <input {{$user->mail==1 ? 'checked':''}} type="checkbox" class="w-4 h-4 rounded text-red-600 ">
                                     </td>--}}
-                                    <livewire:toggle-button :model="$user" :wire:key="$user->id">
+                                   {{-- <livewire:toggle-button :model="$user" :wire:key="$user->id">--}}
 
 
 
