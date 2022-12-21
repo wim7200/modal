@@ -61,7 +61,7 @@ Route::middleware([
     Route::get('/admin', function () {return view('admin.index'); })->name('admin.index');
 
 });
-*/
+
 
 Route::group(['middelware'=>'auth'],function (){
     Route::resource('kind', App\Http\Controllers\KindController::class);
