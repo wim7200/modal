@@ -5,18 +5,18 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('shop.index') }}">
+                    <a href="{{ route('dashboard') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    @role('admin')
+                    @hasanyrole('admin|user')
                     {{--<x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>--}}
-                    @endrole
+
                    <x-jet-nav-link href="{{ route('shop.index') }}" :active="request()->routeIs('shop.index')">
                         {{ __('Shop') }}
                     </x-jet-nav-link>
@@ -24,8 +24,9 @@
                     <x-jet-nav-link href="{{ route('client.index') }}" :active="request()->routeIs('client.index')">
                         {{ __('Ontlener') }}
                     </x-jet-nav-link>
+                    @endhasanyrole
 
-                    @role('admin')
+                    @hasrole('admin')
                     <x-jet-nav-link href="{{ route('kind.index') }}" :active="request()->routeIs('kind.index')">
                         {{ __('Kind') }}
                     </x-jet-nav-link>
@@ -41,7 +42,7 @@
                     <x-jet-nav-link href="{{ route('user.index') }}" :active="request()->routeIs('user.index')">
                         {{ __('User') }}
                     </x-jet-nav-link>
-                    @endrole
+                    @endhasrole
                 </div>
             </div>
 

@@ -16,12 +16,14 @@
 |
 */
 
-//Route::get('/','login');
+
 Route::get('se',[SendEmailController::class, 'index']);
 
 Route::get('/', function () {
-     return view('auth.login');
+   /*  return view('auth.login');*/
+    return view('welcome');
  });
+
 /* routes ivm email versturen*/
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
@@ -30,7 +32,7 @@ Route::get('/email/verify', function () {
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
 
-    return redirect('/home');
+    return redirect('/shop');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::post('/email/verification-notification', function (Request $request) {
@@ -39,38 +41,33 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-/* roles routes   */
-Route::get('/shop', function () {
-        // Only verified users may access this route...
-})->middleware(['auth', 'verified']);
+Route::group(['middleware' => ['role:admin','verified']], function () {
+        Route::get('/dashboard', function () {return view('dashboard');
+        })->name('dashboard');
+        Route::resource('client', App\Http\Controllers\ClientController::class);
+        Route::resource('shop', App\Http\Controllers\ShopController::class);
+        Route::resource('kind', App\Http\Controllers\KindController::class);
+        Route::resource('condition', App\Http\Controllers\ConditionController::class);
+        Route::resource('tool', App\Http\Controllers\ToolController::class);
+        Route::resource('user', App\Http\Controllers\UserController::class);
+    });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-    ])->group(function () {
-    Route::get('/dashboard', function () {return view('dashboard'); })->name('dashboard');
-});
+Route::group(['middleware' => ['role:user','verified']], function () {
+        Route::get('/dashboard', function () {return view('dashboard');
+        })->name('dashboard');
+        Route::resource('client', App\Http\Controllers\ClientController::class);
+        Route::resource('shop', App\Http\Controllers\ShopController::class);
 
-
-Route::middleware([
-    'auth:sanctum','role:admin',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/admin', function () {return view('admin.index'); })->name('admin.index');
-
-});
+    });
 
 
-Route::group(['middelware'=>'auth'],function (){
-    Route::resource('kind', App\Http\Controllers\KindController::class);
-    Route::resource('condition', App\Http\Controllers\ConditionController::class);
-    Route::resource('client', App\Http\Controllers\ClientController::class);
-    Route::resource('tool', App\Http\Controllers\ToolController::class);
-    Route::resource('shop', App\Http\Controllers\ShopController::class);
-    Route::resource('user', App\Http\Controllers\UserController::class);
-});
+
+
+
+
+
+
+
 
 
 

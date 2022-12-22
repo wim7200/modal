@@ -15,9 +15,9 @@ class ConditionSeeder extends Seeder
      */
     public function run()
     {
-        Condition::create(['name'=>'meting OK']);
-        Condition::create(['name'=>'meting uit dienst']);
-        Condition::create(['name'=>'meting in calibratie']);
-        Condition::create(['name'=>'meting in herstelling']);
+        Condition::create(['name'=>'OK']);
+        Condition::create(['name'=>'uit dienst']);
+        Condition::create(['name'=>'in calibratie']);
+        Condition::create(['name'=>'in herstelling']);
     }
 }
