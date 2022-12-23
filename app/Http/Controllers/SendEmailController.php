@@ -21,7 +21,7 @@ class SendEmailController extends Controller
         $tools= Tool::whereDate(('duetime'),'=',$mailtime)->get(); //->pluck('duetime','name');
         //dd($tools);
 
-        $users=User::where('mail','=',1)->get()->pluck('email');
+        $users=User::where('notify','=',1)->get()->pluck('email');
         //dd($users);
 
        /* $data=[
