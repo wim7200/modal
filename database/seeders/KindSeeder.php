@@ -16,17 +16,17 @@ class KindSeeder extends Seeder
     {
         Kind::create([
             'name' => 'explosie/zuurstof',
-            'img' => 'X-am_3500.png',
+            'img' => 'noImg',
             'description' =>'zuurstof meter',
             ]);
         Kind::create([
             'name' => 'SO2',
-            'img' => 'X-am_5000.png',
+            'img' => 'noImg',
             'description' =>'SO2 meter',
         ]);
         Kind::create([
             'name' => 'benzeen',
-            'img' => '300.jpg',
+            'img' => 'noImg',
             'description' =>'benzeen meter',
         ]);
    }
