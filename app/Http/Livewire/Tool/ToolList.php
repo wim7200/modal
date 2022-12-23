@@ -28,13 +28,13 @@ class ToolList extends Component
 
     public function mount(Tool $tool,Client $client)
     {
-        Tool::where('duetime','<',now())
+        /*Tool::where('duetime','<',now())
             ->where('condition_id','=',1)
             ->update(['condition_id'=>3]);
-            /*->update(['condition_id'=>\DB::raw(3)]);*/
+            ->update(['condition_id'=>\DB::raw(3)]);
         Tool::where('duetime','>',now())
             ->update(['condition_id'=>1]);
-            /*->update(['condition_id'=>\DB::raw(1)]);*/
+            ->update(['condition_id'=>\DB::raw(1)]);*/
         $this->tool=$tool;
         $this->client=$client;
     }

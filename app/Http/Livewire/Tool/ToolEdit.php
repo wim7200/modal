@@ -54,6 +54,14 @@ class ToolEdit extends ModalComponent
 
     public function ToolUpdate()
     {
+        Tool::where('duetime','<',now())
+            ->where('condition_id','=',1)
+            ->update(['condition_id'=>3]);
+
+        Tool::where('duetime','>',now())
+            ->update(['condition_id'=>1]);
+   
+
         $validatedData = $this->validate();
 
 
@@ -70,6 +78,8 @@ class ToolEdit extends ModalComponent
             'condition_id'=>$this->condition_id,
 
         ]);*/
+
+
 
         $this->tool->update($validatedData);
 
