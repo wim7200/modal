@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class FlushSessions extends Command
 {
@@ -32,6 +33,7 @@ class FlushSessions extends Command
      */
     public function handle()
     {
+        DB::table('sessions')->truncate();
         return Command::SUCCESS;
     }
 }

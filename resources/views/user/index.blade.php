@@ -112,10 +112,6 @@
 
                                         <td>
                                             <div>@livewire('admin-button', ['model' => $user, 'field' => 'admin'], key($user->id))</div>
-                                        {{--  <div>
-                                        <button onclick="Livewire.emit('openModal', 'role-set',{{json_encode(["users" => $user->id])}})">Open Modal</button>
-                                        @livewire('role-set',(["users" => $user->id]))
-                                            </div>--}}
                                         </td>
                                         <td>
 
