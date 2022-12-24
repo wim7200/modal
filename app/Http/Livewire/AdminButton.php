@@ -27,34 +27,45 @@ class AdminButton extends Component
     public function updating($field, $value)
     {
         $this->model->setAttribute($this->field, $value)->save();
-        //dd($value);
+        //dd($value,$field,$this->model->name);
+
         $user=$this->model;
 
-        if ($value===true){
+        if ($value==true){
             $this->emit('makeAdmin',$user);
-            //dd($value);
+
         }else{
             $this->emit('setToUser',$user);
-            //dd($value);
         }
-        //dd($user);
+        //dd($value,$field,$this->model->name);
     }
 
     public function makeAdmin (User $user)
     {
         //dd($user);
 
-        $user->syncRoles(['admin','user']);
-        return redirect('/user')->with('message','User set to Admin succesfully');
+        $user->assignRole('admin');
+
     }
 
     public function setToUser (User $user)
     {
         //dd($user);
 
-        $user->syncRoles(['user']);
-
-        return redirect('/user')->with('message','User set to User succesfully');
+        $user->removeRole('admin');
+        /*session()->flash('message','User set to User succesfully');*/
     }
+
+    /*public function updated($field, $value)
+    {
+        $this->model->setAttribute($this->field, $value)->save();
+
+        $user=$this->model;
+        //dd($value,$field,$user);
+
+        $this->field = false
+            ? $user->syncRoles(['admin','user']) : $user->syncRoles(['user']);
+
+    }*/
 
 }

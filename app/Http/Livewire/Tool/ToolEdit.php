@@ -47,7 +47,7 @@ class ToolEdit extends ModalComponent
         ]);
     }
 
-    public function updatedduetime()
+    public function updatedduetime()/*LiveCycleHook*/
     {
         /*1 = ok  --  3=calibratie*/
         $this->duetime < now() ? $this->condition_id = '3' :$this->condition_id= '1' ;
@@ -56,25 +56,7 @@ class ToolEdit extends ModalComponent
 
     public function ToolUpdate()
     {
-
         $validatedData = $this->validate();
-
-
-        /*Tool::where('id',$this->tool_id)->update([
-            /*'name'=>$validatedData['name'],
-            'qrTool'=>$validatedData['qrTool'],
-            'duetime'=>$validatedData['duetime'],
-            'kind_id'=>$validatedData['kind_id'],
-            'condition_id'=>$validatedData['condition_id'],
-            'name'=>$this->name,
-            'qrTool'=>$this->qrTool,
-            'duetime'=>$this->duetime,
-            'kind_id'=>$this->kind_id,
-            'condition_id'=>$this->condition_id,
-
-        ]);*/
-
-
 
         $this->tool->update($validatedData);
 
