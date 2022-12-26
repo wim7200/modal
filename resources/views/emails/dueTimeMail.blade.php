@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Happy birthday to you!</title>
+    <title>Yes, it is time to take action!</title>
 </head>
 <body>
 <p>Hey,</p>

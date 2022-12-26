@@ -17,7 +17,7 @@
 */
 
 
-Route::get('se',[SendEmailController::class, 'index']);
+Route::get('se',[SendEmailController::class, 'index'])->name('SendEmail');
 
 Route::get('/', function () {
    /*  return view('auth.login');*/
