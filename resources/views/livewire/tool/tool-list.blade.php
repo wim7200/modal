@@ -79,7 +79,7 @@
 
 
         <div class="">
-                <div class="grid grid-cols-1 sm:grid-cols-6 gap-2 lg:grid-cols-6 xl:grid-cols-10 ">
+                <div class="grid grid-cols-2 sm:grid-cols-6 gap-2 lg:grid-cols-6 xl:grid-cols-10 ">
 
                 <!--Cards-->
 
