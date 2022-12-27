@@ -4,9 +4,8 @@
     <title>Yes, it is time to take action!</title>
 </head>
 <body>
-<p>Hey {{$user->name}} ,</p>
-<p>Deze email is een reminder. </p>
-<p>Volgende toestellen moeten in nabije toekomst gecalibreerd worden.</p>
+<p>Hey,</p>
+<p>Deze email wil even je aandacht trekken omdat volgende toestellen in de nabije toekomst een calibratie zouden moeten krijgen.</p>
 <p>Graag actie ondernemen!</p>
 <p>
 Met dank,<br/>
