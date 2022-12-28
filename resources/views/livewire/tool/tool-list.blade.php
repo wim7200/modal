@@ -29,6 +29,10 @@
                         all
                     </label>
                 </div>
+
+
+
+
             {{--</div>--}}
             {{--<div class="flex justify-center items-center">--}}
                 {{--<div class="form-check pb-5 px-2.5">
@@ -89,6 +93,7 @@
                         $t=\Carbon\Carbon::parse($tool->duetime)->isPast();
                         $s=(($tool->condition->name=='OK') ? 0: 1);
                         $u=$s*$t;
+                        $state=$tool->latestRent->state;
                     @endphp
                         {{----t={{$t}}--s={{$s}}--u={{$u}}--}}
                     <div @class([
@@ -99,10 +104,7 @@
                             ])>
 
                 <!--buttons-->
-
-
                             <div class="p-2">
-
                             <img class="mx-auto object-scale-down h-24 w-24 place-content-center" src="{{asset('storage/img/'.$tool->kind->img) ?? asset('storage/img/logo.jpg')}}" alt="No Pic">
 
                             <div class="font-bold text-xl mb-2 text-center">{{$tool->name}}</div>

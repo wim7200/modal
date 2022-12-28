@@ -39,10 +39,11 @@ class DueCron extends Command
         $tools= Tool::whereDate('duetime','=',$mailtime)->get();
         $users=User::where('notify','=',1)->get();
 
-        foreach ($users as $user)
-        {
-            Mail::to($user->email)->send(new DueTimeMail($user, $tools));
-        }
+        if (!$tools->isEmpty()){
+            foreach ($users as $user)
+            { Mail::to($user->email)->send(new DueTimeMail($user, $tools)); }
+            }else{ Log::info("No tools Due!!!!");}
+
 
        return Command::SUCCESS;
     }
