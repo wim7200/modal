@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Client') }}
+            {{ __('Ontlener') }}
         </h2>
     </x-slot>
 
@@ -11,7 +11,7 @@
 {{--moet hier onclick zijn want is niet in livewire component--}}
             <x-w.bttn color="gray"
                       onclick="Livewire.emit('openModal', 'client.client-create')">
-                Create New Client
+                Maak nieuwe Ontlener
             </x-w.bttn>
         </div>
     </div>

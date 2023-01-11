@@ -39,7 +39,7 @@
                             <tr>
                                 <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                                     wire:click="sortBy('name')">
-                                    <a>Client
+                                    <a>Ontlener
                                         @include('includes._sort-icon',['field'=>'name'])
                                     </a>
                                 </th>
@@ -51,7 +51,7 @@
                                 </th>
                                 <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                                     wire:click="sortBy('company')">
-                                    <a>Company
+                                    <a>Bedrijf
                                         @include('includes._sort-icon',['field'=>'company'])
                                     </a>
                                 </th>
