@@ -2,6 +2,24 @@
     <div class="max-w-12xl p-4 mx-auto"> {{--breedte van tabel, centreren op ruimte--}}
         <div class="flex justify-center items-center">
             {{--<div class="flex justify-center items-center">--}}
+                {{--<div>
+                    <input class="form-control
+                                block w-full px-3 py-1.5 text-base font-normal text-gray-700
+                                bg-white bg-clip-padding border border-solid border-gray-300
+                                rounded transition ease-in-out m-0
+                                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                           type="search"--}}{{--overbodig--}}{{--
+                           name="search"--}}{{--overbodig--}}{{--
+                           id="search"--}}{{--overbodig--}}{{--
+                           x-ref="searchField"
+                           x-on:input.debounce.400ms="isTyped = ($event.target.value != '')"
+                           placeholder='Search... Press / to focus'
+                           autocomplete="off"
+                           wire:model.debounce.500ms="search"
+                           x-on:keydown.window.prevent.slash="$refs.searchField.focus()"
+                           x-on:keyup.escape="isTyped = false; $refs.searchField.blur()">
+                </div>--}}
+                <div>@livewire('scan-tool')</div>
                 <div class="form-check pb-5 px-2.5">
                     <input
                         class="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-green-500 checked:border-r-green-500 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
@@ -90,12 +108,12 @@
                 @forelse($tools as $tool)
                     @php
                         $x=$tool->latestRent->state;
-                        $t=\Carbon\Carbon::parse($tool->duetime)->isPast();
-                        $s=(($tool->condition->name=='OK') ? 0: 1);
+                        $t=\Carbon\Carbon::parse($tool->duetime)->isPast();/* if past ==>1*/
+                        $s=(($tool->condition->name=='OK') ? 0: 1);/* if condition OK then 1*/
                         $u=$s*$t;
                         $state=$tool->latestRent->state;
                     @endphp
-                        {{----t={{$t}}--s={{$s}}--u={{$u}}--}}
+                        {{-----t={{$t}}--s={{$s}}--u={{$u}}----}}
                     <div @class([
                             'rounded overflow-hidden shadow-lg',
                             'bg-green-200'=>!$x,

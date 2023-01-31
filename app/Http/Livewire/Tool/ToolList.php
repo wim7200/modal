@@ -20,6 +20,8 @@ class ToolList extends Component
     public $sortAsc=true;
     public $selected_kind='1';
 
+    public $search='';
+
 
     protected $listeners=[
         'ToolBack',
@@ -30,11 +32,11 @@ class ToolList extends Component
     {
         /*Tool::where('duetime','<',now())
             ->where('condition_id','=',1)
-            ->update(['condition_id'=>3]);
-            ->update(['condition_id'=>\DB::raw(3)]);
-        Tool::where('duetime','>',now())
-            ->update(['condition_id'=>1]);
-            ->update(['condition_id'=>\DB::raw(1)]);*/
+            ->update(['condition_id'=>3]);*/
+            /*->update(['condition_id'=>\DB::raw(3)]);*/
+            /*Tool::where('duetime','>',now())
+            ->update(['condition_id'=>1]);*/
+            /*->update(['condition_id'=>\DB::raw(1)]);*/
         $this->tool=$tool;
         $this->client=$client;
     }
@@ -57,6 +59,7 @@ class ToolList extends Component
             ->when($this->selected_kind,function ($query){
                 $query->where('kind_id',$this->selected_kind);
             })
+            ->search($this->search,['qrtool','name'])
             ->orderby($this->sortField, $this->sortAsc ? 'asc':'asc')
             ->paginate(20);
     }
