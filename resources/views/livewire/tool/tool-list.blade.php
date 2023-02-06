@@ -30,10 +30,10 @@
                            name="search"
                            id="search"
                            x-ref="searchField"
-                           x-on:input.debounce.100ms="isTyped = ($event.target.value != '')"
+                           x-on:input.debounce.400ms="isTyped = ($event.target.value != '')"
                            placeholder='Scan QR tool to search...'
                            autocomplete="off"
-                           wire:model.debounce.100ms="search"
+                           wire:model.debounce.400ms="search"
                            x-on:keydown.window.prevent.slash="$refs.searchField.focus()"
                            x-on:keyup.escape="isTyped = false; $refs.searchField.blur()">
                 </div>
