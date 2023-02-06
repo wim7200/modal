@@ -43,7 +43,6 @@ class ToolList extends Component
 
     public function render()
     {
-
         return view('livewire.tool.tool-list',[
             'tools'=>$this->tools,
             'conditions'=>Condition::all(),
