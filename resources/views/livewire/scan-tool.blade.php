@@ -8,7 +8,7 @@
                     name="search"
                     id="search"
                     x-ref="searchField"
-                    x-on:input.debounce.400ms="isTyped = ($event.target.value != '')"
+                    x-on:input.debounce.100ms="isTyped = ($event.target.value != '')"
                     placeholder='Search... Press / to focus'
                     autocomplete="off"
                     wire:model.debounce.500ms="search"

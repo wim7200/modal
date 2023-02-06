@@ -19,7 +19,25 @@
                            x-on:keydown.window.prevent.slash="$refs.searchField.focus()"
                            x-on:keyup.escape="isTyped = false; $refs.searchField.blur()">
                 </div>--}}
-                <div>@livewire('scan-tool')</div>
+               {{-- <div>@livewire('scan-tool')</div>--}}
+                <div class="form-check pb-5 px-2.5">
+                    <input class="form-control
+                        block w-full px-3 py-1.5 text-base font-normal text-gray-700
+                        bg-white bg-clip-padding border border-solid border-gray-300
+                        rounded transition ease-in-out m-0
+                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                           type="search"
+                           name="search"
+                           id="search"
+                           x-ref="searchField"
+                           x-on:input.debounce.100ms="isTyped = ($event.target.value != '')"
+                           placeholder='Scan QR tool to search...'
+                           autocomplete="off"
+                           wire:model.debounce.100ms="search"
+                           x-on:keydown.window.prevent.slash="$refs.searchField.focus()"
+                           x-on:keyup.escape="isTyped = false; $refs.searchField.blur()">
+                </div>
+
                 <div class="form-check pb-5 px-2.5">
                     <input
                         class="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-green-500 checked:border-r-green-500 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"

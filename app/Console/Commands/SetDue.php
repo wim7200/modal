@@ -29,19 +29,9 @@ class SetDue extends Command
      */
     public function handle()
     {
-        /*$tools =Tool::whereDate('duetime','<',now())->get();*/
-
-        /*if (!$tools->isEmpty()){
-            foreach ($tools as $tool)
-            { $tool->condition = '3';
-                $this->$tool->condition= '1';}
-            }else{Log::info("all tool up to date");}*/
-
         Tool::where('duetime','<',now())
             ->where('condition_id','=',1)
             ->update(['condition_id'=>3]);
-
-        /*Log::info("$tools");*/
 
         return Command::SUCCESS;
     }
