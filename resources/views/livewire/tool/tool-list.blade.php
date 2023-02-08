@@ -3,7 +3,7 @@
         <div class="flex justify-center items-center">
             {{--<div class="flex justify-center items-center">--}}
 
-               {{-- <div>@livewire('scan-tool')</div>--}}
+                {{--<div>@livewire('scan-tool')</div>--}}
                 <div class="form-check pb-5 px-2.5">
                     <input class="form-control
                         block w-full px-3 py-1.5 text-base font-normal text-gray-700
@@ -173,7 +173,7 @@
             </div>
         </div>
 
-        {{$tools->links()}}
+      {{$tools->links()}}
         @if (session()->has('message'))
             <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 bg-green-200 px-4 py-3 shadow-md my-3"
                  role="alert"

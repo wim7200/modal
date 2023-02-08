@@ -23,7 +23,7 @@ class ToolRent extends ModalComponent
     public function render()
     {
         return view('livewire.tool.tool-rent',[
-            'tools'=>Tool::all(),
+            /*'tools'=>Tool::all(),*/
             'clients'=>Client::all()
         ]);
     }

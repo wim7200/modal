@@ -45,22 +45,23 @@ class ToolList extends Component
     {
         return view('livewire.tool.tool-list',[
             'tools'=>$this->tools,
-            'conditions'=>Condition::all(),
+           /* 'conditions'=>Condition::all(),*/
             'kinds'=>Kind::all(),
         ]);
     }
     public function getToolsProperty()  /*computed property*/
     {
         return Tool::with(['latestRent','kind','condition','clients'])
-            ->when($this->selected,function ($query){
-                $query->where('condition_id',$this->selected);
-            })
-            ->when($this->selected_kind,function ($query){
-                $query->where('kind_id',$this->selected_kind);
-            })
-            ->search($this->search,['qrtool','name'])
-            ->orderby($this->sortField, $this->sortAsc ? 'asc':'asc')
-            ->paginate(20);
+                ->search($this->search,['qrtool','name'])
+                ->when($this->selected,function ($query){
+                    $query->where('condition_id',$this->selected);
+                })
+                ->when($this->selected_kind,function ($query){
+                    $query->where('kind_id',$this->selected_kind);
+                })
+                ->orderby($this->sortField, $this->sortAsc ? 'asc':'asc')
+                ->paginate(20);
+
     }
 
     public function sortBy($field)

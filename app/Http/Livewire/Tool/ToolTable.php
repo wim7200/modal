@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Tool;
 
+use App\Models\Kind;
 use App\Models\Condition;
 use App\Models\Tool;
 use Carbon\Carbon;
@@ -17,6 +18,7 @@ class  ToolTable extends Component
     public $sortField='name';
     public $sortAsc=true;
     public $selected="";
+    public $selectedKind="";
     public $checked=[];/*alle record die je wenst te wijzigen*/
     public $selectPage=false;
 
@@ -37,6 +39,7 @@ class  ToolTable extends Component
         return view('livewire.tool.tool-table',[
             'tools'=>$this->tools,
             'conditions'=>Condition::all(),
+            'kinds'=>Kind::all(),
             ]);
     }
 
@@ -45,6 +48,9 @@ class  ToolTable extends Component
         return Tool::with('latestRent','kind','condition','clients')
             ->when($this->selected,function ($query){
                 $query->where('condition_id',$this->selected);
+            })
+            ->when($this->selectedKind,function ($query){
+                $query->where('kind_id',$this->selectedKind);
             })
             ->search ($this->search,['name','qrtool','kind.name','condition.name'])
             ->orderby($this->sortField, $this->sortAsc ? 'asc':'desc')

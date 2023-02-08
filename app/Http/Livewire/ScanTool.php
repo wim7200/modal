@@ -14,9 +14,10 @@ class ScanTool extends Component
         return view('livewire.scan-tool');
     }
 
-    public function hydrateSearch($value)
+    public function updating($field,$value)
     {
-        //dd($this);
-        $this->emit('openModal','tool.tool-rent');
+        
+        dd($value);
+        $this->emit('openModal','tool.tool-rent',$value);
     }
 }

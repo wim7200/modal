@@ -23,6 +23,22 @@
                            x-on:keyup.escape="isTyped = false; $refs.searchField.blur()">
                 </div>
                 {{--Selection button--}}
+                <div x-data="{isTyped: false}" class="mb-3 w-1/4">
+                    <select class="form-select appearance-none
+                              block w-full px-3 py-1.5 text-base font-normal text-gray-700
+                              bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300
+                              rounded transition ease-in-out m-0
+                              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+
+                            wire:model="selected">
+
+                        <option value="">Choose Condition...</option>
+                        @foreach($conditions as $condition)
+                            <option value="{{$condition->id}}">{{$condition->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                {{--Selection button 2--}}
                 <div class="mb-3 w-1/4">
                     <select class="form-select appearance-none
                               block w-full px-3 py-1.5 text-base font-normal text-gray-700
@@ -30,11 +46,11 @@
                               rounded transition ease-in-out m-0
                               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             aria-label="Default select example"
-                            wire:model="selected">
+                            wire:model="selectedKind">
 
-                        <option value="">All</option>
-                        @foreach($conditions as $condition)
-                            <option value="{{$condition->id}}">{{$condition->name}}</option>
+                        <option value="">Choose Kind...</option>
+                        @foreach($kinds as $kind)
+                            <option value="{{$kind->id}}">{{$kind->name}}</option>
                         @endforeach
                     </select>
                 </div>
