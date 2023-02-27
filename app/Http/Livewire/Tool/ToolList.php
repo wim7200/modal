@@ -53,13 +53,13 @@ class ToolList extends Component
     {
         return Tool::with(['latestRent','kind','condition','clients'])
                 ->search($this->search,['qrtool','name'])
-            /*met onderstaand krijg je niet alle tools, want condition en kind filter */
-                /*->when($this->selected,function ($query){
+
+                ->when($this->selected,function ($query){
                     $query->where('condition_id',$this->selected);
                 })
                 ->when($this->selected_kind,function ($query){
                     $query->where('kind_id',$this->selected_kind);
-                })*/
+                })
                 ->orderby($this->sortField, $this->sortAsc ? 'asc':'asc')
                 ->paginate(20);
 
