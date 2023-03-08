@@ -50,10 +50,15 @@ class ToolList extends Component
 
     public function getToolsProperty()  /*computed property*/
     {
-        if ($this->search=="")
-        $this->selected_kind='1';
-        else
-        $this->selected_kind='';
+        if ($this->search==""){
+            $this->selected_kind='1';
+            $this->selected='1';
+        }
+        else{
+            $this->selected_kind='';
+            $this->selected='';
+        }
+
 
 
             return Tool::with(['latestRent', 'kind', 'condition', 'clients'])
