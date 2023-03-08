@@ -22,11 +22,9 @@ class ToolList extends Component
 
     public $search='';
 
-
     protected $listeners=[
-        'ToolBack',
+        'ToolBack'
     ];
-
 
     public function mount(Tool $tool,Client $client)
     {
@@ -49,19 +47,26 @@ class ToolList extends Component
             'kinds'=>Kind::all(),
         ]);
     }
+
     public function getToolsProperty()  /*computed property*/
     {
-        return Tool::with(['latestRent','kind','condition','clients'])
-                ->search($this->search,['qrtool','name'])
+        if ($this->search=="")
+        $this->selected_kind='1';
+        else
+        $this->selected_kind='';
 
-                ->when($this->selected,function ($query){
-                    $query->where('condition_id',$this->selected);
+
+            return Tool::with(['latestRent', 'kind', 'condition', 'clients'])
+                ->search($this->search, ['qrtool', 'name'])
+                ->when($this->selected, function ($query) {
+                    $query->where('condition_id', $this->selected);
                 })
-                ->when($this->selected_kind,function ($query){
-                    $query->where('kind_id',$this->selected_kind);
+                ->when($this->selected_kind, function ($query) {
+                    $query->where('kind_id', $this->selected_kind);
                 })
-                ->orderby($this->sortField, $this->sortAsc ? 'asc':'asc')
+                ->orderby($this->sortField, $this->sortAsc ? 'asc' : 'asc')
                 ->paginate(20);
+
 
     }
 
