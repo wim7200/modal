@@ -30,7 +30,7 @@
                               rounded transition ease-in-out m-0
                               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
 
-                            wire:model="selected">
+                            wire:model="selectedCondition">
 
                         <option value="">Choose Condition...</option>
                         @foreach($conditions as $condition)
@@ -110,14 +110,15 @@
 
                                         </li>
 
-                                        {{--<li>
+                                        <li>
                                             <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap
                                                   bg-transparent text-gray-700 hover:bg-gray-100"
                                                 href="#"
-                                                wire:click='$emit("openModal", "tool.tool-new-due-time")'
+                                               wire:click="$emit('openModal', 'tool.tool-new-due-time', )"
+                                                {{--wire:click='$emit("openModal", "tool.tool-new-due-time")'--}}
                                                 class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer"
                                             >Set New Due Time</a>
-                                        </li>--}}
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

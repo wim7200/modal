@@ -17,11 +17,24 @@ class  ToolTable extends Component
     public $search ='';
     public $sortField='name';
     public $sortAsc=true;
-    public $selected="";
+    public $selectedCondition="";
     public $selectedKind="";
     public $checked=[];/*alle record die je wenst te wijzigen*/
     public $selectPage=false;
 
+    public $newduetime;
+    public $duetime;
+
+    protected $listeners=[
+        'ToolNewDueTime'
+    ];
+
+
+    protected function rules(){
+        return [
+            //
+        ];
+    }
 
 
     public function sortBy($field)
@@ -46,8 +59,8 @@ class  ToolTable extends Component
     public function getToolsProperty()  /*computed property*/
     {
         return Tool::with('latestRent','kind','condition','clients')
-            ->when($this->selected,function ($query){
-                $query->where('condition_id',$this->selected);
+            ->when($this->selectedCondition,function ($query){
+                $query->where('condition_id',$this->selectedCondition);
             })
             ->when($this->selectedKind,function ($query){
                 $query->where('kind_id',$this->selectedKind);
@@ -86,4 +99,20 @@ class  ToolTable extends Component
         $this->selectPage=FALSE;
     }
 
+    public function ToolNewDueTime()
+    {
+       // $validatedData = $this->validate();
+
+        $NDT=Carbon::now()->addDays(10);
+        //$NDT=$newduetime;
+
+        //dd($this->newduetime);
+
+
+        Tool::whereKey($this->checked)
+            ->update(['duetime'=>$NDT]);
+
+        session()->flash('message', 'Tool Updated succesfully');
+        return redirect()->to('/tool');
+    }
 }
