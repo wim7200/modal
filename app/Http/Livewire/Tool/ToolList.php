@@ -68,7 +68,7 @@ class ToolList extends Component
         else{
             return Tool::with(['latestRent', 'kind', 'condition', 'clients'])
                 ->search($this->search, ['qrtool', 'name'])
-                ->paginate(5);
+                ->paginate(20);
         }
 
             /*return Tool::with(['latestRent', 'kind', 'condition', 'clients'])
