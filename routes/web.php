@@ -59,7 +59,7 @@ Route::group(['middleware' => ['role:user','verified']], function () {
         })->name('dashboard');
         Route::resource('client', App\Http\Controllers\ClientController::class);
         Route::resource('shop', App\Http\Controllers\ShopController::class);
-
+        Route::resource('clienttool', ClientToolController::class);
     });
 
 
