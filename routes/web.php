@@ -1,5 +1,6 @@
 <?php
 
+    use App\Http\Controllers\ClientToolController;
     use App\Http\Controllers\SendEmailController;
     use Illuminate\Foundation\Auth\EmailVerificationRequest;
     use Illuminate\Http\Request;
@@ -50,6 +51,7 @@ Route::group(['middleware' => ['role:admin','verified']], function () {
         Route::resource('condition', App\Http\Controllers\ConditionController::class);
         Route::resource('tool', App\Http\Controllers\ToolController::class);
         Route::resource('user', App\Http\Controllers\UserController::class);
+        Route::resource('clienttool', ClientToolController::class);
     });
 
 Route::group(['middleware' => ['role:user','verified']], function () {

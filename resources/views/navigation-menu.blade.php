@@ -24,6 +24,9 @@
                     <x-jet-nav-link href="{{ route('client.index') }}" :active="request()->routeIs('client.index')">
                         {{ __('Ontlener') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('clienttool.index') }}" :active="request()->routeIs('clienttool.index')">
+                        {{ __('History') }}
+                    </x-jet-nav-link>
                     @endhasanyrole
 
                     @hasrole('admin')

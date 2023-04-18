@@ -193,11 +193,11 @@
                                     <td class="px-6 mt-2 ">{{ \Carbon\Carbon::parse( $tool->duetime ) }}</td>
                                     <td class="px-6 mt-2 ">{{$tool->kind->name}}</td>
                                     <td class="px-6 mt-2 ">{{$tool->condition->name}}</td>
-                                    <td class="px-6 mt-2 ">
-                                        {{--@foreach($tool->lastupdated_clients as $client)
+                                    {{--<td class="px-6 mt-2 ">
+                                        @foreach($tool->lastupdated_clients as $client)
                                             {{$client->pivot->state}}
-                                        @endforeach--}}
-                                    </td>
+                                        @endforeach
+                                    </td>--}}
                                     <td class="flex justify-end mx-4 my-2">
                                         <!-- Inside existing Livewire component, single ' en wire:click -->
                                         <button

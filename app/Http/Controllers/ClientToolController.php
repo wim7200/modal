@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use App\Models\ClientTool;
+use App\Models\Tool;
 use Illuminate\Http\Request;
 
 class ClientToolController extends Controller
@@ -14,10 +16,10 @@ class ClientToolController extends Controller
      */
     public function index(Request $request)
     {
-        $tools=ClientTool::all();
-       // dd($tools);
+        $tools=Tool::with('clients','latestRent','lastupdated_clients')->get();
+        $clients=Client::with('tools')->get();
 
-        return view('clienttool.index',compact($tools));
+        return view('clienttool.index',compact('tools','clients'));
     }
 
     /**

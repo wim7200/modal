@@ -44,6 +44,7 @@ class Tool extends Model
         return $this->belongsToMany(Client::class)
             //->using(ClientTool::class)
             ->withPivot('state')
+            ->orderByPivot('created_at',direction: 'desc')
             ->withTimestamps();
     }
 
@@ -51,15 +52,15 @@ class Tool extends Model
     {
         return $this->belongsToMany(Client::class)
             ->wherePivot('state',true)
-            ->withPivot('state','id')
+            ->withPivot('state','id','created_at')
             ->orderBy('client_tool.id','desc')
             ;
     }
 
     public function latestRent()
     {
-        $latestRent= $this->hasOne(ClientTool::class)->latestOfMany('created_at');
-        return $latestRent;
+        return $this->hasOne(ClientTool::class)
+            ->latestOfMany('created_at');
     }
 
 

@@ -37,6 +37,16 @@ class Client extends Model
     ];
     public function tools()
     {
-        return $this->belongsToMany(Tool::class)->withTimestamps();
+        return $this->belongsToMany(Tool::class)
+            ->withPivot('state')
+            ->withTimestamps();
     }
+
+    /*public function toolsOut()
+    {
+        return $this->belongsToMany(Tool::class)
+            ->withPivot('state')
+            ->wherePivot('state','1')
+            ->withTimestamps();
+    }*/
 }
