@@ -6,7 +6,7 @@
                 {{--Search button--}}
                 <div class="form-check pb-5 px-2.5">
                     <input class="form-control
-                        block w-full px-3 py-1.5 text-base font-normal text-gray-700
+                        block w-80 px-3 py-1.5 text-base font-normal text-gray-700
                         bg-white bg-clip-padding border border-solid border-gray-300
                         rounded transition ease-in-out m-0
                         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -22,7 +22,7 @@
                            x-on:keyup.escape="isTyped = false; $refs.searchField.blur()">
                 </div>
                 {{--Choose --}}
-                <div class="flex justify-between w-1/4">
+                <div class="hidden sm:flex w-1/3">
                     <div class="form-check pb-5 px-2.5">
                         <input
                             class="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-green-500 checked:border-r-green-500 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
@@ -51,23 +51,12 @@
                         </label>
                     </div>
                 </div>
-
                 {{--Choose kind--}}
-                <div class="mb-3 w-[15%]">
+                <div class="form-check hidden md:block w-1/3">
                     <select class="form-select appearance-none
-                                  block
-                                  w-full
-                                  px-3
-                                  py-1.5
-                                  text-base
-                                  font-normal
-                                  text-gray-700
-                                  bg-white bg-clip-padding bg-no-repeat
-                                  border border-solid border-gray-300
-                                  rounded
-                                  transition
-                                  ease-in-out
-                                  m-0
+                                  block w-full px-3 py-1.5 text-base font-normal text-gray-700
+                                  bg-white bg-clip-padding border border-solid border-gray-300
+                                  rounded transition ease-in-out m-0
                                   focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             aria-label="Default select example"
                             wire:model="selected_kind">
@@ -77,7 +66,6 @@
                             <option value="{{$kind->id}}">{{$kind->name}}</option>
                         @endforeach
                     </select>
-                    {{-- </div>--}}
                 </div>
                 {{--With Checked tools--}}
                 <div class="form-check pb-5 px-2.5">
@@ -87,7 +75,7 @@
                                 <div class="dropdown relative">
                                     <button
                                         class="dropdown-toggle
-                                        px-6 py-2.5 bg-gray-700 text-white font-medium text-xs leading-tight rounded shadow-md
+                                        px-3 py-2.5 bg-gray-700 text-white font-medium text-xs leading-tight rounded shadow-md
                                         hover:bg-gray-800 hover:shadow-lg focus:bg-gray-800 focus:shadow-lg focus:outline-none focus:ring-0
                                         active:bg-gray-800 active:shadow-lg active:text-white
                                         transition duration-150 ease-in-out flex items-center whitespace-nowrap"
