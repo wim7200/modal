@@ -20,6 +20,12 @@
 
 Route::get('se',[SendEmailController::class, 'index'])->name('SendEmail');
 
+    Route::get('/mailable', function () {
+        $user = App\Models\User::first();
+
+        return new App\Mail\UserRegistered($user);
+    });
+
 Route::get('/', function () {
    /*  return view('auth.login');*/
     return view('welcome');

@@ -10,6 +10,7 @@
 <p>
 Met dank,<br/>
 De Lactam-Shop,
+    (uit SendMail)
 </p>
 
     toestellen te calibreren :<br/>

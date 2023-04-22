@@ -11,6 +11,7 @@
 <p>
 Met dank,<br/>
 De Lactam-Shop,
+    (uit dueTimeMail)
 </p>
 
     toestellen te calibreren :<br/>
