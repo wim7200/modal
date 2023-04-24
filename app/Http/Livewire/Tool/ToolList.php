@@ -20,24 +20,19 @@ class ToolList extends Component
     public $sortField='name';
     public $sortAsc=true;
     public $selected_kind='1';
-    public $selectedTools=[];
     public $checked=[];
 
     public $search='';
 
     protected $listeners=[
-        'ToolBack'
+        'ToolBack',
+        'DateInputEvent',
+
+
     ];
 
     public function mount(Tool $tool,Client $client)
     {
-        /*Tool::where('duetime','<',now())
-            ->where('condition_id','=',1)
-            ->update(['condition_id'=>3]);*/
-            /*->update(['condition_id'=>\DB::raw(3)]);*/
-            /*Tool::where('duetime','>',now())
-            ->update(['condition_id'=>1]);*/
-            /*->update(['condition_id'=>\DB::raw(1)]);*/
         $this->tool=$tool;
         $this->client=$client;
     }
@@ -46,7 +41,6 @@ class ToolList extends Component
     {
         return view('livewire.tool.tool-list',[
             'tools'=>$this->tools,
-           /* 'conditions'=>Condition::all(),*/
             'kinds'=>Kind::all(),
         ]);
     }
@@ -122,10 +116,23 @@ class ToolList extends Component
         $this->checked=[];
         $this->selected='1';
     }
+
     public function Deselect()
     {
         $this->checked=[];
-
     }
 
+    public function DateInputEvent($date)
+    {
+        Tool::whereKey($this->checked)
+            ->update(['condition_id'=>'1',
+                'duetime'=>$date
+            ]);
+        $this->checked=[];
+        $this->selected='1';
+
+        session()->flash('message', 'DueTime Updated succesfully');
+
+
+    }
 }

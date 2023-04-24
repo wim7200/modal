@@ -112,7 +112,14 @@
                                                href="#"
                                                onclick="confirm('Nieuwe DueTime wordt ingesteld op +180 dagen')||stopImmediatePropagation()"
                                                wire:click="SetOk()"
-                                            >Meting OK</a>
+                                            >DueTime +180
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                                               href="#"
+                                               onclick="Livewire.emit('openModal','date-input')"
+                                            >Set detailed</a>
                                         </li>
                                         @endhasrole
                                         <li>
@@ -121,7 +128,7 @@
                                                href="#"
                                                onclick="confirm('Geselecteerde tools worden In Calibratie genomen')||stopImmediatePropagation();"
                                                wire:click="SetDue()"
-                                            >In Calibration</a>
+                                            >Put in Calibration</a>
 
                                         </li>
                                         <li>

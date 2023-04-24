@@ -22,11 +22,11 @@ class  ToolTable extends Component
     public $checked=[];/*alle record die je wenst te wijzigen*/
     public $selectPage=false;
 
-    public $newduetime;
+
     public $duetime;
 
     protected $listeners=[
-        'ToolNewDueTime'
+        'DateInputEvent'
     ];
 
 
@@ -99,20 +99,17 @@ class  ToolTable extends Component
         $this->selectPage=FALSE;
     }
 
-    public function ToolNewDueTime()
+    public function DateInputEvent($date)
     {
-       // $validatedData = $this->validate();
-
-        $NDT=Carbon::now()->addDays(10);
-        //$NDT=$newduetime;
-
-        //dd($this->newduetime);
-
-
         Tool::whereKey($this->checked)
-            ->update(['duetime'=>$NDT]);
+            ->update(['condition_id'=>'1',
+                'duetime'=>$date
+            ]);
+        $this->checked=[];
+        $this->selected='1';
 
-        session()->flash('message', 'Tool Updated succesfully');
-        return redirect()->to('/tool');
+        session()->flash('message', 'DueTime Updated succesfully');
+
+
     }
 }
