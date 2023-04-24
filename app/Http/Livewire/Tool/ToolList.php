@@ -27,8 +27,6 @@ class ToolList extends Component
     protected $listeners=[
         'ToolBack',
         'DateInputEvent',
-
-
     ];
 
     public function mount(Tool $tool,Client $client)
@@ -65,16 +63,6 @@ class ToolList extends Component
                 ->paginate(20);
         }
 
-            /*return Tool::with(['latestRent', 'kind', 'condition', 'clients'])
-                ->search($this->search, ['qrtool', 'name'])
-                ->when($this->selected, function ($query) {
-                    $query->where('condition_id', $this->selected);
-                })
-                ->when($this->selected_kind, function ($query) {
-                    $query->where('kind_id', $this->selected_kind);
-                })
-                ->orderby($this->sortField, $this->sortAsc ? 'asc' : 'asc')
-                ->paginate(20);*/
     }
 
     public function sortBy($field)
@@ -122,7 +110,7 @@ class ToolList extends Component
         $this->checked=[];
     }
 
-    public function DateInputEvent($date)
+    public function DateInputEvent($date) //komt van andere LW component (als Event)
     {
         Tool::whereKey($this->checked)
             ->update(['condition_id'=>'1',
@@ -132,7 +120,5 @@ class ToolList extends Component
         $this->selected='1';
 
         session()->flash('message', 'DueTime Updated succesfully');
-
-
     }
 }

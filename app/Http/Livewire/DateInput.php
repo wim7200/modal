@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use App\Http\Livewire\Tool\ToolList;
 use App\Http\Livewire\Tool\ToolTable;
 use App\Models\Tool;
-use Livewire\Component;
 use LivewireUI\Modal\ModalComponent;
 
 class DateInput extends ModalComponent
@@ -17,8 +16,6 @@ class DateInput extends ModalComponent
     protected $listeners = [
         'setNewDueTime',
     ];
-
-
 
     protected function rules(){
         return [
