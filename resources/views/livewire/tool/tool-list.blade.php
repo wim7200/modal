@@ -148,13 +148,12 @@
         </div>
 
 
+        @if($checked)geselecteerde tools :@foreach($checked as $tool) {{$tool}}@endforeach @endif
 
         <div class="">
-            @if($checked)geselecteerde tools :@foreach($checked as $tool) {{$tool}}@endforeach @endif
+
                 <div class="grid grid-cols-2 sm:grid-cols-6 gap-2 lg:grid-cols-6 xl:grid-cols-10 ">
-
                 <!--Cards-->
-
                 @forelse($tools as $tool)
                     @php
                         $x=$tool->latestRent->state;

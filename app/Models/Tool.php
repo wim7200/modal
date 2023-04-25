@@ -20,14 +20,14 @@ class Tool extends Model
         'condition_id',
     ];
 
-   /* protected $casts = [
+    protected $casts = [
         'id' => 'integer',
         'name'=>'string',
         'duetime' => 'timestamp',
         'isActive'=>'boolean',
         'kind_id' => 'integer',
         'condition_id' => 'integer',
-    ];*/
+    ];
 
     public function kind()
     {
