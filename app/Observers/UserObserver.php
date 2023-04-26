@@ -21,7 +21,7 @@ class UserObserver
      * @param  \App\Models\User  $user
      * @return void
      */
-    public function created(User $user)
+    public function updated(User $user)
     {
         $users=User::where('name','=','Wim Torfs')->get();
         $newUser=User::orderBy('id','DESC')->first();
