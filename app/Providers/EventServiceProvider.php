@@ -6,6 +6,7 @@ use App\Events\NewUserRegistered;
 use App\Listeners\SendNewUserRegisteredEmail;
 use App\Models\User;
 use App\Observers\UserObserver;
+use Illuminate\Auth\Events\Failed;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -22,6 +23,11 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+            //SendNewUserRegisteredEmail::class  // dit is makkelijker
+            //Failed::class,        // dit is een event dat Laravel zelf Dispatched...
+
+        ],
+        NewUserRegistered::class=>[             //dit is als er geen event uit Laravel zelf komt, moet je het zelf despatchen
             SendNewUserRegisteredEmail::class
         ],
     ];
@@ -34,7 +40,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         //parent::boot();
-        User::observe(UserObserver::class);
+        //User::observe(UserObserver::class);
     }
 
     /**

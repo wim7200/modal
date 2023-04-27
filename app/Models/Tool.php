@@ -62,7 +62,4 @@ class Tool extends Model
         return $this->hasOne(ClientTool::class)
             ->latestOfMany('created_at');
     }
-
-
-
 }
