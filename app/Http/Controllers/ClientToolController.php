@@ -16,7 +16,16 @@ class ClientToolController extends Controller
      */
     public function index(Request $request)
     {
-        $tools=Tool::with('clients','latestRent','lastupdated_clients')->get();
+        $tools=Tool::with('clients','latestRent','lastupdated_clients')
+            ->get();
+
+        /*$tools=Tool::with(['clients'=>fn($query)=>$query->where('state','=','1')])
+            ->whereHas('clients',fn($query) =>
+            $query->where('state','=','1')
+            )
+        ->get();*/
+
+
         $clients=Client::with('tools')->get();
 
         return view('clienttool.index',compact('tools','clients'));

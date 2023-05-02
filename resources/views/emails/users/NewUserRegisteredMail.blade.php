@@ -1,7 +1,7 @@
 <x-mail::message>
 # Informatie
 
-Er is een nieuwe aanmelding...
+Er is een nieuwe User geregistreerd...
 
 
 <x-mail::button :url="'http://shop.lactam.be'">
