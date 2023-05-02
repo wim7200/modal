@@ -88,6 +88,7 @@
                                             {{--@include('includes._sort-icon',['field'=>'role'])--}}
                                         </a>
                                     </th>
+                                    <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Approved_by</th>
                                     <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Notify Me</th>
                                     <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Admin?</th>
 
@@ -103,6 +104,13 @@
                                         <td class="px-6 mt-2 " >{{$user->email}}</td>
                                         <td class="px-6 mt-2 " >{{$user->email_verified_at}}</td>
                                         <td class="px-6 mt-2 " >{{$user->roles->pluck('name')->implode('-')}}</td>
+                                        <td class="px-6 mt-2 ">
+                                            @if (($user->approved_by)== "")
+                                                not approved yet
+                                                @else {{$user->approved_by}}
+                                            @endif
+
+                                        </td>
                                         <td class="text-center">
                                            <div>@livewire('toggle-button', ['model' => $user, 'field' => 'notify'], key($user->id))</div>
                                         </td>
