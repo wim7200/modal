@@ -57,7 +57,7 @@
                                x-on:keyup.escape="isTyped = false; $refs.searchField.blur()">
                     </div>
                 </div>--}}
-
+        {{config("global.newusermail")}}{{Auth::user()->name}}
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                         <div class="overflow-hidden">
@@ -89,8 +89,10 @@
                                         </a>
                                     </th>
                                     <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Approved_by</th>
+                                    <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Approved_at</th>
                                     <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Notify Me</th>
                                     <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Admin?</th>
+                                    <th></th>
 
                                 </tr>
                                 </thead>
@@ -109,13 +111,21 @@
                                                 not approved yet
                                                 @else {{$user->approved_by}}
                                             @endif
-
                                         </td>
+                                        <td class="px-6 mt-2 ">{{$user->approved_at}}</td>
+
                                         <td class="text-center">
                                            <div>@livewire('toggle-button', ['model' => $user, 'field' => 'notify'], key($user->id))</div>
                                         </td>
                                         <td class="text-center">
                                             <div>@livewire('admin-button', ['model' => $user, 'field' => 'admin'], key($user->id))</div>
+                                        </td>
+                                        <td>
+                                            <x-jet-button>
+                                                <a href="{{route('user.edit',$user->id)}}"                                                >
+                                                    Approve
+                                                </a>
+                                            </x-jet-button>
                                         </td>
 
 
