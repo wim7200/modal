@@ -28,10 +28,11 @@ class AppServiceProvider extends ServiceProvider
     {
        // Model::preventLazyLoading(!app()->isProduction());
         Schema::defaultStringLength(125);
+
         config([
             'global' => Setting::all([
-        'name','value'
-    ])
+            'name','value'
+            ])
         ->keyBy('name') // key every setting by its name
         ->transform(function ($setting) {
             return $setting->value; // return only the value
