@@ -1,15 +1,15 @@
 <x-modal>
     <x-slot name="title">
-        Create New Ontlener
+        Maak Nieuwe Ontlener
     </x-slot>
 
     <x-slot name="content">
         <form>
             <label for="exampleFormControlInput1"
-                   class="block text-gray-700 text-sm font-bold mb-2 ">name</label>
+                   class="block text-gray-700 text-sm font-bold mb-2 ">naam</label>
             <input type="text"
                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                   id="exampleFormControlInput1" placeholder="Enter Name" wire:model="name">
+                   id="exampleFormControlInput1" placeholder="Enter Naam" wire:model="name">
             @error('name') <span class="text-red-500">{{ $message }}</span>@enderror
 
             <label for="exampleFormControlInput1"
@@ -20,10 +20,10 @@
             @error('qrClient') <span class="text-red-500">{{ $message }}</span>@enderror
 
             <label for="exampleFormControlInput1"
-                   class="block text-gray-700 text-sm font-bold mb-2 pt-2">Company</label>
+                   class="block text-gray-700 text-sm font-bold mb-2 pt-2">Bedijf</label>
             <input type="text"
                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                   id="exampleFormControlInput1" placeholder="Enter Company" wire:model="company">
+                   id="exampleFormControlInput1" placeholder="Enter Bedrijf" wire:model="company">
             @error('company') <span class="text-red-500">{{ $message }}</span>@enderror
 
         </form>

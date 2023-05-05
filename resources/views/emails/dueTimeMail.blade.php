@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Happy birthday to you!</title>
+    <title>Yes, it is time to take action!</title>
 </head>
 <body>
-<p>Hey,</p>
-<p>Deze email wil even je aandacht trekken omdat volgende toestellen in de nabije toekomst een calibratie zouden moeten krijgen.</p>
+<p>Hey {{$user->name}} ,</p>
+<p>Deze email is een reminder. </p>
+<p>Volgende toestellen moeten in nabije toekomst gecalibreerd worden.</p>
 <p>Graag actie ondernemen!</p>
 <p>
 Met dank,<br/>
 De Lactam-Shop,
+    (uit dueTimeMail)
 </p>
 
     toestellen te calibreren :<br/>

@@ -11,9 +11,9 @@
                                 bg-white bg-clip-padding border border-solid border-gray-300
                                 rounded transition ease-in-out m-0
                                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                           type="search"
-                           name="search"
-                           id="search"
+                           type="search"{{--overbodig--}}
+                           name="search"{{--overbodig--}}
+                           id="search"{{--overbodig--}}
                            x-ref="searchField"
                            x-on:input.debounce.400ms="isTyped = ($event.target.value != '')"
                            placeholder='Search... Press / to focus'
@@ -23,6 +23,22 @@
                            x-on:keyup.escape="isTyped = false; $refs.searchField.blur()">
                 </div>
                 {{--Selection button--}}
+                <div x-data="{isTyped: false}" class="mb-3 w-1/4">
+                    <select class="form-select appearance-none
+                              block w-full px-3 py-1.5 text-base font-normal text-gray-700
+                              bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300
+                              rounded transition ease-in-out m-0
+                              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+
+                            wire:model="selectedCondition">
+
+                        <option value="">Choose Condition...</option>
+                        @foreach($conditions as $condition)
+                            <option value="{{$condition->id}}">{{$condition->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                {{--Selection button 2--}}
                 <div class="mb-3 w-1/4">
                     <select class="form-select appearance-none
                               block w-full px-3 py-1.5 text-base font-normal text-gray-700
@@ -30,11 +46,11 @@
                               rounded transition ease-in-out m-0
                               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             aria-label="Default select example"
-                            wire:model="selected">
+                            wire:model="selectedKind">
 
-                        <option value="">All</option>
-                        @foreach($conditions as $condition)
-                            <option value="{{$condition->id}}">{{$condition->name}}</option>
+                        <option value="">Choose Kind...</option>
+                        @foreach($kinds as $kind)
+                            <option value="{{$kind->id}}">{{$kind->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -85,6 +101,12 @@
                                             >Meting OK</a>
                                         </li>
                                         <li>
+                                            <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
+                                               href="#"
+                                               onclick="Livewire.emit('openModal','date-input')"
+                                            >Set detailed</a>
+                                        </li>
+                                        <li>
                                             <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap
                                                   bg-transparent text-gray-700 hover:bg-gray-100"
                                                 href="#"
@@ -94,14 +116,15 @@
 
                                         </li>
 
-                                        {{--<li>
+                                        <li>
                                             <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap
                                                   bg-transparent text-gray-700 hover:bg-gray-100"
                                                 href="#"
-                                                wire:click='$emit("openModal", "tool.tool-new-due-time")'
+                                               wire:click="$emit('openModal', 'tool.tool-new-due-time', )"
+                                                {{--wire:click='$emit("openModal", "tool.tool-new-due-time")'--}}
                                                 class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer"
                                             >Set New Due Time</a>
-                                        </li>--}}
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -176,11 +199,11 @@
                                     <td class="px-6 mt-2 ">{{ \Carbon\Carbon::parse( $tool->duetime ) }}</td>
                                     <td class="px-6 mt-2 ">{{$tool->kind->name}}</td>
                                     <td class="px-6 mt-2 ">{{$tool->condition->name}}</td>
-                                    <td class="px-6 mt-2 ">
-                                        {{--@foreach($tool->lastupdated_clients as $client)
+                                    {{--<td class="px-6 mt-2 ">
+                                        @foreach($tool->lastupdated_clients as $client)
                                             {{$client->pivot->state}}
-                                        @endforeach--}}
-                                    </td>
+                                        @endforeach
+                                    </td>--}}
                                     <td class="flex justify-end mx-4 my-2">
                                         <!-- Inside existing Livewire component, single ' en wire:click -->
                                         <button

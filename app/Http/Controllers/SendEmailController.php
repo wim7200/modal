@@ -18,11 +18,11 @@ class SendEmailController extends Controller
         $mailtime=Carbon::now()->add(7,'day');
         //dd($mailtime);
 
-        $tools= Tool::whereDate(('duetime'),'=',$mailtime)->get(); //->pluck('duetime','name');
+        $tools= Tool::whereDate(('duetime'),'=',$mailtime)->get()->pluck('duetime','name');
         //dd($tools);
 
         $users=User::where('notify','=',1)->get()->pluck('email');
-        //dd($users);
+        dd($tools, $users);
 
        /* $data=[
             'tools'=>$tools,

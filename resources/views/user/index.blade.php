@@ -23,7 +23,7 @@
 
 
 
-  {{-- @livewire ('user.user-table')--}}
+  {{--@livewire ('user.user-table');--}}
 
     <div class="py-4">
         <div class="max-w-7xl mx-auto"> {{--breedte van tabel, centreren op ruimte--}}
@@ -88,8 +88,8 @@
                                             {{--@include('includes._sort-icon',['field'=>'role'])--}}
                                         </a>
                                     </th>
-                                    <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Notify Me</th>
-                                    <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Admin?</th>
+                                    <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Notify Me</th>
+                                    <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Admin?</th>
 
                                 </tr>
                                 </thead>
@@ -102,19 +102,12 @@
                                         <td class="px-6 mt-2 " >{{$user->name}}</td>
                                         <td class="px-6 mt-2 " >{{$user->email}}</td>
                                         <td class="px-6 mt-2 " >{{$user->email_verified_at}}</td>
-                                        <td class="px-6 mt-2 " >
-                                            {{$user->roles->pluck('name')->implode('-')}}
-                                        </td>
-
-                                        <td>
+                                        <td class="px-6 mt-2 " >{{$user->roles->pluck('name')->implode('-')}}</td>
+                                        <td class="text-center">
                                            <div>@livewire('toggle-button', ['model' => $user, 'field' => 'notify'], key($user->id))</div>
                                         </td>
-
-                                        <td>
+                                        <td class="text-center">
                                             <div>@livewire('admin-button', ['model' => $user, 'field' => 'admin'], key($user->id))</div>
-                                        </td>
-                                        <td>
-
                                         </td>
 
 

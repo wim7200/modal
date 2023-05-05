@@ -8,16 +8,12 @@ use LivewireUI\Modal\ModalComponent;
 
 class ToolNewDueTime extends ModalComponent
 {
-    public $newDueTime;
+    public $newduetime;
     public $checked=[];
 
-    protected $listeners=[
-        'ToolNewDueTime',
-    ];
-
-    protected function rules(){
+    Protected function rules(){
         return [
-            'newDueTime'=>'required',
+            'newduetime'=>'required',
         ];
     }
 
@@ -25,35 +21,6 @@ class ToolNewDueTime extends ModalComponent
     {
         return view('livewire.tool.tool-new-due-time');
     }
-
-    public function updatedSelectPage($value){
-        if($value){
-            $this->checked=$this->tools->pluck('id')->toArray();
-        }else{
-            $this->checked=[];
-        }
-    }
-
-    public function ToolNewDueTime()
-    {
-        $validatedData = $this->validate();
-
-        $NDT=Carbon::now()->addDays(10);
-
-        //dd($NDT);
-
-        Tool::whereKey($this->checked)
-            ->update(['duetime'=>$NDT]);
-        $this->checked=[];
-        $this->selectPage=FALSE;
-
-
-        session()->flash('message', 'Tool Updated succesfully');
-        return redirect()->to('/tool');
-    }
-
-
-
 
 
 }

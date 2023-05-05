@@ -1,5 +1,6 @@
 <?php
 
+    use App\Http\Controllers\ClientToolController;
     use App\Http\Controllers\SendEmailController;
     use Illuminate\Foundation\Auth\EmailVerificationRequest;
     use Illuminate\Http\Request;
@@ -17,7 +18,13 @@
 */
 
 
-Route::get('se',[SendEmailController::class, 'index']);
+Route::get('se',[SendEmailController::class, 'index'])->name('SendEmail');
+
+    Route::get('/mailable', function () {
+        $user = App\Models\User::first();
+
+        return new App\Mail\UserRegistered($user);
+    });
 
 Route::get('/', function () {
    /*  return view('auth.login');*/
@@ -50,6 +57,7 @@ Route::group(['middleware' => ['role:admin','verified']], function () {
         Route::resource('condition', App\Http\Controllers\ConditionController::class);
         Route::resource('tool', App\Http\Controllers\ToolController::class);
         Route::resource('user', App\Http\Controllers\UserController::class);
+        Route::resource('clienttool', ClientToolController::class);
     });
 
 Route::group(['middleware' => ['role:user','verified']], function () {
@@ -57,7 +65,7 @@ Route::group(['middleware' => ['role:user','verified']], function () {
         })->name('dashboard');
         Route::resource('client', App\Http\Controllers\ClientController::class);
         Route::resource('shop', App\Http\Controllers\ShopController::class);
-
+        Route::resource('clienttool', ClientToolController::class);
     });
 
 
