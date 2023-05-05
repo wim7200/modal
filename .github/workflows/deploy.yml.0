@@ -6,10 +6,7 @@ name: Deploy
 on:
   push:
     branches:
-      - develop
-  pull_request:
-    branches:
-      - develop
+      - deploy-vimexx
 
 # Authenticate to the the server via ssh
 # and run our deployment script
@@ -24,6 +21,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
-          key: ${{ secrets.SSHKEY }}
-          #script: whoami
-          script: "cd  /domains/u49712p140698.web0147.zxcs-klant.nl/modal $$./.scripts/deploy.sh"
+          key: ${{ secrets.PASSWORD }}
+          script: whoami
+
