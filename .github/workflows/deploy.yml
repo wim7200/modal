@@ -22,5 +22,13 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           password: ${{ secrets.PASSWORD }}
-          script: whoami
+          script: |
+            cd domains/beta.u49712p140698.web0147.zxcs-klant.nl/beta
+            git pull origin deploy-vimexx
+            composer install
+            composer update
+            php artisan migrate        
+            
+            
+            
 
