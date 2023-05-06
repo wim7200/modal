@@ -1,0 +1,31 @@
+name: Deploy
+
+# Trigger the workflow on push and
+# pull request events on the production branch
+
+on:
+  push:
+    branches:
+      - deploy-vimexx
+
+
+# Authenticate to the the server via ssh
+# and run our deployment script
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            cd domains/u49712p140698.web0147.zxcs-klant.nl/modal
+            git pull origin master
+            composer install
+            composer update
+            php artisan migrate
