@@ -45,6 +45,10 @@
                     <x-jet-nav-link href="{{ route('user.index') }}" :active="request()->routeIs('user.index')">
                         {{ __('User') }}
                     </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{ route('setting.index') }}" :active="request()->routeIs('setting.index')">
+                        {{ __('Settings') }}
+                    </x-jet-nav-link>
                     @endhasrole
                 </div>
             </div>

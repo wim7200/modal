@@ -4,6 +4,7 @@ namespace App\Actions\Fortify;
 
 use App\Events\NewUserRegistered;
 use App\Models\User;
+use App\Notifications\NewUser;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -35,6 +36,8 @@ class CreateNewUser implements CreatesNewUsers
         ])->assignRole('user');
 
         NewUserRegistered::dispatch($user);
+
+
 
         return $user;
     }
