@@ -1,6 +1,7 @@
 <div class="py-4">
     <div class="max-w-7xl mx-auto"> {{--breedte van tabel, centreren op ruimte--}}
         <div class="">
+            {{--buttons on top--}}
             <div class="w-1/4 fex justify-between">
                 <div x-data="{isTyped: false}">
                     <input class="form-control
@@ -30,7 +31,7 @@
                            x-on:keyup.escape="isTyped = false; $refs.searchField.blur()">
                 </div>
             </div>
-
+            {{--table--}}
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                     <div class="overflow-hidden">
@@ -74,26 +75,18 @@
                                     <td class="px-6 mt-2 " >{{$user->name}}</td>
                                     <td class="px-6 mt-2 " >{{$user->email}}</td>
                                     <td class="px-6 mt-2 " >{{$user->email_verified_at}}</td>
-                                    <td class="px-6 mt-2 " >
-                                        {{$user->roles->pluck('name')->implode(', ')}}
-                                    </td>
+                                    <td class="px-6 mt-2 " >{{$user->roles->pluck('name')->implode(', ')}}</td>
                                     {{--<td class="px-6 mt-2 ">
                                         <input {{$user->mail==1 ? 'checked':''}} type="checkbox" class="w-4 h-4 rounded text-red-600 ">
                                     </td>--}}
                                    {{-- <livewire:toggle-button :model="$user" :wire:key="$user->id">--}}
 
-
-
-
-
                                     <td class="flex justify-end mx-4 my-2">
-
                                         <!-- Inside existing Livewire component -->
                                         <button wire:click='$emit("openModal", "user.user-edit", {{json_encode(["users" => $user->id])}})'
                                                 class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer">
                                             Edit
                                         </button>
-
                                         <!-- Inside existing Livewire component -->
                                         <button wire:click='$emit("openModal", "user.user-create", {{json_encode(["users" => $user->id])}})'
                                                 class="px-2 rounded-md bg-red-400 hover:bg-red-600 text-gray-900 cursor-pointer">

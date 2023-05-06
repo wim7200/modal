@@ -1,6 +1,7 @@
 <div class="py-2">
     <div class="max-w-12xl p-4 mx-auto"> {{--breedte van tabel, centreren op ruimte--}}
         <!--buttons-->
+       {{-- {{config('global.loginfail')}}--}}
         <div class="max-w-7xl mx-auto">
             <div class="flex justify-between">
                 {{--Search button--}}
