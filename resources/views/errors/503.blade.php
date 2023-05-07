@@ -3,6 +3,6 @@
 @section('title', __('Service Unavailable'))
 @section('code', '503')
 @section('message', __('We will be down for a short time...
-                            </br>For MAINTENANCE please com back later... '))
+                            For MAINTENANCE please com back later... '))
 
 
