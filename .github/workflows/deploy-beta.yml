@@ -6,7 +6,7 @@ name: Deploy-Vimexx
 on:
   push:
     branches:
-      - #deploy-vimexx
+      - deploy-vimexx
 
 # Authenticate to the the server via ssh
 # and run our deployment script

@@ -1,4 +1,4 @@
-name: Deploy-Vimexx
+name: Deploy-Master
 
 # Trigger the workflow on push and
 # pull request events on the production branch
@@ -6,7 +6,7 @@ name: Deploy-Vimexx
 on:
   push:
     branches:
-      - #deploy-vimexx
+      - master
 
 # Authenticate to the the server via ssh
 # and run our deployment script
@@ -23,8 +23,8 @@ jobs:
           port: ${{ secrets.PORT }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd domains/beta.u49712p140698.web0147.zxcs-klant.nl/beta
-            git pull origin deploy-vimexx
+            cd domains/u49712p140698.web0147.zxcs-klant.nl/modal
+            git pull origin master
             composer install
             composer update
             php artisan migrate
