@@ -2,4 +2,5 @@
 
 @section('title', __('Service Unavailable'))
 @section('code', '503')
-@section('message', __('We are very sorry, but we are working in the shop! Back in no time...'))
+@section('message', __('We will be down for a short time...For MAINTENANCE please com back later... '))
+
