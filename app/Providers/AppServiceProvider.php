@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
        // Model::preventLazyLoading(!app()->isProduction());
         Schema::defaultStringLength(125);
 
-        config([
+        /*config([
             'global' => Setting::all([
             'name','value'
             ])
@@ -38,6 +38,6 @@ class AppServiceProvider extends ServiceProvider
             return $setting->value; // return only the value
         })
         ->toArray() // make it an array
-    ]);
+    ]);*/
     }
 }
