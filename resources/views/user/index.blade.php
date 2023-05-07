@@ -1,63 +1,24 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('User') }}
-        </h2>
-    </x-slot>
-
-{{--
-    <div class="py-4">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-            --}}
-{{--moet hier onclick zijn want is niet in livewire component--}}{{--
-
-            <x-w.bttn color="gray"
-                      onclick="Livewire.emit('openModal', 'user.user-create')">
-                Create New User
-            </x-w.bttn>
-
+        <div class="flow-root">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight float-left">
+                {{ __('User') }}
+            </h2>
+            <div class="italic text-sm text-right float-right">
+                Logged in :{{Auth::user()->name}}</br>
+                {{config("global.newusermail")}}
+            </div>
         </div>
-    </div>
---}}
-
-
+    </x-slot>
 
   {{--@livewire ('user.user-table');--}}
 
     <div class="py-4">
         <div class="max-w-7xl mx-auto"> {{--breedte van tabel, centreren op ruimte--}}
-            <div class="">
-                {{--<div class="w-1/4 fex justify-between">
-                    <div x-data="{isTyped: false}">
-                        <input class="form-control
-                                block
-                                w-full
-                                px-3
-                                py-1.5
-                                text-base
-                                font-normal
-                                text-gray-700
-                                bg-white bg-clip-padding
-                                border border-solid border-gray-300
-                                rounded
-                                transition
-                                ease-in-out
-                                m-0
-                                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                               type="search"
-                               name="search"
-                               id="search"
-                               x-ref="searchField"
-                               x-on:input.debounce.400ms="isTyped = ($event.target.value != '')"
-                               placeholder='Search... Press / to focus'
-                               autocomplete="off"
-                               wire:model.debounce.500ms="search"
-                               x-on:keydown.window.prevent.slash="$refs.searchField.focus()"
-                               x-on:keyup.escape="isTyped = false; $refs.searchField.blur()">
-                    </div>
-                </div>--}}
-        {{config("global.newusermail")}}{{Auth::user()->name}}
+            <div >
+
+
+
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                         <div class="overflow-hidden">
@@ -127,22 +88,6 @@
                                                 </a>
                                             </x-jet-button>
                                         </td>
-
-
-                                        {{--<td class="flex justify-end mx-4 my-2">
-                                            <!-- Inside existing Livewire component-->
-                                            <button wire:click='$emit("openModal", "user.user-edit", {{json_encode(["users" => $user->id])}})'
-                                                    class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer">
-                                                Edit
-                                            </button>
-
-
-                                            <!-- Inside existing Livewire component-->
-                                            <button wire:click='$emit("openModal", "user.user-create", {{json_encode(["users" => $user->id])}})'
-                                                    class="px-2 rounded-md bg-red-400 hover:bg-red-600 text-gray-900 cursor-pointer">
-                                                Delete
-                                            </button>
-                                        </td>--}}
                                     </tr>
                                 @empty
                                     <td class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100"
