@@ -29,6 +29,9 @@ class AppServiceProvider extends ServiceProvider
        // Model::preventLazyLoading(!app()->isProduction());
         Schema::defaultStringLength(125);
 
+        // geeft problemen bij installatie, niet als het loopt...
+
+
         /*config([
             'global' => Setting::all([
             'name','value'
@@ -39,5 +42,7 @@ class AppServiceProvider extends ServiceProvider
         })
         ->toArray() // make it an array
     ]);*/
+
+
     }
 }
