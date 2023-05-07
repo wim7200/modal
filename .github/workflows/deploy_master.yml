@@ -6,7 +6,7 @@ name: Deploy-master
 on:
   push:
     branches:
-      - deploy-master
+      - master
 
 # Authenticate to the the server via ssh
 # and run our deployment script
