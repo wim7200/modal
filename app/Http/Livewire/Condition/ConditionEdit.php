@@ -30,7 +30,6 @@ class ConditionEdit extends ModalComponent
         $this->condition=$condition;
         $this->condition_id=$condition->id;
         $this->name=$condition->name;
-
     }
     public function render()
     {

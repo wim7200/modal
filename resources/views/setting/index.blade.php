@@ -6,7 +6,7 @@
             </h2>
             <div class="float-right">
                 <x-jet-button color="gray"
-                          onclick="Livewire.emit('openModal', 'kind.kind-create')">
+                          onclick="Livewire.emit('openModal', 'settings.setting-create')">
                     Create New Setting
                 </x-jet-button>
             </div>

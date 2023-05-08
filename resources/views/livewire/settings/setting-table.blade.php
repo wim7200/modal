@@ -22,13 +22,13 @@
                                         <td class="px-6 mt-2 " >{{$setting->value}}</td>
                                         <td class="flex justify-end mx-4 my-2">
                                             <!-- Inside existing Livewire component -->
-                                            {{--<button wire:click='$emit("openModal", "kind.kind-edit", {{json_encode(["kind" => $kind->id])}})'
+                                            <button wire:click='$emit("openModal", "settings.setting-edit", {{json_encode(["setting" => $setting->id])}})'
                                                     class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer">
                                                 Edit
                                             </button>
 
                                             <!-- Inside existing Livewire component -->
-                                            <button wire:click='$emit("openModal", "kind.kind-delete", {{json_encode(["kind" => $kind->id])}})'
+                                            {{--<button wire:click='$emit("openModal", "kind.kind-delete", {{json_encode(["kind" => $kind->id])}})'
                                                     class="px-2 rounded-md bg-red-400 hover:bg-red-600 text-gray-900 cursor-pointer">
                                                 Delete
                                             </button>--}}
