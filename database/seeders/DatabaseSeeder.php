@@ -28,8 +28,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeeder::class);
         $this->call(KindSeeder::class);
         $this->call(ConditionSeeder::class);
-        //$this->call(ClientSeeder::class);
-        //$this->call(ToolSeeder::class);
+        $this->call(ClientSeeder::class);
+        $this->call(ToolSeeder::class);
 
     }
 

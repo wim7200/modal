@@ -24,8 +24,8 @@ class ToolFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word,
-            'qrTool' => $this->faker->word,
+            'name' => $this->faker->firstNameFemale,
+            'qrTool' => $this->faker->uuid,
             'duetime' => $this->faker->dateTime(),
             'kind_id' => $this->faker->numberBetween(1,3),
             'condition_id' => $this->faker->numberBetween(1,4),
