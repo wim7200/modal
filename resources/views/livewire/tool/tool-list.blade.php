@@ -201,7 +201,11 @@
                                     Tool aanwezig
                                 @else
                                     uitgeleend door:<br/>
-                                    {{$client->find($tool->latestRent->client_id)->name}}
+                                    @if (($client->find($tool->latestRent->client_id)<>""))
+                                       {{$client->find($tool->latestRent->client_id)->name}}
+                                    @else
+                                        left the building
+                                    @endif
                                 @endif
                             </div>
 
