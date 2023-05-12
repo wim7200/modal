@@ -3,9 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Permission;
 
 class AdminSeeder extends Seeder
 {
@@ -16,7 +18,7 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+        $user=User::create([
             'name' => 'admin',
             'email' => 'admin@admin.com',
             'email_verified_at' => now(),
@@ -25,9 +27,14 @@ class AdminSeeder extends Seeder
             'approved_at'=>now(),
             'approved_by'=>'Wim Torfs',
 
-        ])->assignRole('admin','user');
+        ]);
 
-        User::create([
+        $role=Role::create(['name'=>'Admin']);
+        $permissions=Permission::pluck('id','id')->all();
+        $role->syncPermissions($permissions);
+        $user->assignRole([$role->id]);
+
+        /*User::create([
             'name' => 'user',
             'email' => 'user@user.com',
             'email_verified_at' => now(),
@@ -35,7 +42,7 @@ class AdminSeeder extends Seeder
             'approved_at'=>now(),
             'approved_by'=>'Wim Torfs',
 
-        ])->assignRole('user');
+        ])->assignRole('user');*/
 
 
     }

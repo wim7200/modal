@@ -1,11 +1,14 @@
 <?php
 
     use App\Http\Controllers\ClientToolController;
+    use App\Http\Controllers\RoleController;
     use App\Http\Controllers\SendEmailController;
     use App\Http\Controllers\SettingController;
+    use App\Http\Controllers\ApproveUserController;
     use Illuminate\Foundation\Auth\EmailVerificationRequest;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +65,10 @@ Route::group(['middleware' => ['role:admin','verified']], function () {
         Route::resource('user', App\Http\Controllers\UserController::class);
         Route::resource('clienttool', ClientToolController::class);
         Route::resource('setting', SettingController::class);
+        Route::get('user/{user}/approve',ApproveUserController::class);
+        Route::resource('role',RoleController::class);
+
+
 
 
     });

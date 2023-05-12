@@ -58,7 +58,10 @@ class  ToolTable extends Component
 
     public function getToolsProperty()  /*computed property*/
     {
+        $company_id=auth()->user()->company_id;
+
         return Tool::with('latestRent','kind','condition','clients')
+            ->where('company_id','=',$company_id)
             ->when($this->selectedCondition,function ($query){
                 $query->where('condition_id',$this->selectedCondition);
             })

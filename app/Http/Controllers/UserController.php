@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,9 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users=User::all();
+
+        $users=User::with('company')->get();
+
         return view('user.index',compact('users'));
     }
 
@@ -48,7 +51,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return [$user->approved_at, $user->name];
+        //
     }
 
     /**
@@ -59,12 +62,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $approvedBy=Auth::user()->name;
-        $user->update([
-            'approved_at'=>now(),
-            'approved_by'=>$approvedBy,
-            ]);
-        return redirect()->route('user.index')->withMessage('user is approved');
+
     }
 
     /**
@@ -89,6 +87,4 @@ class UserController extends Controller
     {
         //
     }
-
-
 }
