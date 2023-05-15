@@ -27,7 +27,7 @@ class SendNewUserRegisteredEmail
         //send the mail with details of the user, coming with the event
 
         $to="torfs.cock@telenet.be";
-        Mail::to(config('global.newusermail'))->send(new UserRegistered($user) );
+        Mail::to($to)->send(new UserRegistered($user) );
 
 
     }

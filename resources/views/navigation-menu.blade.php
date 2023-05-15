@@ -12,7 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    @hasanyrole('admin|user')
+
                     {{--<x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>--}}
@@ -24,12 +24,11 @@
                     <x-jet-nav-link href="{{ route('client.index') }}" :active="request()->routeIs('client.index')">
                         {{ __('Ontlener') }}
                     </x-jet-nav-link>
+
                     <x-jet-nav-link href="{{ route('clienttool.index') }}" :active="request()->routeIs('clienttool.index')">
                         {{ __('History') }}
                     </x-jet-nav-link>
-                    @endhasanyrole
 
-                    @hasrole('admin')
                     <x-jet-nav-link href="{{ route('kind.index') }}" :active="request()->routeIs('kind.index')">
                         {{ __('Kind') }}
                     </x-jet-nav-link>
@@ -42,14 +41,23 @@
                         {{ __('Tool') }}
                     </x-jet-nav-link>
 
+                    @can('user-edit')
                     <x-jet-nav-link href="{{ route('user.index') }}" :active="request()->routeIs('user.index')">
                         {{ __('User') }}
                     </x-jet-nav-link>
+                    @endcan
+                    @can('role-edit')
+                    <x-jet-nav-link href="{{ route('role.index') }}" :active="request()->routeIs('role.index')">
+                        {{ __('Roles') }}
+                    </x-jet-nav-link>
+                    @endcan
 
+                    @can('setting-edit')
                     <x-jet-nav-link href="{{ route('setting.index') }}" :active="request()->routeIs('setting.index')">
                         {{ __('Settings') }}
                     </x-jet-nav-link>
-                    @endhasrole
+                    @endcan
+
                 </div>
             </div>
 
@@ -176,7 +184,7 @@
             {{--<x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>--}}
-            @hasanyrole('admin|user')
+
             {{--<x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-nav-link>--}}
@@ -191,7 +199,7 @@
             <x-jet-nav-link href="{{ route('clienttool.index') }}" :active="request()->routeIs('clienttool.index')">
                 {{ __('History') }}
             </x-jet-nav-link>
-            @endhasanyrole
+
         </div>
 
         <!-- Responsive Settings Options -->

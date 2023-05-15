@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\User;
+namespace App\Http\Livewire\UserLW;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -22,7 +22,7 @@ class UserCreate extends ModalComponent
 
     public function render()
     {
-        return view('livewire.user.user-create');
+        return view('livewire.user-l-w.user-create');
     }
 
 

@@ -29,6 +29,7 @@ class ToolFactory extends Factory
             'duetime' => $this->faker->dateTime(),
             'kind_id' => $this->faker->numberBetween(1,3),
             'condition_id' => $this->faker->numberBetween(1,4),
+            'company_id'=>$this->faker->numberBetween(1,4),
         ];
     }
 

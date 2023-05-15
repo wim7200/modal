@@ -52,7 +52,7 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-Route::group(['middleware' => ['role:admin','verified']], function () {
+Route::group(['middleware' => ['verified']], function () {
 
         Route::get('/approval',\App\Http\Controllers\HomeController::class);
 
@@ -67,22 +67,7 @@ Route::group(['middleware' => ['role:admin','verified']], function () {
         Route::resource('setting', SettingController::class);
         Route::get('user/{user}/approve',ApproveUserController::class);
         Route::resource('role',RoleController::class);
-
-
-
-
-    });
-
-Route::group(['middleware' => ['role:user','verified']], function () {
-
-        Route::get('/approval',\App\Http\Controllers\HomeController::class)->name('approval');
-
-        Route::middleware(['approved'])->group(function () {
-                Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
-                Route::resource('client', App\Http\Controllers\ClientController::class);
-                Route::resource('shop', App\Http\Controllers\ShopController::class);
-                Route::resource('clienttool', ClientToolController::class);
-        });
+      //  Route::get('/user',\App\Http\Livewire\LW_User\UserTable::class)->name('user');
 
     });
 

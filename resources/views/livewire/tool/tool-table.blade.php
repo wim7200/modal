@@ -199,24 +199,24 @@
                                     <td class="px-6 mt-2 ">{{ \Carbon\Carbon::parse( $tool->duetime ) }}</td>
                                     <td class="px-6 mt-2 ">{{$tool->kind->name}}</td>
                                     <td class="px-6 mt-2 ">{{$tool->condition->name}}</td>
-                                    {{--<td class="px-6 mt-2 ">
-                                        @foreach($tool->lastupdated_clients as $client)
-                                            {{$client->pivot->state}}
-                                        @endforeach
-                                    </td>--}}
+
                                     <td class="flex justify-end mx-4 my-2">
                                         <!-- Inside existing Livewire component, single ' en wire:click -->
+                                        @can('tool-edit')
                                         <button
                                             wire:click='$emit("openModal", "tool.tool-edit", {{json_encode(["tool" => $tool->id])}})'
                                             class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer">
                                             Edit
                                         </button>
+                                        @endcan
                                         <!-- Inside existing Livewire component -->
+                                        @can('tool-delete')
                                         <button
                                             wire:click='$emit("openModal", "tool.tool-delete", {{json_encode(["tool" => $tool->id])}})'
                                             class="px-2 rounded-md bg-red-400 hover:bg-red-600 text-gray-900 cursor-pointer">
                                             Delete
                                         </button>
+                                        @endcan
                                     </td>
                                 </tr>
                             @empty

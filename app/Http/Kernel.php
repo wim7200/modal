@@ -37,7 +37,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \App\Http\Middleware\RestrictIpAddress::class,// Added for Ip Restriction
+           // \App\Http\Middleware\RestrictIpAddress::class,// Added for Ip Restriction
         ],
 
         'api' => [
@@ -65,9 +65,12 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'approved'=>\App\Http\Middleware\CheckApproved::class,
+    ];
+    protected $middlewareAliases = [
+        // ...
         'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
-        'approved'=>\App\Http\Middleware\CheckApproved::class,
     ];
 }

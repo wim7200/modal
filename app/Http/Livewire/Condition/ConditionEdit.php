@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Condition;
 
-use App\Models\Client;
 use App\Models\Condition;
 use LivewireUI\Modal\ModalComponent;
 

@@ -29,12 +29,16 @@ class AdminSeeder extends Seeder
 
         ]);
 
-        $role=Role::create(['name'=>'Admin']);
-        $permissions=Permission::pluck('id','id')->all();
-        $role->syncPermissions($permissions);
-        $user->assignRole([$role->id]);
+        //$role = Role::create(['name' => 'admin']);
 
-        /*User::create([
+        //$permissions = Permission::pluck('id','id')->all();
+
+        //$role->syncPermissions($permissions);
+
+        $user->assignRole(['admin']);
+
+
+        User::create([
             'name' => 'user',
             'email' => 'user@user.com',
             'email_verified_at' => now(),
@@ -42,7 +46,7 @@ class AdminSeeder extends Seeder
             'approved_at'=>now(),
             'approved_by'=>'Wim Torfs',
 
-        ])->assignRole('user');*/
+        ])->assignRole('user');
 
 
     }

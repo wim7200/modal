@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\User;
+namespace App\Http\Livewire\UserLW;
 
 use App\Models\User;
 use Livewire\Component;
@@ -18,7 +18,7 @@ class UserTable extends Component
 
     public function render()
     {
-        return view('livewire.user.user-table',[
+        return view('livewire.userlw.user-table',[
             'users'=>User::query()
                 ->with('roles')
                 ->search($this->search,['name'])
