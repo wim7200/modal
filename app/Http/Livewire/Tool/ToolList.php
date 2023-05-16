@@ -45,8 +45,11 @@ class ToolList extends Component
 
     public function getToolsProperty()  /*computed property*/
     {
+        $company_id=auth()->user()->company_id;
+
         if ($this->search==""){
             return Tool::with(['latestRent', 'kind', 'condition', 'clients'])
+                ->where('company_id','=',$company_id)
                 ->search($this->search, ['qrtool', 'name'])
                 ->when($this->selected, function ($query) {
                     $query->where('condition_id', $this->selected);

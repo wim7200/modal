@@ -18,6 +18,7 @@ class Tool extends Model
         'isActive',
         'kind_id',
         'condition_id',
+        'company_id',
     ];
 
     protected $casts = [
@@ -27,6 +28,8 @@ class Tool extends Model
         'isActive'=>'boolean',
         'kind_id' => 'integer',
         'condition_id' => 'integer',
+        'company_id'=>'integer',
+
     ];
 
     public function kind()
@@ -37,6 +40,11 @@ class Tool extends Model
     public function condition()
     {
         return $this->belongsTo(Condition::class);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
     }
 
     public function clients()

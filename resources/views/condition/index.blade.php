@@ -5,10 +5,12 @@
                 {{ __('Condition') }}
             </h2>
             <div class="float-right">
+                @can('condition-delete')
                 <x-jet-button color="gray"
                           onclick="Livewire.emit('openModal', 'condition.condition-create')">
                     Create New Condition
                 </x-jet-button>
+                @endcan
             </div>
         </div>
     </x-slot>

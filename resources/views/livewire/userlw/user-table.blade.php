@@ -1,4 +1,14 @@
 <div class="py-4">
+    <x-slot name="header">
+        <div class="flow-root">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight float-left">
+                {{ __('User') }}
+            </h2>
+            <div class="italic text-sm text-right float-right">
+                Logged in :{{Auth::user()->name}}</br>
+            </div>
+        </div>
+    </x-slot>
     <div class="max-w-7xl mx-auto"> {{--breedte van tabel, centreren op ruimte--}}
         <div class="">
             {{--buttons on top--}}
@@ -62,8 +72,12 @@
                                         @include('includes._sort-icon',['field'=>'role'])
                                     </a>
                                 </th>
-                                <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Notify</th>
-                                <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-left"></th>
+                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Company</th>
+                                <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Approved_by</th>
+                                <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Approved_at</th>
+                                <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Notify?</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                             </thead>
 
@@ -76,22 +90,35 @@
                                     <td class="px-6 mt-2 " >{{$user->email}}</td>
                                     <td class="px-6 mt-2 " >{{$user->email_verified_at}}</td>
                                     <td class="px-6 mt-2 " >{{$user->roles->pluck('name')->implode(', ')}}</td>
-                                    {{--<td class="px-6 mt-2 ">
-                                        <input {{$user->mail==1 ? 'checked':''}} type="checkbox" class="w-4 h-4 rounded text-red-600 ">
+                                    <td class="px-6 mt-2 " >{{$user->company->name ?? 'Not Set Yet'}}</td>
+                                    <td class="px-6 mt-2 ">
+                                        @if (($user->approved_by)== "")
+                                            Not Approved Yet
+                                        @else {{$user->approved_by}}
+                                        @endif
+                                    </td>
+                                    <td class="px-6 mt-2 ">{{$user->approved_at}}</td>
+                                    <td class="text-center">
+                                        <div>@livewire('toggle-button', ['model' => $user, 'field' => 'notify'], key($user->id))</div>
+                                    </td>
+
+                                    {{--<td class="text-center">
+                                        <div>@livewire('admin-button', ['model' => $user, 'field' => 'admin'], key($user->id))</div>
                                     </td>--}}
-                                   {{-- <livewire:toggle-button :model="$user" :wire:key="$user->id">--}}
 
                                     <td class="flex justify-end mx-4 my-2">
                                         <!-- Inside existing Livewire component -->
-                                        <button wire:click='$emit("openModal", "user.user-edit", {{json_encode(["users" => $user->id])}})'
+                                        <button wire:click='$emit("openModal", "user-l-w.user-edit", {{json_encode(["user" => $user->id])}})'
                                                 class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer">
                                             Edit
                                         </button>
                                         <!-- Inside existing Livewire component -->
-                                        <button wire:click='$emit("openModal", "user.user-create", {{json_encode(["users" => $user->id])}})'
+                                        @can('user-delete')
+                                        <button wire:click='$emit("openModal", "user-l-w.user-delete", {{json_encode(["user" => $user->id])}})'
                                                 class="px-2 rounded-md bg-red-400 hover:bg-red-600 text-gray-900 cursor-pointer">
                                             Delete
                                         </button>
+                                        @endcan
                                     </td>
                                 </tr>
                             @empty

@@ -5,11 +5,13 @@ namespace App\Models;
 use App\Traits\Searchable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use phpDocumentor\Reflection\Types\Callable_;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -32,7 +34,19 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name','email', 'password', 'notify','admin',
         'approved','approved_by','approved_at',
+        'company_id',
+    ];
 
+    protected $cast=[
+        'id'=>'integer',
+        'name'=> 'string',
+        'email'=> 'email',
+        'notify'=> 'boolean',
+        'admin'=> 'boolean',
+        'approved'=> 'boolean',
+        'approved_by'=> 'string',
+        'approved_at'=> 'timestamp',
+        'company_id'=> 'integer',
     ];
 
     /**
@@ -64,6 +78,11 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function company() :BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+    }
 
 
 }

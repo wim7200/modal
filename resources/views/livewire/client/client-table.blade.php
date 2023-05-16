@@ -70,16 +70,19 @@
                                     <td class="flex justify-end mx-4 my-2">
 
                                         <!-- Inside existing Livewire component -->
+
                                         <button wire:click='$emit("openModal", "client.client-edit", {{json_encode(["client" => $client->id])}})'
                                                 class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer">
                                             Edit
                                         </button>
 
                                         <!-- Inside existing Livewire component -->
+                                        @can('client-delete')
                                         <button wire:click='$emit("openModal", "client.client-delete", {{json_encode(["client" => $client->id])}})'
                                                 class="px-2 rounded-md bg-red-400 hover:bg-red-600 text-gray-900 cursor-pointer">
                                             Delete
                                         </button>
+                                        @endcan
                                     </td>
                                 </tr>
                             @empty

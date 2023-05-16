@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Kind;
 
 use App\Models\Kind;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;

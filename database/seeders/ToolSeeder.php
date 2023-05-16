@@ -20,12 +20,5 @@ class ToolSeeder extends Seeder
         Tool::factory()
             ->count(15)
             ->create();
-        /*Tool::create([
-            'name' => 'ToolName',
-            'qrTool' => 'qrcode',
-            'duetime' => '2022-10-10',
-            'kind_id' => '1',
-            'condition_id' => '1',
-        ])->clients()->attach(999,['state'=>0]);*/
     }
 }

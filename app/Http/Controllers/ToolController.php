@@ -10,6 +10,8 @@ use Illuminate\Foundation\Inspiring;
 
 class ToolController extends Controller
 {
+
+
     /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response

@@ -16,7 +16,7 @@ class  ShopController extends Controller
      */
     public function index()
     {
-        $tools = Tool::with('latestRent');
+        $tools = Tool::with('latestRent','company');
         return view('shop.index', compact('tools'));
     }
 

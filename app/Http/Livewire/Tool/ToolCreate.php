@@ -37,6 +37,9 @@ class ToolCreate extends ModalComponent
     public function ToolCreate()
     {
         $this->validate();
+        $company_id=auth()->user()->company->id;
+
+        //dd($this,$company_id);
 
         $tool=Tool::Create([
             'name'=>$this->name,
@@ -44,6 +47,7 @@ class ToolCreate extends ModalComponent
             'duetime'=>$this->duetime,
             'kind_id'=>$this->kind_id,
             'condition_id'=>$this->condition_id,
+            'company_id'=>$company_id,
         ]);
         $tool->clients()->attach(999,['state'=>0]);
 

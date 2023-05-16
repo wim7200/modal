@@ -1,11 +1,14 @@
 <?php
 
     use App\Http\Controllers\ClientToolController;
+    use App\Http\Controllers\RoleController;
     use App\Http\Controllers\SendEmailController;
     use App\Http\Controllers\SettingController;
+    use App\Http\Controllers\ApproveUserController;
     use Illuminate\Foundation\Auth\EmailVerificationRequest;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +52,7 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-Route::group(['middleware' => ['role:admin','verified']], function () {
+Route::group(['middleware' => ['verified']], function () {
 
         Route::get('/approval',\App\Http\Controllers\HomeController::class);
 
@@ -62,20 +65,9 @@ Route::group(['middleware' => ['role:admin','verified']], function () {
         Route::resource('user', App\Http\Controllers\UserController::class);
         Route::resource('clienttool', ClientToolController::class);
         Route::resource('setting', SettingController::class);
-
-
-    });
-
-Route::group(['middleware' => ['role:user','verified']], function () {
-
-        Route::get('/approval',\App\Http\Controllers\HomeController::class)->name('approval');
-
-        Route::middleware(['approved'])->group(function () {
-                Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
-                Route::resource('client', App\Http\Controllers\ClientController::class);
-                Route::resource('shop', App\Http\Controllers\ShopController::class);
-                Route::resource('clienttool', ClientToolController::class);
-        });
+        Route::get('user/{user}/approve',ApproveUserController::class);
+        Route::resource('role',RoleController::class);
+      //  Route::get('/user',\App\Http\Livewire\LW_User\UserTable::class)->name('user');
 
     });
 

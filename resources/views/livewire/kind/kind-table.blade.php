@@ -29,16 +29,21 @@
                                         <td class="px-6 mt-2 " >{{$kind->description}}</td>
                                         <td class="flex justify-end mx-4 my-2">
                                             <!-- Inside existing Livewire component -->
+                                            @can('kind-edit')
                                             <button wire:click='$emit("openModal", "kind.kind-edit", {{json_encode(["kind" => $kind->id])}})'
                                                     class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer">
                                                 Edit
                                             </button>
+                                            @endcan
 
                                             <!-- Inside existing Livewire component -->
+                                            @can('kind-delete')
                                             <button wire:click='$emit("openModal", "kind.kind-delete", {{json_encode(["kind" => $kind->id])}})'
                                                     class="px-2 rounded-md bg-red-400 hover:bg-red-600 text-gray-900 cursor-pointer">
                                                 Delete
                                             </button>
+                                            @endcan
+
                                         </td>
                                     </tr>
                                 @endforeach

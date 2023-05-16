@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class KindController extends Controller
 {
+    /*public function __construct()
+    {
+       $this->middleware(['role_or_permission:manager']);
+    }*/
+
     /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response

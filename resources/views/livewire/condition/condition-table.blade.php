@@ -20,16 +20,20 @@
                                             <td class="flex justify-end mx-4 my-2">
 
                                                 <!-- Inside existing Livewire component -->
+                                                @can('condition-edit')
                                                 <button wire:click='$emit("openModal", "condition.condition-edit", {{json_encode(["condition" => $condition->id])}})'
                                                         class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer">
                                                     Edit
                                                 </button>
+                                                @endcan
 
                                                 <!-- Inside existing Livewire component -->
+                                                @can('condition-delete')
                                                 <button wire:click='$emit("openModal", "condition.condition-delete", {{json_encode(["condition" => $condition->id])}})'
                                                         class="px-2 rounded-md bg-red-400 hover:bg-red-600 text-gray-900 cursor-pointer">
                                                     Delete
                                                 </button>
+                                                @endcan
 
 
                                                 {{--<button wire:click="edit({{ $condition->id }})"

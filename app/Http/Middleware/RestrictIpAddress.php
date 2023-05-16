@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 class RestrictIpAddress
 {
     public $restrictedIp = [
-       /* '127.0.0.1',
-        '127.0.0.2',
-        '127.0.0.3',*/
+        '192.168.0.211'
     ];
     /**
      * Handle an incoming request.
