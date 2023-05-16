@@ -42,6 +42,11 @@ class Tool extends Model
         return $this->belongsTo(Condition::class);
     }
 
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
     public function clients()
     {
         return $this->belongsToMany(Client::class)

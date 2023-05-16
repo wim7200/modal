@@ -75,6 +75,7 @@
                                 <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Company</th>
                                 <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Approved_by</th>
                                 <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Approved_at</th>
+                                <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Notify?</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -97,10 +98,11 @@
                                         @endif
                                     </td>
                                     <td class="px-6 mt-2 ">{{$user->approved_at}}</td>
-                                    {{--<td class="text-center">
+                                    <td class="text-center">
                                         <div>@livewire('toggle-button', ['model' => $user, 'field' => 'notify'], key($user->id))</div>
                                     </td>
-                                    <td class="text-center">
+
+                                    {{--<td class="text-center">
                                         <div>@livewire('admin-button', ['model' => $user, 'field' => 'admin'], key($user->id))</div>
                                     </td>--}}
 

@@ -180,7 +180,15 @@
                                         @include('includes._sort-icon',['field'=>'condition_id'])
                                     </a>
                                 </th>
+                                @can('role-edit')
+                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                                    wire:click="sortBy('company_id')">
+                                    <a>Company
+                                        @include('includes._sort-icon',['field'=>'company_id'])
+                                    </a>
+                                </th>
                                 <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"></th>
+                                @endcan
                                 <th></th>
                             </tr>
                             </thead>
@@ -199,6 +207,9 @@
                                     <td class="px-6 mt-2 ">{{ \Carbon\Carbon::parse( $tool->duetime ) }}</td>
                                     <td class="px-6 mt-2 ">{{$tool->kind->name}}</td>
                                     <td class="px-6 mt-2 ">{{$tool->condition->name}}</td>
+                                    @can('role-edit')
+                                        <td class="px-6 mt-2 ">{{$tool->company->name}}</td>
+                                    @endcan
 
                                     <td class="flex justify-end mx-4 my-2">
                                         <!-- Inside existing Livewire component, single ' en wire:click -->

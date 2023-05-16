@@ -31,17 +31,8 @@
             </select>
             @error('company_id') <span class="text-red-500">{{ $message }}</span>@enderror
 
-            {{--<label for="exampleFormControlSelect1"
+            <label for="exampleFormControlSelect1"
                    class="block text-gray-700 text-sm font-bold">Role</label>
-            <select class="shadow appearance-none border rounded w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="exampleFormControlInput2" placeholder="Role" wire:model="role_id">
-
-            <option value="">Select a Role</option>
-                @foreach ($roles as $role)
-                    <option value="{{ $role->id }}">{{ $role->name }}</option>
-                @endforeach
-            </select>
-            @error('role_id') <span class="text-red-500">{{ $message }}</span>@enderror--}}
 
             <div class="col-span-12 sm:col-span-8">
                 <div class="flex flex-wrap mt-1 justify-between px-3 w-full">
@@ -49,7 +40,7 @@
                         <div class="flex flex-wrap mr-3 mt-3 w-1/3">
                             <div class="flex">
                                 <div class="1/4">
-                                    <x-jet-input  name="role" wire:model="selectedroles.{{$key}}"   type="checkbox" class="mt-1" />
+                                    <x-jet-input  name="role" wire:model="selectedroles.{{$key}}" type="checkbox"  />
                                 </div>
                                 <div class="text-wrap 3/4">
                                     <x-jet-label class="ml-1 mt-0" for="{{$role}}" value="{{$role}}" />
@@ -59,6 +50,14 @@
                     @endforeach
                 </div>
             </div>
+            <label for="exampleFormControlSelect1"
+                   class="block text-gray-700 text-sm font-bold">Notify Me</label>
+            <td class="text-center">
+                <div>@livewire('toggle-button', ['model' => $user, 'field' => 'notify'], key($user->id))</div>
+            </td>
+
+
+
 
         </form>
     </x-slot>
