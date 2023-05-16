@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
         // geeft problemen bij installatie, niet als het loopt...
 
 
-        config([
+        /*config([
             'global' => Setting::all([
             'name','value'
             ])
@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
             return $setting->value; // return only the value
         })
         ->toArray() // make it an array
-    ]);
+    ]);*/
 
 
     }
