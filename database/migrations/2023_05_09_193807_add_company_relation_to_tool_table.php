@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('tools', function (Blueprint $table) {
             $table->foreignId('company_id')
+                ->after('condition_id')
                 ->nullable()->constrained()
                 ->onUpdate('cascade')->onDelete('cascade');
         });
