@@ -29,16 +29,16 @@ class DatabaseSeeder extends Seeder
        // $this->call(KindSeeder::class);
        // $this->call(ConditionSeeder::class);
        // $this->call(ClientSeeder::class);
+        // $this->call(ToolSeeder::class);
+
         $this->call(CompanySeeder::class);
-
-       // $this->call(ToolSeeder::class);
-
-
         $this->call(PermissionTableSeeder::class);
-        //$this->call(RolesAndPermissionsSeeder::class);
+        $this->call(RolesAndPermissionsSeeder::class);
+
+
         //$this->call(RoleSeeder::class); zit in vorige
 
-        //$this->call(AdminSeeder::class);
+        $this->call(AdminSeeder::class);
 
     }
 
