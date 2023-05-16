@@ -27,4 +27,4 @@ jobs:
             git pull origin deploy-vimexx
             composer install
             composer update
-            php artisan migrate:fresh --seed
+            php artisan migrate
