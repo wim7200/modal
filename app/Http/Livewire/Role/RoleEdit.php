@@ -25,7 +25,6 @@ class RoleEdit extends ModalComponent
         'saveRolePermissions',
     ];
 
-
     public function mount (Role $role)
     {
 

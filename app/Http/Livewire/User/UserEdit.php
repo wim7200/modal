@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\UserLW;
+namespace App\Http\Livewire\User;
 
 use App\Models\Company;
 use App\Models\User;
@@ -48,7 +48,7 @@ class UserEdit extends ModalComponent
     }
     public function render()
     {
-        return view('livewire.userLw.user-edit',[
+        return view('livewire.user.user-edit',[
             'companies'=>Company::all(),
             //'roles'=>Role::all(),
             'roles'=>Role::all()->sortBy('name')
