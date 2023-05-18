@@ -58,14 +58,20 @@ class  ToolTable extends Component
 
     public function getToolsProperty()  /*computed property*/
     {
-        $role=auth()->user()->roles->pluck('name')->first();
+        $role=auth()->user()->roles->pluck('name');
 
-        $role == "admin"
-            ? $company_id = "%%"
-            : $company_id=auth()->user()->company_id;
+        $company_id=auth()->user()->company_id;
+
+
+
+      //  $role == "admin"
+      //      ? $company_id = "%%"
+      //      : $company_id='5';
+
+        //dd($company_id);
 
         return Tool::with('latestRent','kind','condition','clients')
-            ->where('company_id','like',$company_id)
+            ->where('company_id','=',$company_id)
             ->when($this->selectedCondition,function ($query){
                 $query->where('condition_id',$this->selectedCondition);
             })

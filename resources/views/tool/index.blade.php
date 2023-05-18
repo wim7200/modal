@@ -5,9 +5,8 @@
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight ">
                     {{ __('Tool') }}
                 </h2>
-                <h1 class="italic">{{Auth::user()->company->name ?? 'No Company Selected'}}</h1>
+                <h1 class="italic">{{Auth::user()->company->name ?? 'No Company Selected'}}</br></h1>
             </div>
-
             <div class="float-right">
                 {{--moet hier onclick zijn want is niet in livewire component--}}
                 @can('tool-edit')
