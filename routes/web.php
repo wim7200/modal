@@ -54,7 +54,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 Route::group(['middleware' => ['verified']], function () {
 
-        Route::get('/approval',\App\Http\Controllers\HomeController::class);
+       // Route::get('/approval',\App\Http\Controllers\HomeController::class);
 
         Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
         Route::resource('client', App\Http\Controllers\ClientController::class);
