@@ -29,6 +29,37 @@ class KindSeeder extends Seeder
             'img' => 'noImg',
             'description' =>'benzeen meter',
         ]);
+        Kind::create([
+            'name' => 'NH3',
+            'img' => 'noImg',
+            'description' =>'Ammoniak meter',
+        ]);
+        Kind::create([
+            'name' => 'Led Lamp',
+            'img' => 'noImg',
+            'description' =>'LED draaglamp',
+        ]);
+        Kind::create([
+            'name' => 'WT',
+            'img' => 'noImg',
+            'description' =>'Walky Talky',
+        ]);
+        Kind::create([
+            'name' => 'ScanGrip',
+            'img' => 'noImg',
+            'description' =>'draagbare LED verlichting',
+        ]);
+        Kind::create([
+            'name' => 'Docking Unit',
+            'img' => 'noImg',
+            'description' =>'Bump station',
+        ]);
+        Kind::create([
+            'name' => 'Portagas Bump Gas',
+            'img' => 'noImg',
+            'description' =>'Calibratie gas',
+        ]);
+
    }
 }
 
