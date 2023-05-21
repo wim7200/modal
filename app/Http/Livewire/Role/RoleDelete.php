@@ -15,6 +15,7 @@ class RoleDelete extends ModalComponent
 
     public function render()
     {
+        $this->authorize('role-delete');
         return view('livewire.role.role-delete');
     }
 

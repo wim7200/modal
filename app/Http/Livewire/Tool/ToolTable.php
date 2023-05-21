@@ -7,12 +7,14 @@ use App\Models\Kind;
 use App\Models\Condition;
 use App\Models\Tool;
 use Carbon\Carbon;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 
 class  ToolTable extends Component
 {
+    use AuthorizesRequests;
     use WithPagination;
 
     public $search ='';
@@ -48,6 +50,7 @@ class  ToolTable extends Component
 
     public function render()
     {
+        $this->authorize('tool-list');
         return view('livewire.tool.tool-table',[
             'tools'=>$this->tools,
             'conditions'=>Condition::all(),

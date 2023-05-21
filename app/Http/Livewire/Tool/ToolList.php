@@ -8,11 +8,13 @@ use App\Models\Kind;
 use App\Models\Tool;
 
 use Carbon\Carbon;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class ToolList extends Component
 {
+    use AuthorizesRequests;
     use WithPagination;
 
     public Tool $tool;
@@ -37,6 +39,7 @@ class ToolList extends Component
 
     public function render()
     {
+        $this->authorize('tool-list');
         return view('livewire.tool.tool-list',[
             'tools'=>$this->tools,
             'kinds'=>Kind::all(),

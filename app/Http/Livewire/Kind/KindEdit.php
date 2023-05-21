@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Kind;
 
 use App\Models\Kind;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use LivewireUI\Modal\ModalComponent;
@@ -11,6 +12,7 @@ use File;
 
 class KindEdit extends ModalComponent
 {
+    use AuthorizesRequests;
     use WithFileUploads;
 
     public $name;
@@ -44,6 +46,7 @@ class KindEdit extends ModalComponent
     }
     public function render()
     {
+        $this->authorize('kind-edit');
         return view('livewire.kind.kind-edit');
     }
 

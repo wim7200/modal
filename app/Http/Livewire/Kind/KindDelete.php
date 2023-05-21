@@ -3,10 +3,12 @@
 namespace App\Http\Livewire\Kind;
 
 use App\Models\Kind;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use LivewireUI\Modal\ModalComponent;
 
 class KindDelete extends ModalComponent
 {
+    use AuthorizesRequests;
     public $kind;
 
     public function mount(Kind $kind)
@@ -15,6 +17,7 @@ class KindDelete extends ModalComponent
     }
     public function render()
     {
+        $this->authorize('kind-delete');
         return view('livewire.kind.kind-delete');
     }
     public function delete()

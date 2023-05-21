@@ -7,6 +7,7 @@ use LivewireUI\Modal\ModalComponent;
 
 class ConditionEdit extends ModalComponent
 {
+    use AuthorizesRequests;
     public $name;
     public $condition_id;
 
@@ -32,6 +33,7 @@ class ConditionEdit extends ModalComponent
     }
     public function render()
     {
+        $this->authorize('conditon-edit');
         return view('livewire.condition.condition-edit');
     }
 

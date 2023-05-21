@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Role;
 
 use App\Models\Company;
+use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Arr;
 use LivewireUI\Modal\ModalComponent;
 use Spatie\Permission\Models\Permission;
@@ -10,6 +12,8 @@ use Spatie\Permission\Models\Role;
 
 class RoleEdit extends ModalComponent
 {
+    use AuthorizesRequests;
+
     public $name;
 
     public $selectedpermissions=[];
@@ -27,11 +31,8 @@ class RoleEdit extends ModalComponent
 
     public function mount (Role $role)
     {
+       // $this->authorize('viewAny',Role::class);
 
-    }
-    public function render0()
-    {
-        //return view('livewire.role.role-edit');
     }
 
     public function RoleUpdate()
@@ -97,6 +98,7 @@ class RoleEdit extends ModalComponent
 
     public function render()
     {
+        $this->authorize('role-edit');
         return view('livewire.role.role-edit',[
             'Roles'=>Role::all(),
             'permissions'=>Permission::all() ->sortBy('name')

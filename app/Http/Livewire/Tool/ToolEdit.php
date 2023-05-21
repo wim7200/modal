@@ -6,12 +6,14 @@ use App\Models\Condition;
 use App\Models\Kind;
 use App\Models\Tool;
 use Dotenv\Validator;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
 use Livewire\Request;
 use LivewireUI\Modal\ModalComponent;
 
 class ToolEdit extends ModalComponent
 {
+    use AuthorizesRequests;
     public $name, $qrTool, $duetime, $kind_id,$tool_id, $condition_id;
 
     protected $listeners=[
@@ -41,6 +43,7 @@ class ToolEdit extends ModalComponent
     }
     public function render()
     {
+        $this->authorize('tool-edit');
         return view('livewire.tool.tool-edit',[
             'kinds'=>Kind::all(),
             'conditions'=>Condition::all(),

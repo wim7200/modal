@@ -7,6 +7,7 @@ use LivewireUI\Modal\ModalComponent;
 
 class ConditionDelete extends ModalComponent
 {
+    use AuthorizesRequests;
     public $condition;
 
     public function mount(Condition $condition)
@@ -15,6 +16,7 @@ class ConditionDelete extends ModalComponent
     }
     public function render()
     {
+        $this->authorize('conditon-delete');
         return view('livewire.condition.condition-delete');
     }
     public function delete()

@@ -3,10 +3,12 @@
 namespace App\Http\Livewire\Condition;
 
 use App\Models\Condition;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use LivewireUI\Modal\ModalComponent;
 
 class ConditionCreate extends ModalComponent
 {
+    use AuthorizesRequests;
     public $name;
 
     protected $listeners=[
@@ -16,6 +18,7 @@ class ConditionCreate extends ModalComponent
 
     public function render()
     {
+        $this->authorize('conditon-create');
         return view('livewire.condition.condition-create');
     }
 

@@ -3,11 +3,13 @@
 namespace App\Http\Livewire\Kind;
 
 use App\Models\Kind;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use LivewireUI\Modal\ModalComponent;
 use Livewire\WithFileUploads;
 
 class KindCreate extends ModalComponent
 {
+    use AuthorizesRequests;
     use WithFileUploads;
 
     public $name;
@@ -20,6 +22,7 @@ class KindCreate extends ModalComponent
 
     public function render()
     {
+        $this->authorize('kind-create');
         return view('livewire.kind.kind-create');
     }
 
