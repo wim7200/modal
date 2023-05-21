@@ -5,6 +5,7 @@ namespace App\Http\Livewire\User;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use LivewireUI\Modal\ModalComponent;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -19,8 +20,6 @@ class UserEdit extends ModalComponent
     public $selectedroles=[];
     public $role;
 
-
-
     protected $listeners=[
         'UpdateUser','saveUserWithRole',
     ];
@@ -31,8 +30,8 @@ class UserEdit extends ModalComponent
             'name'=>'required',
             'email'=>'required',
             'company_id'=>'required',
-            //'role_id'=>'required',
-            //'selectedroles'=>['required'],
+            'role_id'=>'required',
+            'selectedroles'=>['required'],
         ];
     }
 
@@ -42,18 +41,29 @@ class UserEdit extends ModalComponent
         $this->user_id=$user->id;
         $this->name=$user->name;
         $this->email=$user->email;
-        $this->company=$user->company_id;
+        //$this->company=$user->company_id;
         //$this->role=$user->role_id;
         //$this->notify=$user->notify;
     }
+
     public function render()
     {
         return view('livewire.user.user-edit',[
             'companies'=>Company::all(),
-            //'roles'=>Role::all(),
-            'roles'=>Role::all()->sortBy('name')
-            ->pluck('name','id')
+            'roles'=>$this->roles,
         ]);
+    }
+
+    public function getRolesProperty()
+    {
+        $user =Auth::user();
+
+        if ($user->hasRole('Super-Admin')){
+            return Role::all()->pluck('name','id');
+        }else{
+            return Role::
+                where('id','!=','1')->pluck('name','id');
+        }
     }
 
     public function UpdateUser()
@@ -83,8 +93,6 @@ class UserEdit extends ModalComponent
             $user->syncRoles(Role::find(array_keys($this->selectedroles))->pluck('name'));
         }
 
-        //dd($user);
-
        // $role=Role::find($this->selectedroles);
 
         $validatedData=$this->validate([
@@ -93,12 +101,7 @@ class UserEdit extends ModalComponent
 
         $this->user->update($validatedData);
 
-
-        //dd($role);
         session()->flash('message', 'User Updated succesfully');
         return redirect()->to('/user');
     }
-
-
-
 }

@@ -30,8 +30,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ConditionSeeder::class);
         $this->call(ClientSeeder::class);
         $this->call(CompanySeeder::class);
-
-        // $this->call(ToolSeeder::class);
+        $this->call(ToolSeeder::class);
 
         $this->call(PermissionTableSeeder::class);
         $this->call(RolesAndPermissionsSeeder::class);

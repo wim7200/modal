@@ -40,6 +40,7 @@
                         <div class="flex flex-wrap mr-3 mt-3 w-1/3">
                             <div class="flex">
                                 <div class="1/4">
+
                                     <x-jet-input  name="role" wire:model="selectedroles.{{$key}}" type="checkbox"  />
                                 </div>
                                 <div class="text-wrap 3/4">

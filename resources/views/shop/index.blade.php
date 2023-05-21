@@ -6,7 +6,6 @@
             </h2>
             <div>
                 <p class="italic float-left">{{Auth::user()->company->name ?? 'No Company Selected'}} </p>
-                <p class="italic float-right">Logged in : {{Auth::user()->roles->pluck('name')->implode(', ')}}</p>
             </div>
         </div>
     </x-slot>

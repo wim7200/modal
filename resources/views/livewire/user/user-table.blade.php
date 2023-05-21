@@ -123,7 +123,7 @@
                                 </tr>
                             @empty
                                 <td class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100"
-                                    colspan="7">
+                                    colspan="8">
                                     <div class="flex items-center justify-center py-8 text-2xl text-gray-400">
                                         Sorry, No data found....
                                     </div>
@@ -135,7 +135,7 @@
                 </div>
             </div>
         </div>
-        {{$users->links()}}
+     {{--   {{$users->links()}}--}}
         @if (session()->has('message'))
             <div class="bg-green-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md my-3"
                  role="alert"

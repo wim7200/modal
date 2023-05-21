@@ -41,7 +41,7 @@
                         {{ __('Tool') }}
                     </x-jet-nav-link>
 
-                    @can('user-edit')
+                    @can('user-list')
                     <x-jet-nav-link href="{{ route('user.index') }}" :active="request()->routeIs('user.index')">
                         {{ __('User') }}
                     </x-jet-nav-link>
@@ -116,6 +116,7 @@
                 <div class="ml-3 relative">
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
+                            <div class="italic float-right text-xs mt-2">{{Auth::user()->roles->pluck('name')->implode(', ')}}</div>
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                 <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                                     <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
