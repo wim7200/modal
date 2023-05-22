@@ -3,11 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Spatie\Permission\Models\Role;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
-use Spatie\Permission\Models\Permission;
 
 class AdminSeeder extends Seeder
 {
@@ -23,7 +19,7 @@ class AdminSeeder extends Seeder
             'email' => 'sad@admin.com',
             'email_verified_at' => now(),
             'profile_photo_path'=>'profile-photos/hert.jpg',
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => bcrypt('appel19'),
             'approved_at'=>now(),
             'approved_by'=>'Wim Torfs',
         ])->assignRole(['super-admin']);
