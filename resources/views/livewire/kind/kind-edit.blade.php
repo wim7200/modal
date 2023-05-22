@@ -32,7 +32,7 @@
                         <label>
                             <i class="fas fa-pen cursor-pointer"></i>
                             <input name="UpdatedPhoto"
-                                   type="file" wire:model.lazy="UpdatedPhoto" class="hidden" />
+                                   type="file" wire:model.lazy="UpdatedPhoto" class="hidden"/>
                         </label>
                     </div>
                     @error('UpdatedPhoto')

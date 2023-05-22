@@ -35,16 +35,19 @@ class DueCron extends Command
     {
         Log::info("Due Cron is working fine!");
 
-        $mailtime=Carbon::now()->add(28,'day');
-        $tools= Tool::whereDate('duetime','=',$mailtime)->get();
-        $users=User::where('notify','=',1)->get();
+        $mailtime = Carbon::now()->add(28, 'day');
+        $tools = Tool::whereDate('duetime', '=', $mailtime)->get();
+        $users = User::where('notify', '=', 1)->get();
 
-        if (!$tools->isEmpty()){
-            foreach ($users as $user)
-            { Mail::to($user->email)->send(new DueTimeMail($user, $tools)); }
-            }else{ Log::info("No tools Due!!!!");}
+        if (!$tools->isEmpty()) {
+            foreach ($users as $user) {
+                Mail::to($user->email)->send(new DueTimeMail($user, $tools));
+            }
+        } else {
+            Log::info("No tools Due!!!!");
+        }
 
 
-       return Command::SUCCESS;
+        return Command::SUCCESS;
     }
 }

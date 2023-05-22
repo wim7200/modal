@@ -14,7 +14,7 @@ class ToggleButton extends Component
 
     public function mount()
     {
-       $this->isActive = (bool) $this->model->getAttribute($this->field);
+        $this->isActive = (bool)$this->model->getAttribute($this->field);
     }
 
     public function render()
@@ -26,6 +26,6 @@ class ToggleButton extends Component
     {
 
         $this->model->setAttribute($this->field, $value)->save();
-        return redirect('/user')->with('message','mailing updated');
+        return redirect('/user')->with('message', 'mailing updated');
     }
 }

@@ -8,29 +8,25 @@ use LivewireUI\Modal\ModalComponent;
 class ConditionEdit extends ModalComponent
 {
     use AuthorizesRequests;
+
     public $name;
     public $condition_id;
 
-    protected $listeners=[
+    protected $listeners = [
         'ConditionUpdate',
     ];
 
     /*protected $rules=[
         'name'=>'required',
     ];*/
-    protected function rules()
+
+    public function mount(Condition $condition)
     {
-        return[
-            'name'=>'required|unique:conditions,name'.$this->condition->condition_id,
-        ];
+        $this->condition = $condition;
+        $this->condition_id = $condition->id;
+        $this->name = $condition->name;
     }
 
-    public function mount (Condition $condition)
-    {
-        $this->condition=$condition;
-        $this->condition_id=$condition->id;
-        $this->name=$condition->name;
-    }
     public function render()
     {
         $this->authorize('conditon-edit');
@@ -49,5 +45,12 @@ class ConditionEdit extends ModalComponent
 
         session()->flash('message', 'Condition Updated succesfully');
         return redirect()->to('/condition');
+    }
+
+    protected function rules()
+    {
+        return [
+            'name' => 'required|unique:conditions,name' . $this->condition->condition_id,
+        ];
     }
 }

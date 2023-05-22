@@ -6,6 +6,7 @@ use App\Http\Requests\KindStoreRequest;
 use App\Http\Requests\KindUpdateRequest;
 use App\Models\Kind;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class KindController extends Controller
 {
@@ -15,8 +16,8 @@ class KindController extends Controller
     }*/
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function index(Request $request)
     {
@@ -26,17 +27,8 @@ class KindController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request $request)
-    {
-        return view('kind.create');
-    }
-
-    /**
-     * @param \App\Http\Requests\KindStoreRequest $request
-     * @return \Illuminate\Http\Response
+     * @param KindStoreRequest $request
+     * @return Response
      */
     public function store(KindStoreRequest $request)
     {
@@ -48,9 +40,18 @@ class KindController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Kind $kind
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
+     */
+    public function create(Request $request)
+    {
+        return view('kind.create');
+    }
+
+    /**
+     * @param Request $request
+     * @param Kind $kind
+     * @return Response
      */
     public function show(Request $request, Kind $kind)
     {
@@ -58,9 +59,9 @@ class KindController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Kind $kind
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Kind $kind
+     * @return Response
      */
     public function edit(Request $request, Kind $kind)
     {
@@ -68,9 +69,9 @@ class KindController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\KindUpdateRequest $request
-     * @param \App\Models\Kind $kind
-     * @return \Illuminate\Http\Response
+     * @param KindUpdateRequest $request
+     * @param Kind $kind
+     * @return Response
      */
     public function update(KindUpdateRequest $request, Kind $kind)
     {
@@ -82,9 +83,9 @@ class KindController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Kind $kind
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Kind $kind
+     * @return Response
      */
     public function destroy(Request $request, Kind $kind)
     {

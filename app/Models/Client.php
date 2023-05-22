@@ -31,10 +31,11 @@ class Client extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name'=>'string',
-        'qrClient'=>'string',
-        'company'=>'string'
+        'name' => 'string',
+        'qrClient' => 'string',
+        'company' => 'string'
     ];
+
     public function tools()
     {
         return $this->belongsToMany(Tool::class)

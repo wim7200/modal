@@ -10,6 +10,6 @@
         </div>
     </x-slot>
 
-  @livewire ('user.user-table')
+    @livewire ('user.user-table')
 
 </x-app-layout>

@@ -12,18 +12,17 @@ class ClientTable extends Component
 
 
     public $name, $company;
-    public $search ='';
-    public $sortField='name';
-    public $sortAsc=true;
-
+    public $search = '';
+    public $sortField = 'name';
+    public $sortAsc = true;
 
 
     public function render()
     {
-        return view('livewire.client.client-table',[
-            'clients'=>Client::query()
-                ->search($this->search,['name','qrClient','company'])
-                ->orderby($this->sortField,$this->sortAsc? 'asc':'desc')
+        return view('livewire.client.client-table', [
+            'clients' => Client::query()
+                ->search($this->search, ['name', 'qrClient', 'company'])
+                ->orderby($this->sortField, $this->sortAsc ? 'asc' : 'desc')
                 ->paginate(10),
         ]);
 
@@ -32,7 +31,7 @@ class ClientTable extends Component
     public function sortBy($field)
     {
         if ($this->sortField === $field) {
-            $this->sortAsc = ! $this->sortAsc;
+            $this->sortAsc = !$this->sortAsc;
         } else {
             $this->sortAsc = true;
         }

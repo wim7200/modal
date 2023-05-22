@@ -9,7 +9,7 @@
             <select class="w-1/2" wire:model="selectedrole">
                 <option value="">Select a Rol</option>
                 @foreach($Roles as $role)
-                    <option value="{{$role->id}}" >{{$role->name}}</option>
+                    <option value="{{$role->id}}">{{$role->name}}</option>
                 @endforeach
             </select>
         </div>
@@ -19,10 +19,11 @@
                 <div class="w-1/2">Available Permissions</div>
                 <div class="flex justify-end w-1/2">
                     <div class="1/4">
-                        <x-jet-input id="selectall" name="selectall" wire:model="checkall" type="checkbox" class="mt-1" />
+                        <x-jet-input id="selectall" name="selectall" wire:model="checkall" type="checkbox"
+                                     class="mt-1"/>
                     </div>
                     <div class="text-wrap 3/4">
-                        <x-jet-label class="ml-1 mt-0" for="selectall" value="Select All" />
+                        <x-jet-label class="ml-1 mt-0" for="selectall" value="Select All"/>
                     </div>
                 </div>
             </div>
@@ -34,10 +35,11 @@
                     <div class="flex flex-wrap mr-3 mt-3 w-1/3">
                         <div class="flex">
                             <div class="1/4">
-                                <x-jet-input  name="rolepermissions" wire:model="selectedpermissions.{{$key}}"   type="checkbox" class="mt-1" />
+                                <x-jet-input name="rolepermissions" wire:model="selectedpermissions.{{$key}}"
+                                             type="checkbox" class="mt-1"/>
                             </div>
                             <div class="text-wrap 3/4">
-                                <x-jet-label class="ml-1 mt-0" for="{{$permission}}" value="{{$permission}}" />
+                                <x-jet-label class="ml-1 mt-0" for="{{$permission}}" value="{{$permission}}"/>
                             </div>
                         </div>
                     </div>

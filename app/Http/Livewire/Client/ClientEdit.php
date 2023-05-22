@@ -12,27 +12,19 @@ class ClientEdit extends ModalComponent
     public $company;
     public $client_id;
 
-    protected $listeners=[
+    protected $listeners = [
         'ClientUpdate',
     ];
 
-    protected function rules()
+    public function mount(Client $client)
     {
-        return[
-            'name'=>'required',
-            'qrClient'=>'required|unique:clients,qrClient'.$this->client->client_id,
-            'company'=>'required',
-        ];
+        $this->client = $client;
+        $this->client_id = $client->id;
+        $this->name = $client->name;
+        $this->qrClient = $client->qrClient;
+        $this->company = $client->company;
     }
 
-    public function mount (Client $client)
-    {
-        $this->client=$client;
-        $this->client_id=$client->id;
-        $this->name=$client->name;
-        $this->qrClient=$client->qrClient;
-        $this->company=$client->company;
-    }
     public function render()
     {
         return view('livewire.client.client-edit');
@@ -52,5 +44,14 @@ class ClientEdit extends ModalComponent
 
         session()->flash('message', 'Client Updated succesfully');
         return redirect()->to('/client');
+    }
+
+    protected function rules()
+    {
+        return [
+            'name' => 'required',
+            'qrClient' => 'required|unique:clients,qrClient' . $this->client->client_id,
+            'company' => 'required',
+        ];
     }
 }

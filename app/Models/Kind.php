@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Kind extends Model
 {
@@ -31,7 +30,7 @@ class Kind extends Model
         'id' => 'integer',
     ];
 
-    public function tools():HasMany
+    public function tools(): HasMany
     {
         return $this->hasMany(Tool::class);
     }

@@ -21,10 +21,11 @@
 
             <label for="exampleFormControlSelect1"
                    class="block text-gray-700 text-sm font-bold">Company</label>
-            <select class="shadow appearance-none border rounded w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="exampleFormControlInput2" placeholder="Company" wire:model="company_id">
+            <select
+                class="shadow appearance-none border rounded w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="exampleFormControlInput2" placeholder="Company" wire:model="company_id">
 
-            <option value="">Select a Company</option>
+                <option value="">Select a Company</option>
                 @foreach ($companies as $company)
                     <option value="{{ $company->id }}">{{ $company->name }}</option>
                 @endforeach
@@ -41,10 +42,10 @@
                             <div class="flex">
                                 <div class="1/4">
 
-                                    <x-jet-input  name="role" wire:model="selectedroles.{{$key}}" type="checkbox"  />
+                                    <x-jet-input name="role" wire:model="selectedroles.{{$key}}" type="checkbox"/>
                                 </div>
                                 <div class="text-wrap 3/4">
-                                    <x-jet-label class="ml-1 mt-0" for="{{$role}}" value="{{$role}}" />
+                                    <x-jet-label class="ml-1 mt-0" for="{{$role}}" value="{{$role}}"/>
                                 </div>
                             </div>
                         </div>
@@ -56,8 +57,6 @@
             <td class="text-center">
                 <div>@livewire('toggle-button', ['model' => $user, 'field' => 'notify'], key($user->id))</div>
             </td>
-
-
 
 
         </form>

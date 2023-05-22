@@ -9,15 +9,16 @@ use Spatie\Permission\Models\Role;
 class RoleCreate extends ModalComponent
 {
     use AuthorizesRequests;
+
     public $name;
 
-    public $listeners=[
+    public $listeners = [
         'RoleCreate'
     ];
 
-    public function mount (Role $role)
+    public function mount(Role $role)
     {
-       // $this->authorize('create',Role::class);
+        // $this->authorize('create',Role::class);
 
     }
 
@@ -32,12 +33,12 @@ class RoleCreate extends ModalComponent
 
 
         $this->validate([
-            'name'=>'required'
+            'name' => 'required'
         ]);
         Role::updateOrCreate([
-            'name'=>$this->name,
+            'name' => $this->name,
         ]);
-        session()->flash('message','Role Created succesfully');
+        session()->flash('message', 'Role Created succesfully');
         return redirect()->to('/role');
     }
 }

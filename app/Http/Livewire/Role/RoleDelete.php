@@ -10,7 +10,7 @@ class RoleDelete extends ModalComponent
 
     public function mount(Role $role)
     {
-        $this->role=$role;
+        $this->role = $role;
     }
 
     public function render()
@@ -22,7 +22,7 @@ class RoleDelete extends ModalComponent
     public function delete()
     {
         $this->role->delete();
-        session()->flash('message','Role deleted!');
+        session()->flash('message', 'Role deleted!');
         return redirect()->to('/role');
     }
 }

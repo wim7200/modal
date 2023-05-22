@@ -11,9 +11,9 @@ class ClientCreate extends ModalComponent
     public $qrClient;
     public $company;
 
-    protected $listeners=[
+    protected $listeners = [
         'ClientCreate',
-        ];
+    ];
 
     public function render()
     {
@@ -24,15 +24,15 @@ class ClientCreate extends ModalComponent
     public function ClientCreate()
     {
         $this->validate([
-            'name'=>'required',
-            'qrClient'=>'required|unique:clients,qrClient',
-            'company'=>'required',
+            'name' => 'required',
+            'qrClient' => 'required|unique:clients,qrClient',
+            'company' => 'required',
         ]);
 
         Client::Create([
-            'name'=>$this->name,
-            'qrClient'=>$this->qrClient,
-            'company'=>$this->company,
+            'name' => $this->name,
+            'qrClient' => $this->qrClient,
+            'company' => $this->company,
         ]);
         session()->flash('message', 'Client Created succesfully');
         return redirect()->to('/client');

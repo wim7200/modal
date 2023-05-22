@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use App\Mail\UserRegistered;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 
 class SendNewUserRegisteredEmail
@@ -22,12 +20,12 @@ class SendNewUserRegisteredEmail
      */
     public function handle($event): void
     {
-        $user=$event->user;
+        $user = $event->user;
 
         //send the mail with details of the user, coming with the event
 
-        $to="torfs.cock@telenet.be";
-        Mail::to($to)->send(new UserRegistered($user) );
+        $to = "torfs.cock@telenet.be";
+        Mail::to($to)->send(new UserRegistered($user));
 
 
     }

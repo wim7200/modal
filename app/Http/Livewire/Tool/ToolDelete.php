@@ -16,15 +16,17 @@ class ToolDelete extends ModalComponent
     {
         $this->tool = $tool;
     }
+
     public function render()
     {
         $this->authorize('tool-delete');
         return view('livewire.tool.tool-delete');
     }
+
     public function delete()
     {
         $this->tool->delete();
-        session()->flash('message','Tool deleted!');
+        session()->flash('message', 'Tool deleted!');
         return redirect()->to('/tool');
     }
 }

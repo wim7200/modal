@@ -10,20 +10,20 @@ class Company extends Model
 {
     use HasFactory;
 
-    protected $fillable=[
-        'name','number'
+    protected $fillable = [
+        'name', 'number'
     ];
 
-    protected $casts=[
-        'id'=>'integer',
+    protected $casts = [
+        'id' => 'integer',
     ];
 
-    public function tools():HasMany
+    public function tools(): HasMany
     {
         return $this->hasMany(Tool::class);
     }
 
-    public function users():HasMany
+    public function users(): HasMany
     {
         return $this->hasMany(User::class);
     }

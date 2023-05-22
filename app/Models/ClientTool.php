@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class ClientTool extends pivot
 {
-    protected $table ='client_tool';
+    protected $table = 'client_tool';
     use HasFactory;
-
 }

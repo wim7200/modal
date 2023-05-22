@@ -23,12 +23,12 @@ class Tool extends Model
 
     protected $casts = [
         'id' => 'integer',
-        'name'=>'string',
+        'name' => 'string',
         'duetime' => 'timestamp',
-        'isActive'=>'boolean',
+        'isActive' => 'boolean',
         'kind_id' => 'integer',
         'condition_id' => 'integer',
-        'company_id'=>'integer',
+        'company_id' => 'integer',
 
     ];
 
@@ -52,17 +52,16 @@ class Tool extends Model
         return $this->belongsToMany(Client::class)
             //->using(ClientTool::class)
             ->withPivot('state')
-            ->orderByPivot('created_at',direction: 'desc')
+            ->orderByPivot('created_at', direction: 'desc')
             ->withTimestamps();
     }
 
-   public function lastupdated_clients()
+    public function lastupdated_clients()
     {
         return $this->belongsToMany(Client::class)
-            ->wherePivot('state',true)
-            ->withPivot('state','id','created_at')
-            ->orderBy('client_tool.id','desc')
-            ;
+            ->wherePivot('state', true)
+            ->withPivot('state', 'id', 'created_at')
+            ->orderBy('client_tool.id', 'desc');
     }
 
     public function latestRent()

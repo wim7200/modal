@@ -9,6 +9,7 @@ use LivewireUI\Modal\ModalComponent;
 class UserCreate extends ModalComponent
 {
     use AuthorizesRequests;
+
     public $name;
     public $email;
     public $password;
@@ -16,9 +17,9 @@ class UserCreate extends ModalComponent
     public $notify;
     public $user_id;
 
-    protected $listeners=[
+    protected $listeners = [
         'UserCreate',
-        ];
+    ];
 
     public function render()
     {
@@ -29,15 +30,14 @@ class UserCreate extends ModalComponent
     public function UserCreate()
     {
         $this->validate([
-            'name'=>'required',
-            'email'=>'required|unique:users',
+            'name' => 'required',
+            'email' => 'required|unique:users',
         ]);
 
 
-
         User::Create([
-            'name'=>$this->name,
-            'email'=>$this->email,
+            'name' => $this->name,
+            'email' => $this->email,
 
 
         ])->assignRole('user');

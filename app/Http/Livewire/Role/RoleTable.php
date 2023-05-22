@@ -12,14 +12,14 @@ class RoleTable extends Component
 {
     use AuthorizesRequests;
 
-    public $name,$role;
+    public $name, $role;
 
     public function render()
     {
         $this->authorize('role-list');
 
-        return view('livewire.role.role-table',[
-            'roles'=>Role::paginate(10),
+        return view('livewire.role.role-table', [
+            'roles' => Role::paginate(10),
         ]);
     }
 }

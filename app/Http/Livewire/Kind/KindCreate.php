@@ -4,8 +4,8 @@ namespace App\Http\Livewire\Kind;
 
 use App\Models\Kind;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use LivewireUI\Modal\ModalComponent;
 use Livewire\WithFileUploads;
+use LivewireUI\Modal\ModalComponent;
 
 class KindCreate extends ModalComponent
 {
@@ -16,7 +16,7 @@ class KindCreate extends ModalComponent
     public $photo;
     public $description;
 
-    protected $listeners=[
+    protected $listeners = [
         'KindCreate',
     ];
 
@@ -29,20 +29,20 @@ class KindCreate extends ModalComponent
     public function KindCreate()
     {
         $this->validate([
-            'name'=>'required',
+            'name' => 'required',
 
         ]);
 
-        if (!empty($this->photo)){
+        if (!empty($this->photo)) {
             $this->photo->store('public/img');
         }
 
         Kind::updateOrCreate([
-            'name'=>$this->name,
-            'description'=>$this->description,
-            'img'=>$this->photo->hashname()
+            'name' => $this->name,
+            'description' => $this->description,
+            'img' => $this->photo->hashname()
         ]);
-        session()->flash('message','Kind Created succesfully');
+        session()->flash('message', 'Kind Created succesfully');
         return redirect()->to('/kind');
     }
 }

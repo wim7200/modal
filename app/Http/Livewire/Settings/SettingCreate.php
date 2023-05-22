@@ -8,9 +8,9 @@ use LivewireUI\Modal\ModalComponent;
 
 class SettingCreate extends ModalComponent
 {
-    public $name,$value;
+    public $name, $value;
 
-    protected $listeners=[
+    protected $listeners = [
         'SettingCreate'
     ];
 
@@ -22,16 +22,16 @@ class SettingCreate extends ModalComponent
     public function SettingCreate()
     {
         $this->validate([
-            'name'=>'required',
-            'value'=>'required',
+            'name' => 'required',
+            'value' => 'required',
         ]);
 
         Setting::Create([
-            'name'=>$this->name,
-            'value'=>$this->value,
+            'name' => $this->name,
+            'value' => $this->value,
         ]);
 
-        session()->flash('message','Settings Created succesfully');
+        session()->flash('message', 'Settings Created succesfully');
         return redirect()->to('/setting');
     }
 }

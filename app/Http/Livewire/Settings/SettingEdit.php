@@ -9,21 +9,13 @@ class SettingEdit extends ModalComponent
 {
     public $name, $value, $settting_id;
 
-    protected $listeners=[
+    protected $listeners = [
         'SettingUpdate',
     ];
 
     public function render()
     {
         return view('livewire.settings.setting-edit');
-    }
-
-    protected function rules()
-    {
-        return [
-            'name' => 'required',
-            'value'=>'required',
-        ];
     }
 
     public function mount(Setting $setting)
@@ -40,13 +32,18 @@ class SettingEdit extends ModalComponent
 
         $this->setting->update($validatedData);
 
-        session()->flash('message','Settings is Updated succesfully');
+        session()->flash('message', 'Settings is Updated succesfully');
         return redirect()->to('/setting');
 
     }
 
-
-
+    protected function rules()
+    {
+        return [
+            'name' => 'required',
+            'value' => 'required',
+        ];
+    }
 
 
 }

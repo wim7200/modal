@@ -4,8 +4,8 @@
     </x-slot>
 
     @php
-       $current=\Carbon\Carbon::now();
-       $duetime=$current->addDays(170);
+        use Carbon\Carbon;$current=Carbon::now();
+        $duetime=$current->addDays(170);
     @endphp
 
     <x-slot name="content">

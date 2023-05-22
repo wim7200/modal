@@ -9,7 +9,7 @@
                 <div class="flex justify-between">
                     <label for="role-{{$role->name}}">{{$role->name}}</label>
                     <input class="rounded form-checkbox" id="role-{{$role->name}}"
-                           type="checkbox" value="{{$role->id}}" wire:model.lazy="userRoles" />
+                           type="checkbox" value="{{$role->id}}" wire:model.lazy="userRoles"/>
                 </div>
             @endforeach
         </div>

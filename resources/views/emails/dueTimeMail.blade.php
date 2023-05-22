@@ -9,16 +9,17 @@
 <p>Volgende toestellen moeten in nabije toekomst gecalibreerd worden.</p>
 <p>Graag actie ondernemen!</p>
 <p>
-Met dank,<br/>
-De Lactam-Shop,
+    Met dank,<br/>
+    De Lactam-Shop,
     (uit dueTimeMail)
 </p>
 
-    toestellen te calibreren :<br/>
+toestellen te calibreren :<br/>
 
-    @foreach($tools as $tool)
-        - {{$tool->name}} calibratie ten laatste op : {{\Carbon\Carbon::parse($tool->duetime)->format('Y-M-d')}} ==> {{$tool->qrTool}}<br />
-    @endforeach
+@foreach($tools as $tool)
+    - {{$tool->name}} calibratie ten laatste op : {{\Carbon\Carbon::parse($tool->duetime)->format('Y-M-d')}}
+    ==> {{$tool->qrTool}}<br/>
+@endforeach
 
 
 </body>

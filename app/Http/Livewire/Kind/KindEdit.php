@@ -3,12 +3,10 @@
 namespace App\Http\Livewire\Kind;
 
 use App\Models\Kind;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use LivewireUI\Modal\ModalComponent;
-use Livewire\WithFileUploads;
 use File;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Livewire\WithFileUploads;
+use LivewireUI\Modal\ModalComponent;
 
 class KindEdit extends ModalComponent
 {
@@ -22,28 +20,19 @@ class KindEdit extends ModalComponent
     public $UpdatedPhoto;
 
 
-
-    protected $listeners=[
+    protected $listeners = [
         'KindUpdate',
     ];
 
-    protected function rules()
+    public function mount(Kind $kind)
     {
-        return [
-            'name'=>'required',
-            'description'=>'required',
-            'UpdatedPhoto'=>'image',
-        ];
-    }
-
-    public function mount (Kind $kind)
-    {
-        $this->kind=$kind;
-        $this->Kind_id=$kind->id;
-        $this->name=$kind->name;
-        $this->description=$kind->description;
+        $this->kind = $kind;
+        $this->Kind_id = $kind->id;
+        $this->name = $kind->name;
+        $this->description = $kind->description;
         //$this->photo=$kind->photo;
     }
+
     public function render()
     {
         $this->authorize('kind-edit');
@@ -55,7 +44,7 @@ class KindEdit extends ModalComponent
         $validatedDate = $this->validate();
 
 
-        if (!empty($this->photo)){
+        if (!empty($this->photo)) {
             $this->photo->store('public/img');
         }
 
@@ -71,27 +60,36 @@ class KindEdit extends ModalComponent
         return redirect()->to('/kind');
     }
 
-
     public function KindUpdate()
     {
         $this->validate([
-            'name'=>'required',
+            'name' => 'required',
         ]);
 
-        if(is_null($this->UpdatedPhoto))
-            {$filename=$this->kind->img;}
-        if(!is_null($this->UpdatedPhoto))
-        {   $filename=$this->UpdatedPhoto->store('public/img');
-            $filename=basename($filename);
+        if (is_null($this->UpdatedPhoto)) {
+            $filename = $this->kind->img;
+        }
+        if (!is_null($this->UpdatedPhoto)) {
+            $filename = $this->UpdatedPhoto->store('public/img');
+            $filename = basename($filename);
         }
 
         $this->kind->update([
-            'name'=>$this->name,
-            'description'=>$this->description,
-            'img'=>$filename,
+            'name' => $this->name,
+            'description' => $this->description,
+            'img' => $filename,
         ]);
 
         session()->flash('message', 'Kind Updated succesfully');
         return redirect()->to('/kind');
+    }
+
+    protected function rules()
+    {
+        return [
+            'name' => 'required',
+            'description' => 'required',
+            'UpdatedPhoto' => 'image',
+        ];
     }
 }

@@ -13,14 +13,16 @@ class ClientDelete extends ModalComponent
     {
         $this->client = $client;
     }
+
     public function render()
     {
         return view('livewire.client.client-delete');
     }
+
     public function delete()
     {
         $this->client->delete();
-        session()->flash('message','Client deleted!');
+        session()->flash('message', 'Client deleted!');
         return redirect()->to('/client');
     }
 }

@@ -1,7 +1,7 @@
 <div class="py-8 space-y-4">
     <div class="max-w-7xl mx-auto"> {{--breedte van tabel, centreren op ruimte--}}
 
-<!--buttons-->
+        <!--buttons-->
         <div>
             <div class="flex justify-between">
                 {{--Search button--}}
@@ -11,9 +11,9 @@
                                 bg-white bg-clip-padding border border-solid border-gray-300
                                 rounded transition ease-in-out m-0
                                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                           type="search"{{--overbodig--}}
-                           name="search"{{--overbodig--}}
-                           id="search"{{--overbodig--}}
+                           type="search" {{--overbodig--}}
+                           name="search" {{--overbodig--}}
+                           id="search" {{--overbodig--}}
                            x-ref="searchField"
                            x-on:input.debounce.400ms="isTyped = ($event.target.value != '')"
                            placeholder='Search... Press / to focus'
@@ -95,9 +95,9 @@
                                     >
                                         <li>
                                             <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-gray-700 hover:bg-gray-100"
-                                                href="#"
-                                                onclick="confirm('Nieuwe DueTime wordt ingesteld op +180 dagen')||stopImmediatePropagation()"
-                                                wire:click="SetOk()"
+                                               href="#"
+                                               onclick="confirm('Nieuwe DueTime wordt ingesteld op +180 dagen')||stopImmediatePropagation()"
+                                               wire:click="SetOk()"
                                             >Meting OK</a>
                                         </li>
                                         <li>
@@ -109,9 +109,9 @@
                                         <li>
                                             <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap
                                                   bg-transparent text-gray-700 hover:bg-gray-100"
-                                                href="#"
-                                                onclick="confirm('Geselecteerde tools worden In Calibratie genomen')||stopImmediatePropagation();"
-                                                wire:click="SetDue()"
+                                               href="#"
+                                               onclick="confirm('Geselecteerde tools worden In Calibratie genomen')||stopImmediatePropagation();"
+                                               wire:click="SetDue()"
                                             >In Calibration</a>
 
                                         </li>
@@ -119,10 +119,10 @@
                                         <li>
                                             <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap
                                                   bg-transparent text-gray-700 hover:bg-gray-100"
-                                                href="#"
+                                               href="#"
                                                wire:click="$emit('openModal', 'tool.tool-new-due-time', )"
-                                                {{--wire:click='$emit("openModal", "tool.tool-new-due-time")'--}}
-                                                class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer"
+                                               {{--wire:click='$emit("openModal", "tool.tool-new-due-time")'--}}
+                                               class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer"
                                             >Set New Due Time</a>
                                         </li>
                                     </ul>
@@ -133,14 +133,16 @@
                 </div>
             </div>
         </div>
-<!--table-->
+        <!--table-->
         <div class="flex flex-col ">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                     <div class="overflow-hidden">
                         <table class="min-w-full overflow-hidden rounded-md ">
                             <thead class="bg-gray-200 text-gray-800 ">
-                            @foreach($checked as $tool) {{$tool}}@endforeach
+                            @foreach($checked as $tool)
+                                {{$tool}}
+                            @endforeach
                             <tr>
                                 <th scope="col" class="p-4">
                                     <div class="flex items-center">
@@ -181,13 +183,13 @@
                                     </a>
                                 </th>
                                 @can('role-edit')
-                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                                    wire:click="sortBy('company_id')">
-                                    <a>Company
-                                        @include('includes._sort-icon',['field'=>'company_id'])
-                                    </a>
-                                </th>
-                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"></th>
+                                    <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                                        wire:click="sortBy('company_id')">
+                                        <a>Company
+                                            @include('includes._sort-icon',['field'=>'company_id'])
+                                        </a>
+                                    </th>
+                                    <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"></th>
                                 @endcan
                                 <th></th>
                             </tr>
@@ -197,7 +199,8 @@
                             @forelse($tools as $tool)
                                 <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                                     <td class="p-4 w-4">
-                                            <input wire:model="checked" value="{{$tool->id}}"  type="checkbox" class="w-4 h-4 rounded text-green-600 ">
+                                        <input wire:model="checked" value="{{$tool->id}}" type="checkbox"
+                                               class="w-4 h-4 rounded text-green-600 ">
                                     </td>
                                     <td><img class="px-2" src="{{asset('storage/img/'.$tool->kind->img)}}"
                                              style="height: 25px;width: auto"></td>
@@ -214,19 +217,19 @@
                                     <td class="flex justify-end mx-4 my-2">
                                         <!-- Inside existing Livewire component, single ' en wire:click -->
                                         @can('tool-edit')
-                                        <button
-                                            wire:click='$emit("openModal", "tool.tool-edit", {{json_encode(["tool" => $tool->id])}})'
-                                            class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer">
-                                            Edit
-                                        </button>
+                                            <button
+                                                wire:click='$emit("openModal", "tool.tool-edit", {{json_encode(["tool" => $tool->id])}})'
+                                                class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer">
+                                                Edit
+                                            </button>
                                         @endcan
                                         <!-- Inside existing Livewire component -->
                                         @can('tool-delete')
-                                        <button
-                                            wire:click='$emit("openModal", "tool.tool-delete", {{json_encode(["tool" => $tool->id])}})'
-                                            class="px-2 rounded-md bg-red-400 hover:bg-red-600 text-gray-900 cursor-pointer">
-                                            Delete
-                                        </button>
+                                            <button
+                                                wire:click='$emit("openModal", "tool.tool-delete", {{json_encode(["tool" => $tool->id])}})'
+                                                class="px-2 rounded-md bg-red-400 hover:bg-red-600 text-gray-900 cursor-pointer">
+                                                Delete
+                                            </button>
                                         @endcan
                                     </td>
                                 </tr>

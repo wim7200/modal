@@ -7,12 +7,13 @@
             {{--moet hier onclick zijn want is niet in livewire component--}}
             <div class="float-right">
                 <x-jet-button color="gray"
-                          onclick="Livewire.emit('openModal', 'client.client-create')">
+                              onclick="Livewire.emit('openModal', 'client.client-create')">
                     Maak nieuwe Ontlener
                 </x-jet-button>
             </div>
+        </div>
     </x-slot>
 
-   @livewire ('client.client-table')
+    @livewire ('client.client-table')
 
 </x-app-layout>

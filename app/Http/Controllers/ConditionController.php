@@ -6,12 +6,13 @@ use App\Http\Requests\ConditionStoreRequest;
 use App\Http\Requests\ConditionUpdateRequest;
 use App\Models\Condition;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ConditionController extends Controller
 {
     /**
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function index(Request $request)
     {
@@ -21,17 +22,8 @@ class ConditionController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request $request)
-    {
-        return view('condition.create');
-    }
-
-    /**
-     * @param \App\Http\Requests\ConditionStoreRequest $request
-     * @return \Illuminate\Http\Response
+     * @param ConditionStoreRequest $request
+     * @return Response
      */
     public function store(ConditionStoreRequest $request)
     {
@@ -43,9 +35,18 @@ class ConditionController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Condition $condition
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
+     */
+    public function create(Request $request)
+    {
+        return view('condition.create');
+    }
+
+    /**
+     * @param Request $request
+     * @param Condition $condition
+     * @return Response
      */
     public function show(Request $request, Condition $condition)
     {
@@ -53,9 +54,9 @@ class ConditionController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Condition $condition
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Condition $condition
+     * @return Response
      */
     public function edit(Request $request, Condition $condition)
     {
@@ -63,9 +64,9 @@ class ConditionController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\ConditionUpdateRequest $request
-     * @param \App\Models\Condition $condition
-     * @return \Illuminate\Http\Response
+     * @param ConditionUpdateRequest $request
+     * @param Condition $condition
+     * @return Response
      */
     public function update(ConditionUpdateRequest $request, Condition $condition)
     {
@@ -77,9 +78,9 @@ class ConditionController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Condition $condition
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Condition $condition
+     * @return Response
      */
     public function destroy(Request $request, Condition $condition)
     {

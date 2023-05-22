@@ -19,8 +19,8 @@ class ConditionTable extends Component
     {
         $this->authorize('condition-list');
 
-          return view('livewire.condition.condition-table',[
-            'conditions'=>Condition::paginate(10),
-            ]);
+        return view('livewire.condition.condition-table', [
+            'conditions' => Condition::paginate(10),
+        ]);
     }
 }

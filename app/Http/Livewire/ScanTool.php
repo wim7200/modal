@@ -3,21 +3,20 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use LivewireUI\Modal\ModalComponent;
 
 class ScanTool extends Component
 {
-    public $search='';
+    public $search = '';
 
     public function render()
     {
         return view('livewire.scan-tool');
     }
 
-    public function updating($field,$value)
+    public function updating($field, $value)
     {
-        
+
         dd($value);
-        $this->emit('openModal','tool.tool-rent',$value);
+        $this->emit('openModal', 'tool.tool-rent', $value);
     }
 }

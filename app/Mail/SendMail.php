@@ -4,7 +4,6 @@ namespace App\Mail;
 
 use App\Models\Tool;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -23,13 +22,13 @@ class SendMail extends Mailable
      */
     public function __construct(Tool $tool)
     {
-        $this->tool=$tool;
+        $this->tool = $tool;
     }
 
     /**
      * Get the message envelope.
      *
-     * @return \Illuminate\Mail\Mailables\Envelope
+     * @return Envelope
      */
     public function envelope()
     {
@@ -41,7 +40,7 @@ class SendMail extends Mailable
     /**
      * Get the message content definition.
      *
-     * @return \Illuminate\Mail\Mailables\Content
+     * @return Content
      */
     public function content()
     {

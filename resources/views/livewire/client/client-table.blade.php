@@ -35,27 +35,27 @@
                 <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                     <div class="overflow-hidden">
                         <table class="min-w-full overflow-hidden rounded-md">
-                            <thead  class="bg-gray-200 text-gray-800 ">
+                            <thead class="bg-gray-200 text-gray-800 ">
                             <tr>
-                                <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                                     wire:click="sortBy('name')">
                                     <a>Ontlener
                                         @include('includes._sort-icon',['field'=>'name'])
                                     </a>
                                 </th>
-                                <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                                     wire:click="sortBy('qrClient')">
                                     <a>QR code
                                         @include('includes._sort-icon',['field'=>'qrClient'])
                                     </a>
                                 </th>
-                                <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                                     wire:click="sortBy('company')">
                                     <a>Bedrijf
                                         @include('includes._sort-icon',['field'=>'company'])
                                     </a>
                                 </th>
-                                <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-left"></th>
+                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"></th>
                             </tr>
                             </thead>
 
@@ -64,24 +64,26 @@
 
                                 <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
 
-                                    <td class="px-6 mt-2 " >{{$client->name}}</td>
-                                    <td class="px-6 mt-2 " >{{$client->qrClient}}</td>
-                                    <td class="px-6 mt-2 " >{{$client->company}}</td>
+                                    <td class="px-6 mt-2 ">{{$client->name}}</td>
+                                    <td class="px-6 mt-2 ">{{$client->qrClient}}</td>
+                                    <td class="px-6 mt-2 ">{{$client->company}}</td>
                                     <td class="flex justify-end mx-4 my-2">
 
                                         <!-- Inside existing Livewire component -->
 
-                                        <button wire:click='$emit("openModal", "client.client-edit", {{json_encode(["client" => $client->id])}})'
-                                                class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer">
+                                        <button
+                                            wire:click='$emit("openModal", "client.client-edit", {{json_encode(["client" => $client->id])}})'
+                                            class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer">
                                             Edit
                                         </button>
 
                                         <!-- Inside existing Livewire component -->
                                         @can('client-delete')
-                                        <button wire:click='$emit("openModal", "client.client-delete", {{json_encode(["client" => $client->id])}})'
+                                            <button
+                                                wire:click='$emit("openModal", "client.client-delete", {{json_encode(["client" => $client->id])}})'
                                                 class="px-2 rounded-md bg-red-400 hover:bg-red-600 text-gray-900 cursor-pointer">
-                                            Delete
-                                        </button>
+                                                Delete
+                                            </button>
                                         @endcan
                                     </td>
                                 </tr>

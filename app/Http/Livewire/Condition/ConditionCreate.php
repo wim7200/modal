@@ -9,9 +9,10 @@ use LivewireUI\Modal\ModalComponent;
 class ConditionCreate extends ModalComponent
 {
     use AuthorizesRequests;
+
     public $name;
 
-    protected $listeners=[
+    protected $listeners = [
         'ConditionCreate',
     ];
 
@@ -25,13 +26,13 @@ class ConditionCreate extends ModalComponent
     public function ConditionCreate()
     {
         $this->validate([
-            'name'=>'required'
+            'name' => 'required'
         ]);
 
         Condition::Create([
-            'name'=>$this->name,
+            'name' => $this->name,
         ]);
-        session()->flash('message','Condition Created succesfully');
+        session()->flash('message', 'Condition Created succesfully');
         return redirect()->to('/condition');
     }
 }

@@ -12,9 +12,9 @@ class SettingController extends Controller
      */
     public function index(Request $request)
     {
-        $settings=Setting::all();
+        $settings = Setting::all();
 
-        return view('setting.index',compact('settings'));
+        return view('setting.index', compact('settings'));
     }
 
     /**

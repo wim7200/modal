@@ -5,36 +5,28 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ToolStoreRequest;
 use App\Http\Requests\ToolUpdateRequest;
 use App\Models\Tool;
-use Illuminate\Http\Request;
 use Illuminate\Foundation\Inspiring;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ToolController extends Controller
 {
 
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function index(Request $request)
     {
-        $quote=Inspiring::quote();
+        $quote = Inspiring::quote();
         $tools = Tool::with('latestRent');
-        return view('tool.index', compact('tools','quote'));
+        return view('tool.index', compact('tools', 'quote'));
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request $request)
-    {
-        return view('tool.create');
-    }
-
-    /**
-     * @param \App\Http\Requests\ToolStoreRequest $request
-     * @return \Illuminate\Http\Response
+     * @param ToolStoreRequest $request
+     * @return Response
      */
     public function store(ToolStoreRequest $request)
     {
@@ -46,9 +38,18 @@ class ToolController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Tool $tool
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
+     */
+    public function create(Request $request)
+    {
+        return view('tool.create');
+    }
+
+    /**
+     * @param Request $request
+     * @param Tool $tool
+     * @return Response
      */
     public function edit(Request $request, Tool $tool)
     {
@@ -56,9 +57,9 @@ class ToolController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\ToolUpdateRequest $request
-     * @param \App\Models\Tool $tool
-     * @return \Illuminate\Http\Response
+     * @param ToolUpdateRequest $request
+     * @param Tool $tool
+     * @return Response
      */
     public function update(ToolUpdateRequest $request, Tool $tool)
     {
@@ -70,9 +71,9 @@ class ToolController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Tool $tool
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Tool $tool
+     * @return Response
      */
     public function destroy(Request $request, Tool $tool)
     {

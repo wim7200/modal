@@ -1,11 +1,11 @@
 <div class="py-4">
     <div class="max-w-7xl mx-auto"> {{--breedte van tabel, centreren op ruimte--}}
-        <div >
+        <div>
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                     <div class="overflow-hidden">
                         <table class="min-w-full overflow-hidden rounded-md">
-                            <thead  class="bg-gray-200 text-gray-800 ">
+                            <thead class="bg-gray-200 text-gray-800 ">
                             <tr>
                                 <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Role</th>
                                 <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Permissions</th>
@@ -33,13 +33,13 @@
                                         </button>--}}
                                     </td>
                                 </tr>
-                                @empty
-                                    <td class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100"
-                                        colspan="7">
-                                        <div class="flex items-center justify-center py-8 text-2xl text-gray-400">
-                                            Sorry, No data found....
-                                        </div>
-                                    </td>
+                            @empty
+                                <td class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100"
+                                    colspan="7">
+                                    <div class="flex items-center justify-center py-8 text-2xl text-gray-400">
+                                        Sorry, No data found....
+                                    </div>
+                                </td>
                             @endforelse
                             </tbody>
                         </table>

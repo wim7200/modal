@@ -6,7 +6,7 @@
             </h2>
             <div class="float-right">
                 <x-jet-button color="gray"
-                    onclick="Livewire.emit('openModal', 'role.role-create')">
+                              onclick="Livewire.emit('openModal', 'role.role-create')">
                     Create New Role
                 </x-jet-button>
                 <x-jet-button
@@ -17,7 +17,7 @@
         </div>
     </x-slot>
 
-   @livewire('role.role-table')
+    @livewire('role.role-table')
 
 
 </x-app-layout>

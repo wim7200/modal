@@ -11,8 +11,6 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use phpDocumentor\Reflection\Types\Callable_;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -32,21 +30,21 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var string[]
      */
     protected $fillable = [
-        'name','email', 'password', 'notify','admin',
-        'approved','approved_by','approved_at',
+        'name', 'email', 'password', 'notify', 'admin',
+        'approved', 'approved_by', 'approved_at',
         'company_id',
     ];
 
-    protected $cast=[
-        'id'=>'integer',
-        'name'=> 'string',
-        'email'=> 'email',
-        'notify'=> 'boolean',
-        'admin'=> 'boolean',
-        'approved'=> 'boolean',
-        'approved_by'=> 'string',
-        'approved_at'=> 'timestamp',
-        'company_id'=> 'integer',
+    protected $cast = [
+        'id' => 'integer',
+        'name' => 'string',
+        'email' => 'email',
+        'notify' => 'boolean',
+        'admin' => 'boolean',
+        'approved' => 'boolean',
+        'approved_by' => 'string',
+        'approved_at' => 'timestamp',
+        'company_id' => 'integer',
     ];
 
     /**
@@ -79,14 +77,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'profile_photo_url',
     ];
 
-    public function company() :BelongsTo
+    public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class)->withDefault([
-            'name'=>'Not Set Yet'
+            'name' => 'Not Set Yet'
         ]);
     }
-
-
 
 
 }

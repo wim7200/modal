@@ -2,8 +2,6 @@
 
 namespace App\Http\Livewire\Role;
 
-use App\Models\Company;
-use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Arr;
 use LivewireUI\Modal\ModalComponent;
@@ -16,45 +14,45 @@ class RoleEdit extends ModalComponent
 
     public $name;
 
-    public $selectedpermissions=[];
+    public $selectedpermissions = [];
     public $selectedrole;
     public $checkall;
 
-    protected $rules=
-        ['selectedrole'=>['required','integer','exists:roles,id'],
-            'selectedpermissions'=>['required','exists:permissions,id']
+    protected $rules =
+        ['selectedrole' => ['required', 'integer', 'exists:roles,id'],
+            'selectedpermissions' => ['required', 'exists:permissions,id']
         ];
 
     protected $listeners = [
         'saveRolePermissions',
     ];
 
-    public function mount (Role $role)
+    public function mount(Role $role)
     {
-       // $this->authorize('viewAny',Role::class);
+        // $this->authorize('viewAny',Role::class);
 
     }
 
     public function RoleUpdate()
     {
         $this->validate([
-            'name'=>'required',
+            'name' => 'required',
         ]);
 
         $this->role->update([
-            'name'=>$this->name,
+            'name' => $this->name,
         ]);
 
-        session()->flash('message','Role updated succesfully');
+        session()->flash('message', 'Role updated succesfully');
         return redirect()->to('/role');
     }
 
     public function updatedSelectedRole($value)
     {
-        $this->selectedpermissions=[];
-        $role=Role::find($value);
-        if($role) {
-            $this->selectedpermissions =$role->getAllPermissions()
+        $this->selectedpermissions = [];
+        $role = Role::find($value);
+        if ($role) {
+            $this->selectedpermissions = $role->getAllPermissions()
                 ->sortBy('name')
                 ->pluck('id', 'id')
                 ->toArray();
@@ -63,28 +61,25 @@ class RoleEdit extends ModalComponent
 
     public function Updatedcheckall($value)
     {
-        if($value) {
+        if ($value) {
             $this->selectedpermissions = Permission::all()
                 ->pluck('id', 'id')
                 ->toArray();
-        }
-        else
-        {
-            $this->selectedpermissions=[];
+        } else {
+            $this->selectedpermissions = [];
         }
     }
 
     public function saveRolePermissions()
     {
-        if($this->selectedpermissions)
-        {   // remove unchecked values that comes with false assign it
+        if ($this->selectedpermissions) {   // remove unchecked values that comes with false assign it
             $this->selectedpermissions = Arr::where($this->selectedpermissions, function ($value) {
                 return $value;
             });
         }
 
         $this->validate();
-        $role=Role::find($this->selectedrole);
+        $role = Role::find($this->selectedrole);
         if ($role) {
             $role->syncPermissions(Permission::find(array_keys($this->selectedpermissions))->pluck('name'));
             $this->selectedpermissions = $role->getAllPermissions()->sortBy('name')
@@ -99,13 +94,12 @@ class RoleEdit extends ModalComponent
     public function render()
     {
         $this->authorize('role-edit');
-        return view('livewire.role.role-edit',[
-            'Roles'=>Role::all(),
-            'permissions'=>Permission::all() ->sortBy('name')
+        return view('livewire.role.role-edit', [
+            'Roles' => Role::all(),
+            'permissions' => Permission::all()->sortBy('name')
                 ->pluck('name', 'id')
         ]);
     }
-
 
 
 }

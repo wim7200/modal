@@ -46,36 +46,36 @@
                 <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                     <div class="overflow-hidden">
                         <table class="min-w-full overflow-hidden rounded-md">
-                            <thead  class="bg-gray-200 text-gray-800 ">
+                            <thead class="bg-gray-200 text-gray-800 ">
                             <tr>
-                                <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                                     wire:click="sortBy('name')">
                                     <a>User
                                         @include('includes._sort-icon',['field'=>'name'])
                                     </a>
                                 </th>
-                                <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                                     wire:click="sortBy('email')">
                                     <a>Email
                                         @include('includes._sort-icon',['field'=>'email'])
                                     </a>
                                 </th>
-                                <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                                     wire:click="sortBy('email_verified_at')">
+                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                                    wire:click="sortBy('email_verified_at')">
                                     <a>Email Verified?
                                         @include('includes._sort-icon',['field'=>'email_verified_at'])
                                     </a>
                                 </th>
-                                <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                                     wire:click="sortBy('email')">
+                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                                    wire:click="sortBy('email')">
                                     <a>Role
                                         @include('includes._sort-icon',['field'=>'role'])
                                     </a>
                                 </th>
                                 <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Company</th>
-                                <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Approved_by</th>
-                                <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Approved_at</th>
-                                <th  class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Notify?</th>
+                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Approved_by</th>
+                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Approved_at</th>
+                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Notify?</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -86,20 +86,23 @@
 
                                 <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
 
-                                    <td class="px-6 mt-2 " >{{$user->name}}</td>
-                                    <td class="px-6 mt-2 " >{{$user->email}}</td>
-                                    <td class="px-6 mt-2 " >{{$user->email_verified_at}}</td>
-                                    <td class="px-6 mt-2 " >{{$user->roles->pluck('name')->implode(', ')}}</td>
-                                    <td class="px-6 mt-2 " >{{$user->company->name ?? 'Not Set Yet'}}</td>
+                                    <td class="px-6 mt-2 ">{{$user->name}}</td>
+                                    <td class="px-6 mt-2 ">{{$user->email}}</td>
+                                    <td class="px-6 mt-2 ">{{$user->email_verified_at}}</td>
+                                    <td class="px-6 mt-2 ">{{$user->roles->pluck('name')->implode(', ')}}</td>
+                                    <td class="px-6 mt-2 ">{{$user->company->name ?? 'Not Set Yet'}}</td>
                                     <td class="px-6 mt-2 ">
                                         @if (($user->approved_by)== "")
                                             Not Approved Yet
-                                        @else {{$user->approved_by}}
+                                        @else
+                                            {{$user->approved_by}}
                                         @endif
                                     </td>
                                     <td class="px-6 mt-2 ">{{$user->approved_at}}</td>
                                     <td class="text-center">
-                                        <div>@livewire('toggle-button', ['model' => $user, 'field' => 'notify'], key($user->id))</div>
+                                        <div>@livewire('toggle-button', ['model' => $user, 'field' => 'notify'],
+                                            key($user->id))
+                                        </div>
                                     </td>
 
                                     {{--<td class="text-center">
@@ -108,16 +111,20 @@
 
                                     <td class="flex justify-end mx-4 my-2">
                                         <!-- Inside existing Livewire component -->
-                                        <button wire:click='$emit("openModal", "user.user-edit", {{json_encode(["user" => $user->id])}})'
-                                                class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer">
+                                        @can('user-edit')
+                                        <button
+                                            wire:click='$emit("openModal", "user.user-edit", {{json_encode(["user" => $user->id])}})'
+                                            class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer">
                                             Edit
                                         </button>
+                                        @endcan
                                         <!-- Inside existing Livewire component -->
                                         @can('user-delete')
-                                        <button wire:click='$emit("openModal", "user.user-delete", {{json_encode(["user" => $user->id])}})'
+                                            <button
+                                                wire:click='$emit("openModal", "user.user-delete", {{json_encode(["user" => $user->id])}})'
                                                 class="px-2 rounded-md bg-red-400 hover:bg-red-600 text-gray-900 cursor-pointer">
-                                            Delete
-                                        </button>
+                                                Delete
+                                            </button>
                                         @endcan
                                     </td>
                                 </tr>
@@ -135,7 +142,7 @@
                 </div>
             </div>
         </div>
-     {{--   {{$users->links()}}--}}
+        {{--   {{$users->links()}}--}}
         @if (session()->has('message'))
             <div class="bg-green-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md my-3"
                  role="alert"

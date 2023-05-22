@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Models\Tool;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Log;
 
 class SetDue extends Command
 {
@@ -29,9 +28,9 @@ class SetDue extends Command
      */
     public function handle()
     {
-        Tool::where('duetime','<',now())
-            ->where('condition_id','=',1)
-            ->update(['condition_id'=>3]);
+        Tool::where('duetime', '<', now())
+            ->where('condition_id', '=', 1)
+            ->update(['condition_id' => 3]);
 
         return Command::SUCCESS;
     }

@@ -2,9 +2,7 @@
 
 namespace App\Mail;
 
-use App\Models\Tool;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -23,8 +21,8 @@ class DueTimeMail extends Mailable
      */
     public function __construct($user, $tools)
     {
-        $this->tools=$tools;
-        $this->user=$user;
+        $this->tools = $tools;
+        $this->user = $user;
     }
 
     /**

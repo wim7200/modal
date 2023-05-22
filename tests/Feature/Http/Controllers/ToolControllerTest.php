@@ -63,14 +63,14 @@ class ToolControllerTest extends TestCase
     {
         $name = $this->faker->name;
         $qr_code_tool = $this->faker->word;
-        $due-time = $this->faker->dateTime();
+        $due - time = $this->faker->dateTime();
         $kind = Kind::factory()->create();
         $condition = Condition::factory()->create();
 
         $response = $this->post(route('tool.store'), [
             'name' => $name,
             'qr_code_tool' => $qr_code_tool,
-            'due-time' => $due-time,
+            'due-time' => $due - time,
             'kind_id' => $kind->id,
             'condition_id' => $condition->id,
         ]);
@@ -78,7 +78,7 @@ class ToolControllerTest extends TestCase
         $tools = Tool::query()
             ->where('name', $name)
             ->where('qr_code_tool', $qr_code_tool)
-            ->where('due-time', $due-time)
+            ->where('due-time', $due - time)
             ->where('kind_id', $kind->id)
             ->where('condition_id', $condition->id)
             ->get();
@@ -140,14 +140,14 @@ class ToolControllerTest extends TestCase
         $tool = Tool::factory()->create();
         $name = $this->faker->name;
         $qr_code_tool = $this->faker->word;
-        $due-time = $this->faker->dateTime();
+        $due - time = $this->faker->dateTime();
         $kind = Kind::factory()->create();
         $condition = Condition::factory()->create();
 
         $response = $this->put(route('tool.update', $tool), [
             'name' => $name,
             'qr_code_tool' => $qr_code_tool,
-            'due-time' => $due-time,
+            'due-time' => $due - time,
             'kind_id' => $kind->id,
             'condition_id' => $condition->id,
         ]);
@@ -159,7 +159,7 @@ class ToolControllerTest extends TestCase
 
         $this->assertEquals($name, $tool->name);
         $this->assertEquals($qr_code_tool, $tool->qr_code_tool);
-        $this->assertEquals($due-time, $tool->due-time);
+        $this->assertEquals($due - time, $tool->due - time);
         $this->assertEquals($kind->id, $tool->kind_id);
         $this->assertEquals($condition->id, $tool->condition_id);
     }
