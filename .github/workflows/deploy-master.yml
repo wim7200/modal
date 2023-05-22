@@ -28,9 +28,5 @@ jobs:
             git pull origin master
             composer install
             composer update
-            php artisan migrate
+            php artisan migrate:fresh
             php artisan up
-
-
-
-
