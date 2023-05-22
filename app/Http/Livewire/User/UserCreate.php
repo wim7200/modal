@@ -3,12 +3,12 @@
 namespace App\Http\Livewire\User;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use LivewireUI\Modal\ModalComponent;
-use Symfony\Component\Console\Input\Input;
 
 class UserCreate extends ModalComponent
 {
+    use AuthorizesRequests;
     public $name;
     public $email;
     public $password;
