@@ -100,14 +100,14 @@
                                             {{$user->approved_by}}
                                         @endif
                                     </td>
-                                    @can('user-edit')
                                     <td class="px-6 mt-2 ">{{$user->approved_at}}</td>
-                                    @endcan
+                                    @can('user-edit')
                                     <td class="text-center">
                                         <div>@livewire('toggle-button', ['model' => $user, 'field' => 'notify'],
                                             key($user->id))
                                         </div>
                                     </td>
+                                    @endcan
 
                                     <td class="flex justify-end mx-4 my-2">
                                         <!-- Inside existing Livewire component -->
