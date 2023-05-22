@@ -75,7 +75,9 @@
                                 <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Company</th>
                                 <th class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Approved_by</th>
                                 <th class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Approved_at</th>
+                                @can('user-edit')
                                 <th class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Notify?</th>
+                                @endcan
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -98,16 +100,14 @@
                                             {{$user->approved_by}}
                                         @endif
                                     </td>
+                                    @can('user-edit')
                                     <td class="px-6 mt-2 ">{{$user->approved_at}}</td>
+                                    @endcan
                                     <td class="text-center">
                                         <div>@livewire('toggle-button', ['model' => $user, 'field' => 'notify'],
                                             key($user->id))
                                         </div>
                                     </td>
-
-                                    {{--<td class="text-center">
-                                        <div>@livewire('admin-button', ['model' => $user, 'field' => 'admin'], key($user->id))</div>
-                                    </td>--}}
 
                                     <td class="flex justify-end mx-4 my-2">
                                         <!-- Inside existing Livewire component -->
