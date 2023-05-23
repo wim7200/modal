@@ -69,7 +69,6 @@ Route::group(['middleware' => ['verified']], function () {
     Route::resource('setting', SettingController::class);
     Route::get('user/{user}/approve', ApproveUserController::class);
     Route::resource('role', RoleController::class);
-    //  Route::get('/user',\App\Http\Livewire\LW_User\UserTable::class)->name('user');
 
 });
 
