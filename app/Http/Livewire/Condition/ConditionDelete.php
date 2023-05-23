@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Condition;
 
 use App\Models\Condition;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use LivewireUI\Modal\ModalComponent;
 
 class ConditionDelete extends ModalComponent
