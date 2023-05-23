@@ -4,7 +4,7 @@
     </x-slot>
 
     @php
-        $current=Carbon::now();
+        $current=\Carbon\Carbon::now();
         $duetime=$current->addDays(170);
     @endphp
 
