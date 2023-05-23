@@ -22,7 +22,7 @@ class AdminSeeder extends Seeder
             'password' => bcrypt('appel19'),
             'approved_at'=>now(),
             'approved_by'=>'Wim Torfs',
-        ])->assignRole(['super-admin']);
+        ])->assignRole(['super-admin'])->markEmailAsVerified();
 
         User::create([
             'name' => 'admin',
@@ -31,7 +31,7 @@ class AdminSeeder extends Seeder
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'approved_at'=>now(),
             'approved_by'=>'Wim Torfs',
-        ])->assignRole('admin');
+        ])->assignRole('admin')->markEmailAsVerified();
 
         User::create([
             'name' => 'manager',
@@ -40,7 +40,7 @@ class AdminSeeder extends Seeder
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'approved_at'=>now(),
             'approved_by'=>'Wim Torfs',
-        ])->assignRole('manager');
+        ])->assignRole('manager')->markEmailAsVerified();
 
 
         User::create([
@@ -50,7 +50,7 @@ class AdminSeeder extends Seeder
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'approved_at'=>now(),
             'approved_by'=>'Wim Torfs',
-        ])->assignRole('user');
+        ])->assignRole('user')->markEmailAsVerified();
 
 
     }
