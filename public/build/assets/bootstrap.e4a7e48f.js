@@ -1,1 +1,0 @@
-import{_ as o}from"./app.8b20144c.js";window._=o(()=>import("./lodash.79e12a03.js").then(e=>e.l),["assets/lodash.79e12a03.js","assets/_commonjsHelpers.b8add541.js"]);window.axios=o(()=>import("./index.a350ca2b.js").then(e=>e.i),["assets/index.a350ca2b.js","assets/_commonjsHelpers.b8add541.js"]);window.axios.defaults.headers.common["X-Requested-With"]="XMLHttpRequest";
