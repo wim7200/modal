@@ -25,6 +25,6 @@ jobs:
           script: |
             cd domains/beta.u49712p140698.web0147.zxcs-klant.nl/beta
             git pull origin deploy-vimexx
-            composer install
-            composer update
+            composer install --no-dev
+            #composer update  moet local gebeuren!!!
             php artisan migrate
