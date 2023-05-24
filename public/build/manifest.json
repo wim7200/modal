@@ -3,13 +3,13 @@
     "file": "assets/fa-regular-400.5da313b0.woff2",
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"
   },
-  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2": {
-    "file": "assets/fa-brands-400.c61287c2.woff2",
-    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"
-  },
   "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2": {
     "file": "assets/fa-solid-900.8f06540f.woff2",
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400.c61287c2.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"
   },
   "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf": {
     "file": "assets/fa-regular-400.d7b19fe2.ttf",
@@ -31,7 +31,7 @@
       "resources/js/bootstrap.js"
     ],
     "css": [
-      "assets/app.80d9e129.css"
+      "assets/app.da7288d9.css"
     ],
     "assets": [
       "assets/fa-brands-400.c61287c2.woff2",
@@ -72,12 +72,12 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app.aa9e2c32.css",
+    "file": "assets/app.4c7c42e8.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.css": {
-    "file": "assets/app.80d9e129.css",
+    "file": "assets/app.da7288d9.css",
     "src": "resources/js/app.css"
   }
 }
