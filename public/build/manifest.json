@@ -31,7 +31,7 @@
       "resources/js/bootstrap.js"
     ],
     "css": [
-      "assets/app.da7288d9.css"
+      "assets/app.85e3141f.css"
     ],
     "assets": [
       "assets/fa-brands-400.c61287c2.woff2",
@@ -72,12 +72,12 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app.4c7c42e8.css",
+    "file": "assets/app.e24a397b.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.css": {
-    "file": "assets/app.da7288d9.css",
+    "file": "assets/app.85e3141f.css",
     "src": "resources/js/app.css"
   }
 }
