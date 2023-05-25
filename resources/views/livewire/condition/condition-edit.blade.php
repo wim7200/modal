@@ -1,4 +1,4 @@
-<x-modal>
+<x-pmodal>
     <x-slot name="title">
         Edit <a class="text-red-500 fond-bold"> {{$condition->name}} </a>
     </x-slot>
@@ -30,6 +30,6 @@
                     </span>
         </div>
     </x-slot>
-</x-modal>
+</x-pmodal>
 
 

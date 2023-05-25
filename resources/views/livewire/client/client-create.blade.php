@@ -1,4 +1,4 @@
-<x-modal>
+<x-pmodal>
     <x-slot name="title">
         Maak Nieuwe Ontlener
     </x-slot>
@@ -44,4 +44,4 @@
             </button>
         </span>
     </x-slot>
-</x-modal>
+</x-pmodal>

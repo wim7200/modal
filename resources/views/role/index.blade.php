@@ -5,14 +5,14 @@
                 {{ __('Roles') }}
             </h2>
             <div class="float-right">
-                <x-jet-button color="gray"
+                <x-button color="gray"
                               onclick="Livewire.emit('openModal', 'role.role-create')">
                     Create New Role
-                </x-jet-button>
-                <x-jet-button
+                </x-button>
+                <x-button
                     onclick="Livewire.emit('openModal', 'role.role-edit')">
                     Edit
-                </x-jet-button>
+                </x-button>
             </div>
         </div>
     </x-slot>

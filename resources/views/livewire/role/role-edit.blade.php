@@ -1,4 +1,4 @@
-<x-modal>
+<x-pmodal>
     <x-slot name="title">
         Edit <a class="text-red-500 fond-bold">{{$selectedrole}}</a>
     </x-slot>
@@ -19,11 +19,11 @@
                 <div class="w-1/2">Available Permissions</div>
                 <div class="flex justify-end w-1/2">
                     <div class="1/4">
-                        <x-jet-input id="selectall" name="selectall" wire:model="checkall" type="checkbox"
+                        <x-input id="selectall" name="selectall" wire:model="checkall" type="checkbox"
                                      class="mt-1"/>
                     </div>
                     <div class="text-wrap 3/4">
-                        <x-jet-label class="ml-1 mt-0" for="selectall" value="Select All"/>
+                        <x-label class="ml-1 mt-0" for="selectall" value="Select All"/>
                     </div>
                 </div>
             </div>
@@ -35,11 +35,11 @@
                     <div class="flex flex-wrap mr-3 mt-3 w-1/3">
                         <div class="flex">
                             <div class="1/4">
-                                <x-jet-input name="rolepermissions" wire:model="selectedpermissions.{{$key}}"
+                                <x-input name="rolepermissions" wire:model="selectedpermissions.{{$key}}"
                                              type="checkbox" class="mt-1"/>
                             </div>
                             <div class="text-wrap 3/4">
-                                <x-jet-label class="ml-1 mt-0" for="{{$permission}}" value="{{$permission}}"/>
+                                <x-label class="ml-1 mt-0" for="{{$permission}}" value="{{$permission}}"/>
                             </div>
                         </div>
                     </div>
@@ -63,6 +63,6 @@
             </button>
         </span>
     </x-slot>
-</x-modal>
+</x-pmodal>
 
 

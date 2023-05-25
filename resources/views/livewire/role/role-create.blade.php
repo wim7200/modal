@@ -1,4 +1,4 @@
-<x-modal>
+<x-pmodal>
     <x-slot name="title">
         Create New Role
     </x-slot>
@@ -26,5 +26,5 @@
             </button>
         </span>
     </x-slot>
-</x-modal>
+</x-pmodal>
 

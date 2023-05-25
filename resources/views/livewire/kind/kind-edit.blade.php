@@ -1,4 +1,4 @@
-<x-modal>
+<x-pmodal>
     <x-slot name="title">
         Edit <a class="text-red-500 fond-bold"> {{$kind->name}} </a>
     </x-slot>
@@ -62,6 +62,6 @@
             </button>
         </span>
     </x-slot>
-</x-modal>
+</x-pmodal>
 
 

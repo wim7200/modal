@@ -5,10 +5,10 @@
                 {{ __('Settings') }}
             </h2>
             <div class="float-right">
-                <x-jet-button color="gray"
+                <x-button color="gray"
                               onclick="Livewire.emit('openModal', 'settings.setting-create')">
                     Create New Setting
-                </x-jet-button>
+                </x-button>
             </div>
         </div>
     </x-slot>

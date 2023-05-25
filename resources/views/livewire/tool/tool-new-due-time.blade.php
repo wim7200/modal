@@ -1,4 +1,4 @@
-<x-modal>
+<x-pmodal>
     <x-slot name="title">
         Set New Due Time
     </x-slot>
@@ -33,5 +33,5 @@
         </div>
 
     </x-slot>
-</x-modal>
+</x-pmodal>
 

@@ -1,4 +1,4 @@
-<x-modal>
+<x-pmodal>
     <x-slot name="title">
         Delete Condition
     </x-slot>
@@ -23,4 +23,4 @@
                     </span>
         </div>
     </x-slot>
-</x-modal>
+</x-pmodal>

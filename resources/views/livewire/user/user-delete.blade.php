@@ -1,4 +1,4 @@
-<x-modal>
+<x-pmodal>
     <x-slot name="title">
         Delete User
     </x-slot>
@@ -23,5 +23,5 @@
                     </span>
         </div>
     </x-slot>
-</x-modal>
+</x-pmodal>
 

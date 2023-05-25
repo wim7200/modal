@@ -1,4 +1,4 @@
-<x-modal form-action="submit">
+<x-pmodal form-action="submit">
     <x-slot name="title">
         Edit <a class="text-red-500 fond-bold"></a>
     </x-slot>
@@ -35,6 +35,6 @@
     </x-slot>
 
 
-</x-modal>
+</x-pmodal>
 
 

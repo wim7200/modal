@@ -1,4 +1,4 @@
-<x-modal>
+<x-pmodal>
     <x-slot name="title">
         Create New Setting
     </x-slot>
@@ -33,5 +33,5 @@
             </button>
         </span>
     </x-slot>
-</x-modal>
+</x-pmodal>
 

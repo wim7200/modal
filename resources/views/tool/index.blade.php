@@ -10,9 +10,9 @@
             <div class="float-right">
                 {{--moet hier onclick zijn want is niet in livewire component--}}
                 @can('tool-create')
-                    <x-jet-button color="gray" onclick="Livewire.emit('openModal', 'tool.tool-create')">Create New
+                    <x-button color="gray" onclick="Livewire.emit('openModal', 'tool.tool-create')">Create New
                         Tool
-                    </x-jet-button>
+                    </x-button>
                 @endcan
             </div>
         </div>

@@ -1,4 +1,4 @@
-<x-modal formAction="update">
+<x-pmodal formAction="update">
     <x-slot name="title">
         Edit<a class="text-red-500 fond-bold"> {{$user->name}} </a>
     </x-slot>
@@ -78,6 +78,6 @@
             </span>
         </div>
     </x-slot>
-</x-modal>
+</x-pmodal>
 
 

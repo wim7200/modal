@@ -1,4 +1,4 @@
-<x-modal>
+<x-pmodal>
     <x-slot name="title">
         Uitlenen van <a class="text-red-500 fond-bold"> {{$name}}</a>
     </x-slot>
@@ -55,5 +55,5 @@
         </div>
     </x-slot>
 
-</x-modal>
+</x-pmodal>
 

@@ -1,4 +1,4 @@
-<x-modal formAction="update">
+<x-pmodal formAction="update">
     <x-slot name="title">
         Hello World
     </x-slot>
@@ -10,4 +10,4 @@
     <x-slot name="buttons">
         <button type="submit">Start counting</button>
     </x-slot>
-</x-modal>
+</x-pmodal>

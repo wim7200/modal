@@ -1,4 +1,4 @@
-<x-modal>
+<x-pmodal>
     <x-slot name="title">
         Create New Kind
     </x-slot>
@@ -48,7 +48,7 @@
             </button>
         </span>
     </x-slot>
-</x-modal>
+</x-pmodal>
 
 
 {{-- <div class="fixed z-10 inset-0 overflow-y-auto ease-out duration-400">
