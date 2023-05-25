@@ -41,11 +41,10 @@
                         <div class="flex flex-wrap mr-3 mt-3 w-1/3">
                             <div class="flex">
                                 <div class="1/4">
-
-                                    <x-jet-input name="role" wire:model="selectedroles.{{$key}}" type="checkbox"/>
+                                    <x-input name="role" wire:model="selectedroles.{{$key}}" type="checkbox"/>
                                 </div>
                                 <div class="text-wrap 3/4">
-                                    <x-jet-label class="ml-1 mt-0" for="{{$role}}" value="{{$role}}"/>
+                                    <x-label class="ml-1 mt-0" for="{{$role}}" value="{{$role}}"/>
                                 </div>
                             </div>
                         </div>
