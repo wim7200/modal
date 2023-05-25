@@ -31,8 +31,8 @@ Route::get('/mailable', function () {
 });
 
 Route::get('/', function () {
-    /*  return view('auth.login');*/
-    return view('welcome');
+     return view('auth.login');
+    /*return view('welcome');*/
 });
 
 /* routes ivm email versturen*/
