@@ -100,7 +100,7 @@
                                             {{$user->approved_by}}
                                         @endif
                                     </td>--}}
-                                    <td class="px-6 mt-2 ">{{$user->approved_at}}</td>
+                                    {{--<td class="px-6 mt-2 ">{{$user->approved_at}}</td>--}}
                                     @can('user-edit')
                                         <td class="text-center">
                                             <div>@livewire('toggle-button', ['model' => $user, 'field' => 'notify'],
