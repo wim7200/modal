@@ -93,13 +93,13 @@
                                     <td class="px-6 mt-2 ">{{$user->email_verified_at}}</td>
                                     <td class="px-6 mt-2 ">{{$user->roles->pluck('name')->implode(', ')}}</td>
                                     <td class="px-6 mt-2 ">{{$user->company->name ?? 'Not Set Yet'}}</td>
-                                    <td class="px-6 mt-2 ">
+                                    {{--<td class="px-6 mt-2 ">
                                         @if (($user->approved_by)== "")
                                             Not Approved Yet
                                         @else
                                             {{$user->approved_by}}
                                         @endif
-                                    </td>
+                                    </td>--}}
                                     <td class="px-6 mt-2 ">{{$user->approved_at}}</td>
                                     @can('user-edit')
                                         <td class="text-center">
