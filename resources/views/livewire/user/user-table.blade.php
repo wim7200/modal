@@ -73,10 +73,10 @@
                                     </a>
                                 </th>
                                 <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left">Company</th>
-                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Approved_by</th>
-                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Approved_at</th>
+                                {{--<th class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Approved_by</th>
+                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Approved_at</th>--}}
                                 @can('user-edit')
-                                <th class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Notify?</th>
+                                    <th class="text-sm font-medium text-gray-900 px-6 py-4 text-center">Notify?</th>
                                 @endcan
                                 <th></th>
                                 <th></th>
@@ -102,21 +102,21 @@
                                     </td>
                                     <td class="px-6 mt-2 ">{{$user->approved_at}}</td>
                                     @can('user-edit')
-                                    <td class="text-center">
-                                        <div>@livewire('toggle-button', ['model' => $user, 'field' => 'notify'],
-                                            key($user->id))
-                                        </div>
-                                    </td>
+                                        <td class="text-center">
+                                            <div>@livewire('toggle-button', ['model' => $user, 'field' => 'notify'],
+                                                key($user->id))
+                                            </div>
+                                        </td>
                                     @endcan
 
                                     <td class="flex justify-end mx-4 my-2">
                                         <!-- Inside existing Livewire component -->
                                         @can('user-edit')
-                                        <button
-                                            wire:click='$emit("openModal", "user.user-edit", {{json_encode(["user" => $user->id])}})'
-                                            class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer">
-                                            Edit
-                                        </button>
+                                            <button
+                                                wire:click='$emit("openModal", "user.user-edit", {{json_encode(["user" => $user->id])}})'
+                                                class="px-2 mx-2 rounded-md bg-gray-400 hover:bg-gray-600 text-gray-900 cursor-pointer">
+                                                Edit
+                                            </button>
                                         @endcan
                                         <!-- Inside existing Livewire component -->
                                         @can('user-delete')

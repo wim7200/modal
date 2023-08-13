@@ -8,6 +8,7 @@ use App\Models\Tool;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use LivewireUI\Modal\ModalComponent;
 
+
 class ToolCreate extends ModalComponent
 {
     use AuthorizesRequests;

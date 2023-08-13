@@ -17,49 +17,49 @@ class KindSeeder extends Seeder
         Kind::create([
             'name' => 'explosie/zuurstof',
             'img' => 'noImg',
-            'description' =>'zuurstof meter',
-            ]);
+            'description' => 'zuurstof meter',
+        ]);
         Kind::create([
             'name' => 'SO2',
             'img' => 'noImg',
-            'description' =>'SO2 meter',
+            'description' => 'SO2 meter',
         ]);
         Kind::create([
             'name' => 'benzeen',
             'img' => 'noImg',
-            'description' =>'benzeen meter',
+            'description' => 'benzeen meter',
         ]);
         Kind::create([
             'name' => 'NH3',
             'img' => 'noImg',
-            'description' =>'Ammoniak meter',
+            'description' => 'Ammoniak meter',
         ]);
         Kind::create([
             'name' => 'Led Lamp',
             'img' => 'noImg',
-            'description' =>'LED draaglamp',
+            'description' => 'LED draaglamp',
         ]);
         Kind::create([
             'name' => 'WT',
             'img' => 'noImg',
-            'description' =>'Walky Talky',
+            'description' => 'Walky Talky',
         ]);
         Kind::create([
             'name' => 'ScanGrip',
             'img' => 'noImg',
-            'description' =>'draagbare LED verlichting',
+            'description' => 'draagbare LED verlichting',
         ]);
         Kind::create([
             'name' => 'Docking Unit',
             'img' => 'noImg',
-            'description' =>'Bump station',
+            'description' => 'Bump station',
         ]);
         Kind::create([
             'name' => 'Portagas Bump Gas',
             'img' => 'noImg',
-            'description' =>'Calibratie gas',
+            'description' => 'Calibratie gas',
         ]);
 
-   }
+    }
 }
 
