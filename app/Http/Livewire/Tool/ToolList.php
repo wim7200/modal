@@ -62,6 +62,7 @@ class ToolList extends Component
                 ->paginate(20);
         } else {
             return Tool::with(['latestRent', 'kind', 'condition', 'clients'])
+                ->where('company_id', '=', $company_id)
                 ->search($this->search, ['qrtool', 'name'])
                 ->paginate(20);
         }
