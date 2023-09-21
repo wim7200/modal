@@ -24,7 +24,9 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             cd domains/beta.u49712p140698.web0147.zxcs-klant.nl/beta
+            php artisan down
             git pull origin deploy-vimexx
             composer install
             php artisan migrate
             php artisan optimize
+            php artisan up
