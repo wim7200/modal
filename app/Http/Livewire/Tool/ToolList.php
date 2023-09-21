@@ -19,7 +19,7 @@ class ToolList extends Component
     public $selected = '1';
     public $sortField = 'name';
     public $sortAsc = true;
-    public $selected_kind = '1';
+    public $selected_kind = '';
     public $checked = [];
 
     public $search = '';
@@ -31,8 +31,11 @@ class ToolList extends Component
 
     public function mount(Tool $tool, Client $client)
     {
+        $pref = auth()->user()->company->pref;
+
         $this->tool = $tool;
         $this->client = $client;
+        $this->selected_kind = $pref;
     }
 
     public function render()
@@ -47,6 +50,10 @@ class ToolList extends Component
     public function getToolsProperty()  /*computed property*/
     {
         $company_id = auth()->user()->company_id;
+        $pref = auth()->user()->company->pref;
+
+        $this->selected_kind = '' ? ($this->selected_kind = 5) : $this->selected_kind;
+
 
         if ($this->search == "") {
             return Tool::with(['latestRent', 'kind', 'condition', 'clients'])
@@ -63,6 +70,7 @@ class ToolList extends Component
         } else {
             return Tool::with(['latestRent', 'kind', 'condition', 'clients'])
                 ->where('company_id', '=', $company_id)
+                //->where('selected_kind', $pref)
                 ->search($this->search, ['qrtool', 'name'])
                 ->paginate(20);
         }

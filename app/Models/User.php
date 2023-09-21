@@ -41,9 +41,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'email' => 'email',
         'notify' => 'boolean',
         'admin' => 'boolean',
-        'approved' => 'boolean',
-        'approved_by' => 'string',
-        'approved_at' => 'timestamp',
         'company_id' => 'integer',
     ];
 
