@@ -16,7 +16,6 @@
             <label for="exampleFormControlInput1"
                    class="block text-gray-700 text-sm font-bold mb-2 pt-2">QR code van ontlener</label>
 
-
             <select
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 wire:model="qrClient">
@@ -25,6 +24,25 @@
                     <option value="{{ $client->qrClient }}">{{ $client->name }}</option>
                 @endforeach
             </select>
+
+
+            {{--<div x-data="{
+                search:'',
+                items:['apple','mango','banana'],
+                get filteredItems(){
+                return this.items.filter(
+                    item=>item.includes(this.search)
+                    )
+                }
+            }">
+                <div>
+                    <input class="border border-green-500 rounded-md" x-model="search">
+                </div>
+
+                <template x-for="item in filteredItems">
+                    <li x-text="item"></li>
+                </template>
+            </div>--}}
 
 
             <label for="exampleFormControlInput1"
