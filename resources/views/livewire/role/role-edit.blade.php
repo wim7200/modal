@@ -20,7 +20,7 @@
                 <div class="flex justify-end w-1/2">
                     <div class="1/4">
                         <x-input id="selectall" name="selectall" wire:model="checkall" type="checkbox"
-                                     class="mt-1"/>
+                                 class="mt-1"/>
                     </div>
                     <div class="text-wrap 3/4">
                         <x-label class="ml-1 mt-0" for="selectall" value="Select All"/>
@@ -36,7 +36,7 @@
                         <div class="flex">
                             <div class="1/4">
                                 <x-input name="rolepermissions" wire:model="selectedpermissions.{{$key}}"
-                                             type="checkbox" class="mt-1"/>
+                                         type="checkbox" class="mt-1"/>
                             </div>
                             <div class="text-wrap 3/4">
                                 <x-label class="ml-1 mt-0" for="{{$permission}}" value="{{$permission}}"/>

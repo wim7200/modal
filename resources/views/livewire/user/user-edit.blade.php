@@ -22,8 +22,8 @@
             <label for="exampleFormControlSelect1"
                    class="block text-gray-700 text-sm font-bold">Company</label>
             <select
-                class="shadow appearance-none border rounded w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="exampleFormControlInput2" placeholder="Company" wire:model="company_id">
+                class=" p-2 appearance-none border rounded w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="exampleFormControlInput1" placeholder="Company" wire:model="company_id">
 
                 <option value="">Select a Company</option>
                 @foreach ($companies as $company)
@@ -32,16 +32,28 @@
             </select>
             @error('company_id') <span class="text-red-500">{{ $message }}</span>@enderror
 
+            <label for="exampleFormControlSelect2"
+                   class="block text-gray-700 text-sm font-bold">Base Tool</label>
+            <select
+                class=" p-2 appearance-none border rounded w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="exampleFormControlInput2" placeholder="Kind" wire:model="kind_id">
+
+                <option value="">Choose or leave blank to see all</option>
+                @foreach ($kinds as $kind)
+                    <option value="{{ $kind->id }}">{{ $kind->name }}</option>
+                @endforeach
+            </select>
+            @error('kind_id') <span class="text-red-500">{{ $message }}</span>@enderror
+
             <label for="exampleFormControlSelect1"
                    class="block text-gray-700 text-sm font-bold">Role</label>
-
             <div class="col-span-12 sm:col-span-8">
                 <div class="flex flex-wrap mt-1 justify-between px-3 w-full">
                     @foreach($roles as $key=>$role)
                         <div class="flex flex-wrap mr-3 mt-3 w-1/3">
                             <div class="flex">
                                 <div class="1/4">
-                                    <x-input name="role" wire:model="selectedroles.{{$key}}" type="checkbox"/>
+                                    <x-input name="roles" wire:model="selectedroles.{{$key}}" type="checkbox"/>
                                 </div>
                                 <div class="text-wrap 3/4">
                                     <x-label class="ml-1 mt-0" for="{{$role}}" value="{{$role}}"/>
@@ -51,6 +63,10 @@
                     @endforeach
                 </div>
             </div>
+
+            @error('selectedroles') <span class="text-red-500">{{ $message }}</span>@enderror
+
+
             <label for="exampleFormControlSelect1"
                    class="block text-gray-700 text-sm font-bold">Notify Me</label>
             <td class="text-center">
