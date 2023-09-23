@@ -30,13 +30,13 @@ class UserTable extends Component
     public function getUsersProperty()
     {
         $user = Auth::user();
-        $usercompany=$user->company->id;
+        $usercompany = $user->company->id;
 
         if ($user->hasRole('Super-Admin')) {
-            return User::with(['company'])
+            return User::with(['company', 'kind'])
                 ->paginate(20);
         } else {
-            return User::with(['company'])
+            return User::with(['company', 'kind'])
                 ->where('company_id', '=', $usercompany)
                 ->paginate(10);
         }

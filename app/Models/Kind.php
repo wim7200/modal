@@ -34,4 +34,9 @@ class Kind extends Model
     {
         return $this->hasMany(Tool::class);
     }
+
+    public function users(): HasMany
+    {
+        return $this->hasMany(User::class);
+    }
 }

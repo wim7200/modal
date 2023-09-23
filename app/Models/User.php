@@ -32,7 +32,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name', 'email', 'password', 'notify', 'admin',
         'approved', 'approved_by', 'approved_at',
-        'company_id',
+        'company_id', 'kind_id',
     ];
 
     protected $cast = [
@@ -42,6 +42,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'notify' => 'boolean',
         'admin' => 'boolean',
         'company_id' => 'integer',
+        'kind_id' => 'integer',
     ];
 
     /**
@@ -79,6 +80,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(Company::class)->withDefault([
             'name' => 'Not Set Yet'
         ]);
+    }
+
+    public function kind(): BelongsTo
+    {
+        return $this->belongsTo(Kind::class);
+
     }
 
 
