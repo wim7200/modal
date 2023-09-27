@@ -16,10 +16,11 @@ class ToolList extends Component
     use WithPagination;
 
     public Tool $tool;
+    public Client $client;
     public $selected = '1';
     public $sortField = 'name';
     public $sortAsc = true;
-    public $selected_kind = '1';
+    public $selected_kind = '';
     public $checked = [];
 
     public $search = '';
@@ -31,8 +32,11 @@ class ToolList extends Component
 
     public function mount(Tool $tool, Client $client)
     {
+        $pref = auth()->user()->kind_id;
+
         $this->tool = $tool;
         $this->client = $client;
+        $this->selected_kind = $pref;
     }
 
     public function render()
@@ -47,6 +51,9 @@ class ToolList extends Component
     public function getToolsProperty()  /*computed property*/
     {
         $company_id = auth()->user()->company_id;
+
+        $this->selected_kind = '' ? ($this->selected_kind = 5) : $this->selected_kind;
+
 
         if ($this->search == "") {
             return Tool::with(['latestRent', 'kind', 'condition', 'clients'])
@@ -66,7 +73,6 @@ class ToolList extends Component
                 ->search($this->search, ['qrtool', 'name'])
                 ->paginate(20);
         }
-
     }
 
     public function sortBy($field)
