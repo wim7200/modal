@@ -95,7 +95,7 @@ class UserEdit extends ModalComponent
         $validatedData = $this->validate([
             'company_id' => 'required',
             'kind_id' => '',
-            'selectedroles' => ['required', 'exists:roles,id'],
+            'selectedroles' => "required|array|min:1",
         ]);
 
         $this->user->update($validatedData);
@@ -112,7 +112,7 @@ class UserEdit extends ModalComponent
             'company_id' => 'required',
             'kind_id' => 'required',
             'role_id' => 'required',
-            'selectedroles' => ['required'],
+            'selectedroles' => 'required|array|min:1',
         ];
     }
 
