@@ -27,6 +27,6 @@ jobs:
             php artisan down
             git pull origin deploy-vimexx
             composer install
-            php artisan migrate
+            php artisan migrate --force
             php artisan optimize
             php artisan up
