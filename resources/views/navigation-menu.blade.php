@@ -25,19 +25,26 @@
                         {{ __('Ontlener') }}
                     </x-nav-link>
 
-                    <x-nav-link href="{{ route('clienttool.index') }}"
+                    @can('setting-list')
+                        <x-nav-link href="{{ route('clienttool.index') }}"
                                     :active="request()->routeIs('clienttool.index')">
-                        {{ __('History') }}
-                    </x-nav-link>
+                            {{ __('History') }}
+                        </x-nav-link>
+                    @endcan
 
-                    <x-nav-link href="{{ route('kind.index') }}" :active="request()->routeIs('kind.index')">
-                        {{ __('Kind') }}
-                    </x-nav-link>
+                    @can('kind-list')
+                        <x-nav-link href="{{ route('kind.index') }}" :active="request()->routeIs('kind.index')">
+                            {{ __('Kind') }}
+                        </x-nav-link>
+                    @endcan
 
-                    <x-nav-link href="{{ route('condition.index') }}"
+
+                    @can('condition-list')
+                        <x-nav-link href="{{ route('condition.index') }}"
                                     :active="request()->routeIs('condition.index')">
-                        {{ __('Condition') }}
-                    </x-nav-link>
+                            {{ __('Condition') }}
+                        </x-nav-link>
+                    @endcan
 
                     <x-nav-link href="{{ route('tool.index') }}" :active="request()->routeIs('tool.index')">
                         {{ __('Tool') }}
@@ -56,7 +63,7 @@
 
                     @can('setting-edit')
                         <x-nav-link href="{{ route('setting.index') }}"
-                                        :active="request()->routeIs('setting.index')">
+                                    :active="request()->routeIs('setting.index')">
                             {{ __('Settings') }}
                         </x-nav-link>
                     @endcan
@@ -172,7 +179,7 @@
                                 @csrf
 
                                 <x-dropdown-link href="{{ route('logout') }}"
-                                                     @click.prevent="$root.submit();">
+                                                 @click.prevent="$root.submit();">
                                     {{ __('Log Out') }}
                                 </x-dropdown-link>
                             </form>
@@ -241,13 +248,13 @@
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
                 <x-responsive-nav-link href="{{ route('profile.show') }}"
-                                           :active="request()->routeIs('profile.show')">
+                                       :active="request()->routeIs('profile.show')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                     <x-responsive-nav-link href="{{ route('api-tokens.index') }}"
-                                               :active="request()->routeIs('api-tokens.index')">
+                                           :active="request()->routeIs('api-tokens.index')">
                         {{ __('API Tokens') }}
                     </x-responsive-nav-link>
                 @endif
@@ -257,7 +264,7 @@
                     @csrf
 
                     <x-responsive-nav-link href="{{ route('logout') }}"
-                                               @click.prevent="$root.submit();">
+                                           @click.prevent="$root.submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
@@ -272,13 +279,13 @@
 
                     <!-- Team Settings -->
                     <x-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}"
-                                               :active="request()->routeIs('teams.show')">
+                                           :active="request()->routeIs('teams.show')">
                         {{ __('Team Settings') }}
                     </x-responsive-nav-link>
 
                     @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
                         <x-responsive-nav-link href="{{ route('teams.create') }}"
-                                                   :active="request()->routeIs('teams.create')">
+                                               :active="request()->routeIs('teams.create')">
                             {{ __('Create New Team') }}
                         </x-responsive-nav-link>
                     @endcan
