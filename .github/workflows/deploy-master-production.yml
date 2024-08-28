@@ -23,7 +23,7 @@ jobs:
           port: ${{ secrets.PORT }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd domains/u49712p46814.web0110.zxcs-klant.nl/shop.lactam.be
+            cd domains/shop.lactam.be
             php artisan down
             git pull origin master
             composer install
