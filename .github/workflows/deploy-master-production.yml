@@ -20,8 +20,8 @@ jobs:
         with:
           host: ${{ secrets.HOSTP }}
           username: ${{ secrets.USERNAMEP }}
-          port: ${{ secrets.PORTP }}
-          password: ${{ secrets.PASSWORDP}}
+          port: ${{ secrets.PORT }}
+          password: ${{ secrets.PASSWORD}}
           script: |
             cd domains/shop.lactam.be
             php artisan down
