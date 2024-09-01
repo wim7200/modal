@@ -18,10 +18,10 @@ jobs:
       - name: Deploy to server
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          port: ${{ secrets.PORT }}
-          password: ${{ secrets.PASSWORD }}
+          host: ${{ secrets.HOSTP }}
+          username: ${{ secrets.USERNAMEP }}
+          port: ${{ secrets.PORTP }}
+          password: ${{ secrets.PASSWORDP}}
           script: |
             cd domains/shop.lactam.be
             php artisan down
