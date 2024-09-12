@@ -1,0 +1,33 @@
+name: Deploy-Master-Vimex-Prod
+
+# Trigger the workflow on push and
+# pull request events on the production branch
+
+on:
+  push:
+    branches:
+      - vimex-deploy
+
+# Authenticate to the the server via ssh
+# and run our deployment script
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOSTP }}
+          username: ${{ secrets.USERNAMEp }}
+          port: ${{ secrets.PORT }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            cd domains/shop.lactam.be/modal
+            php artisan down
+            git pull origin master
+            composer install
+            php artisan migrate
+            php artisan optimize
+            php artisan up
+
