@@ -24,7 +24,6 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             cd domains/shop.lactam.be/modal
-            php artisan down
             git pull origin master
             composer install
             php artisan migrate
