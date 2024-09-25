@@ -3,10 +3,10 @@ name: Deploy-Master-Vimex-Prod
 # Trigger the workflow on push and
 # pull request events on the production branch
 
-on:
-  push:
-    branches:
-      - vimex-deploy
+on: workflow_dispatch
+#  push:
+#    branches:
+#      - vimex-deploy
 
 # Authenticate to the the server via ssh
 # and run our deployment script
